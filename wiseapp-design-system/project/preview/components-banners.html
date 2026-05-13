@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><script src="https://unpkg.com/lucide@latest"></script><style>
+body { padding: 14px; }
+.banner { padding: 14px 16px; border: 1px solid; border-radius: 12px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.amber { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+.blue  { background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
+.title { font-weight: 600; font-size: 14px; }
+.body { font-size: 12px; margin-top: 2px; opacity: 0.85; }
+</style></head><body>
+<div class="card" style="padding: 16px; gap: 6px;">
+  <div class="strong" style="font-weight: 700; margin-bottom: 4px;">Components · Diagnostic banners</div>
+  <div class="banner amber">
+    <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#d97706;flex-shrink:0;margin-top:1px;"></i>
+    <div>
+      <div class="title">Данные ограничены по правам iiko API</div>
+      <div class="body">Freshness lag: 23 мин · Нет данных источника: Заказы</div>
+    </div>
+  </div>
+  <div class="banner blue">
+    <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#2563eb;flex-shrink:0;margin-top:1px;"></i>
+    <div>
+      <div class="title">Идет первичная синхронизация: часть данных пока заполняется</div>
+      <div class="body">Источник пока не заполнен: Цены</div>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>wiseApp · Каталог экранов v2</title>
+<link rel="stylesheet" href="catalog.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+
+  <!-- Rail: 4 missions + system. ⌘K is the primary navigation; rail = quick scope switch. -->
+  <aside class="rail" data-screen-label="rail">
+    <div class="rail-logo" aria-label="wiseApp">w</div>
+
+    <div class="rail-item mission" data-mission="today">
+      <i class="lc" data-lucide="bell-ring"></i>
+      <span class="rl">Сегодня</span>
+      <span class="rail-tooltip">Сегодня · Dashboard, Cockpit, задачи</span>
+    </div>
+    <div class="rail-item mission" data-mission="analytics">
+      <i class="lc" data-lucide="bar-chart-3"></i>
+      <span class="rl">Аналит.</span>
+      <span class="rail-tooltip">Аналитика · 11 отчётов</span>
+    </div>
+    <div class="rail-item mission" data-mission="money">
+      <i class="lc" data-lucide="wallet"></i>
+      <span class="rl">Деньги</span>
+      <span class="rail-tooltip">Деньги · P&amp;L, Cash gap, Food cost</span>
+    </div>
+    <div class="rail-item mission" data-mission="ops">
+      <i class="lc" data-lucide="boxes"></i>
+      <span class="rl">Опер.</span>
+      <span class="rail-tooltip">Операции · Склад, смены, безопасность</span>
+    </div>
+
+    <div class="rail-spacer"></div>
+
+    <div class="rail-item" id="open-cmd-rail">
+      <i class="lc" data-lucide="command"></i>
+      <span class="rail-tooltip">Команды (⌘K)</span>
+    </div>
+    <div class="rail-item mission" data-mission="system">
+      <i class="lc" data-lucide="settings"></i>
+      <span class="rl">Сис.</span>
+      <span class="rail-tooltip">Система · Настройки, команда, iiko</span>
+    </div>
+  </aside>
+
+  <!-- Main column -->
+  <div class="main">
+
+    <!-- Topbar: contextual breadcrumb + global controls -->
+    <header class="topbar">
+      <div class="crumbs" id="crumbs"></div>
+
+      <div class="tb-spacer"></div>
+
+      <button class="cmdk" id="cmd-trigger" aria-label="Открыть командную палитру">
+        <i class="lc" data-lucide="search"></i>
+        <span>Найти страницу или действие…</span>
+        <span class="kbd">⌘K</span>
+      </button>
+
+      <div class="density-toggle" role="tablist" aria-label="Плотность">
+        <button data-density="comfortable" class="on">Просторно</button>
+        <button data-density="compact">Плотно</button>
+      </div>
+
+      <button class="scope-select">
+        <span class="dot"></span>
+        <span>Все 3 точки</span>
+        <i class="lc" data-lucide="chevron-down"></i>
+      </button>
+
+      <button class="tb-btn icon" aria-label="Уведомления"><i class="lc" data-lucide="bell"></i></button>
+      <div class="avatar-sm">АТ</div>
+    </header>
+
+    <!-- ============ PAGES ============ -->
+
+    <!-- 01 · DASHBOARD ====================================================== -->
+    <section class="page" id="page-dashboard" data-screen-label="01 Dashboard">
+      <div class="page-head">
+        <div class="ph-left">
+          <div>
+            <h1 class="page-h1">Главная</h1>
+            <div class="page-lead">Последние 30 дней · 3 точки · обновлено 2 мин. назад</div>
+          </div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="calendar"></i>30 дней</button>
+          <button class="tb-btn"><i class="lc" data-lucide="git-compare"></i>vs прошлый период</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="download"></i>Экспорт</button>
+        </div>
+      </div>
+
+      <!-- Hero KPI band: one big revenue + 3 small -->
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread">
+            <span class="lbl">Выручка</span>
+            <span class="chip success"><span class="dot"></span>норма</span>
+          </div>
+          <div class="val">42,3 <span style="font-size:24px;color:var(--slate-500);font-weight:500;">млн ₸</span></div>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+12.4% к прош. периоду</span>
+          <svg class="spark" viewBox="0 0 320 80" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="rev-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0f172a" stop-opacity="0.10"/>
+                <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="spark-fill" d="M0,60 L20,55 L40,58 L60,48 L80,52 L100,40 L120,45 L140,32 L160,38 L180,28 L200,35 L220,22 L240,30 L260,18 L280,25 L300,12 L320,18 L320,80 L0,80 Z" fill="url(#rev-grad)"/>
+            <path class="spark-line" d="M0,60 L20,55 L40,58 L60,48 L80,52 L100,40 L120,45 L140,32 L160,38 L180,28 L200,35 L220,22 L240,30 L260,18 L280,25 L300,12 L320,18"/>
+          </svg>
+        </div>
+
+        <div class="kpi-sm">
+          <span class="lbl">Заказов</span>
+          <div class="val">3 218</div>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+8.1%</span>
+          <div class="micro"><span style="height:35%"></span><span style="height:50%"></span><span style="height:42%"></span><span class="on" style="height:60%"></span><span class="on" style="height:72%"></span><span class="on" style="height:65%"></span><span class="on" style="height:88%"></span></div>
+        </div>
+
+        <div class="kpi-sm">
+          <span class="lbl">Средний чек</span>
+          <div class="val">13 145 <span style="font-size:13px;color:var(--slate-500);font-weight:500;">₸</span></div>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+4.0%</span>
+          <div class="micro"><span style="height:42%"></span><span style="height:48%"></span><span class="on" style="height:55%"></span><span class="on" style="height:62%"></span><span class="on" style="height:58%"></span><span class="on" style="height:70%"></span><span class="on" style="height:74%"></span></div>
+        </div>
+
+        <div class="kpi-sm">
+          <span class="lbl">Активных дней</span>
+          <div class="val">30 <span style="font-size:13px;color:var(--slate-500);font-weight:500;">/ 30</span></div>
+          <span class="delta up" style="color:var(--slate-600);"><i class="lc" data-lucide="check"></i>без простоев</span>
+          <div class="micro"><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span><span class="on" style="height:90%"></span></div>
+        </div>
+      </div>
+
+      <!-- Revenue trend + top products -->
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Выручка по дням</div>
+              <div class="card-meta">Последние 30 дней</div>
+            </div>
+            <div class="card-tools">
+              <button class="tool-btn" data-drawer="drawer-revenue" aria-label="Открыть детализацию"><i class="lc" data-lucide="maximize-2"></i></button>
+              <button class="tool-btn"><i class="lc" data-lucide="more-horizontal"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <svg class="chart" viewBox="0 0 720 280" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="ch-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- gridlines -->
+              <g stroke="#f4f5f7" stroke-width="1">
+                <line x1="0" y1="40" x2="720" y2="40"/>
+                <line x1="0" y1="100" x2="720" y2="100"/>
+                <line x1="0" y1="160" x2="720" y2="160"/>
+                <line x1="0" y1="220" x2="720" y2="220"/>
+              </g>
+              <path d="M0,200 L24,180 L48,190 L72,160 L96,170 L120,140 L144,150 L168,120 L192,135 L216,110 L240,125 L264,95 L288,110 L312,80 L336,95 L360,70 L384,85 L408,60 L432,75 L456,50 L480,65 L504,40 L528,55 L552,30 L576,45 L600,25 L624,40 L648,20 L672,35 L696,15 L720,25 L720,280 L0,280 Z" fill="url(#ch-grad)"/>
+              <path d="M0,200 L24,180 L48,190 L72,160 L96,170 L120,140 L144,150 L168,120 L192,135 L216,110 L240,125 L264,95 L288,110 L312,80 L336,95 L360,70 L384,85 L408,60 L432,75 L456,50 L480,65 L504,40 L528,55 L552,30 L576,45 L600,25 L624,40 L648,20 L672,35 L696,15 L720,25" stroke="var(--brand-500)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- focus point -->
+              <circle cx="600" cy="25" r="4" fill="var(--brand-500)"/>
+              <circle cx="600" cy="25" r="8" fill="var(--brand-500)" fill-opacity="0.18"/>
+              <!-- y labels -->
+              <g font-size="10" fill="var(--slate-400)" font-family="var(--font-sans)">
+                <text x="0" y="36">2.0M</text>
+                <text x="0" y="96">1.5M</text>
+                <text x="0" y="156">1.0M</text>
+                <text x="0" y="216">500K</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Топ товаров</div>
+            <button class="tool-btn" data-go="products"><i class="lc" data-lucide="arrow-up-right"></i></button>
+          </div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <tbody>
+                <tr><td class="name">Рамен Тонкоцу <div class="sub">Категория: Горячее</div></td><td class="num">214 шт</td></tr>
+                <tr><td class="name">Поке с лососем <div class="sub">Категория: Боулы</div></td><td class="num">198 шт</td></tr>
+                <tr><td class="name">Том Ям <div class="sub">Категория: Супы</div></td><td class="num">165 шт</td></tr>
+                <tr><td class="name">Удон с курицей <div class="sub">Категория: Горячее</div></td><td class="num">142 шт</td></tr>
+                <tr><td class="name">Сет Филадельфия <div class="sub">Категория: Роллы</div></td><td class="num">128 шт</td></tr>
+                <tr><td class="name">Боул чикен-терияки <div class="sub">Категория: Боулы</div></td><td class="num">112 шт</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 widgets: loss prevention / leaderboard / actions today -->
+      <div class="zone-grid-3">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Предотвращение потерь</div>
+            <span class="chip danger"><span class="dot"></span>2 события</span>
+          </div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
+            <div class="spread">
+              <div class="col"><span style="font-size:11px;color:var(--slate-500);font-weight:500;">Сэкономлено за 30 дней</span><span style="font-size:22px;font-weight:700;color:var(--slate-900);font-variant-numeric:tabular-nums;">418 200 ₸</span></div>
+              <i class="lc" data-lucide="shield-check" style="width:32px;height:32px;color:var(--success-500);"></i>
+            </div>
+            <div class="divider-h"></div>
+            <div class="row" style="font-size:13px;"><i class="lc" data-lucide="alert-triangle" style="width:14px;height:14px;color:var(--warning-600);"></i><span style="color:var(--slate-700);">3 списания на 28 400 ₸ требуют проверки</span></div>
+            <button class="btn ghost" data-go="fraud" style="align-self:flex-start;">Открыть детектор<i class="lc" data-lucide="arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Лидеры смен</div>
+            <button class="tool-btn" data-go="staff-perf"><i class="lc" data-lucide="arrow-up-right"></i></button>
+          </div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <tbody>
+                <tr><td class="name">Айгерим К. <div class="sub">Касса · 8 смен</div></td><td class="num">+18.2%</td></tr>
+                <tr><td class="name">Данияр М. <div class="sub">Бар · 6 смен</div></td><td class="num">+14.0%</td></tr>
+                <tr><td class="name">Сауле Е. <div class="sub">Зал · 9 смен</div></td><td class="num">+9.5%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Action Center</div>
+            <span class="chip warning"><span class="dot"></span>3 открытых</span>
+          </div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+            <div class="row" style="font-size:13px;align-items:flex-start;gap:10px;"><i class="lc" data-lucide="alert-triangle" style="width:14px;height:14px;color:var(--danger-600);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">Падение чека на «Достык» -8% за 7 дней</span></div>
+            <div class="row" style="font-size:13px;align-items:flex-start;gap:10px;"><i class="lc" data-lucide="lightbulb" style="width:14px;height:14px;color:var(--info-600);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">Запустить промо на Том Ям в будни</span></div>
+            <div class="row" style="font-size:13px;align-items:flex-start;gap:10px;"><i class="lc" data-lucide="list-checks" style="width:14px;height:14px;color:var(--slate-500);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">Закрыть смену кассира №14</span></div>
+            <button class="btn primary" data-go="action-center" style="align-self:flex-start;margin-top:4px;">Открыть Action Center<i class="lc" data-lucide="arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · ACTION CENTER ================================================== -->
+    <section class="page hidden" id="page-action-center" data-screen-label="02 Action Center">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Action Center</h1><div class="page-lead">Рекомендации, алерты и задачи в едином lifecycle</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="filter"></i>Все домены</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="check-check"></i>Закрыть выбранные</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(4,1fr);">
+        <div class="kpi-sm"><span class="lbl">Открытых</span><div class="val">12</div><span class="chip neutral" style="align-self:flex-start;margin-top:4px;">всего</span></div>
+        <div class="kpi-sm"><span class="lbl">Критичных</span><div class="val" style="color:var(--danger-700);">2</div><span class="chip danger" style="align-self:flex-start;margin-top:4px;"><span class="dot"></span>требуют внимания</span></div>
+        <div class="kpi-sm"><span class="lbl">Высокий приоритет</span><div class="val" style="color:var(--warning-700);">5</div><span class="chip warning" style="align-self:flex-start;margin-top:4px;"><span class="dot"></span>сегодня</span></div>
+        <div class="kpi-sm"><span class="lbl">Закрыто сегодня</span><div class="val" style="color:var(--success-700);">7</div><span class="chip success" style="align-self:flex-start;margin-top:4px;"><span class="dot"></span>+3 ко вчера</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="row" style="gap:14px;">
+            <div class="card-title">Лента событий</div>
+            <div class="tabs" style="border:0;">
+              <button class="on">Открытые · 12</button>
+              <button>Выполненные · 47</button>
+              <button>Отклонённые · 8</button>
+            </div>
+          </div>
+          <div class="row" style="gap:6px;">
+            <button class="tb-btn"><i class="lc" data-lucide="lightbulb"></i>Рекомендации</button>
+            <button class="tb-btn"><i class="lc" data-lucide="alert-triangle"></i>Алерты</button>
+            <button class="tb-btn"><i class="lc" data-lucide="list-checks"></i>Задачи</button>
+          </div>
+        </div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:0;padding:0;">
+          <!-- row 1 -->
+          <div class="row" style="padding:14px 18px;gap:14px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="alert-triangle" style="width:18px;height:18px;color:var(--danger-600);margin-top:1px;flex-shrink:0;"></i>
+            <div class="col" style="flex:1;gap:4px;">
+              <div class="spread"><span style="font-weight:600;color:var(--slate-900);font-size:14px;">Падение выручки на «Достык» -18%</span><span class="chip danger"><span class="dot"></span>critical</span></div>
+              <span style="font-size:12px;color:var(--slate-500);">Финансы · 14 окт, 09:42 · Z-score 2.4 · сравнение с прошлым понедельником</span>
+            </div>
+            <button class="btn ghost"><i class="lc" data-lucide="check"></i>Принять</button>
+            <button class="btn subtle"><i class="lc" data-lucide="user-plus"></i>Назначить</button>
+            <button class="btn danger-ghost"><i class="lc" data-lucide="x"></i>Отклонить</button>
+          </div>
+          <!-- row 2 -->
+          <div class="row" style="padding:14px 18px;gap:14px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="lightbulb" style="width:18px;height:18px;color:var(--info-600);margin-top:1px;flex-shrink:0;"></i>
+            <div class="col" style="flex:1;gap:4px;">
+              <div class="spread"><span style="font-weight:600;color:var(--slate-900);font-size:14px;">Запустить промо на Том Ям в будни 14:00–17:00</span><span class="chip info"><span class="dot"></span>recommendation</span></div>
+              <span style="font-size:12px;color:var(--slate-500);">Маркетинг · падение спроса -22% в окне; ожидаемый эффект +180 чеков/нед</span>
+            </div>
+            <button class="btn ghost"><i class="lc" data-lucide="check"></i>Принять</button>
+            <button class="btn subtle"><i class="lc" data-lucide="user-plus"></i>Назначить</button>
+            <button class="btn danger-ghost"><i class="lc" data-lucide="x"></i>Отклонить</button>
+          </div>
+          <!-- row 3 -->
+          <div class="row" style="padding:14px 18px;gap:14px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="list-checks" style="width:18px;height:18px;color:var(--slate-500);margin-top:1px;flex-shrink:0;"></i>
+            <div class="col" style="flex:1;gap:4px;">
+              <div class="spread"><span style="font-weight:600;color:var(--slate-900);font-size:14px;">Закрыть смену кассира №14, расхождение 4 200 ₸</span><span class="chip warning"><span class="dot"></span>task</span></div>
+              <span style="font-size:12px;color:var(--slate-500);">Операции · назначено: Айгерим К. · срок: сегодня 22:00</span>
+            </div>
+            <button class="btn ghost"><i class="lc" data-lucide="eye"></i>Просмотрено</button>
+            <button class="btn primary"><i class="lc" data-lucide="check"></i>Завершить</button>
+          </div>
+          <!-- row 4 -->
+          <div class="row" style="padding:14px 18px;gap:14px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="lightbulb" style="width:18px;height:18px;color:var(--info-600);margin-top:1px;flex-shrink:0;"></i>
+            <div class="col" style="flex:1;gap:4px;">
+              <div class="spread"><span style="font-weight:600;color:var(--slate-900);font-size:14px;">Перевести лосось со склада «Манас» на «Абая»</span><span class="chip info"><span class="dot"></span>recommendation</span></div>
+              <span style="font-size:12px;color:var(--slate-500);">Inventory · избыток 12 кг при сроке 4 дня · экономия 38 400 ₸</span>
+            </div>
+            <button class="btn ghost"><i class="lc" data-lucide="check"></i>Принять</button>
+            <button class="btn danger-ghost"><i class="lc" data-lucide="x"></i>Отклонить</button>
+          </div>
+          <!-- row 5 -->
+          <div class="row" style="padding:14px 18px;gap:14px;align-items:flex-start;">
+            <i class="lc" data-lucide="alert-triangle" style="width:18px;height:18px;color:var(--warning-600);margin-top:1px;flex-shrink:0;"></i>
+            <div class="col" style="flex:1;gap:4px;">
+              <div class="spread"><span style="font-weight:600;color:var(--slate-900);font-size:14px;">Trust score сотрудника Б.Ж. упал ниже 70</span><span class="chip warning"><span class="dot"></span>alert</span></div>
+              <span style="font-size:12px;color:var(--slate-500);">Безопасность · 4 списания за 7 дней · средний по точке 86</span>
+            </div>
+            <button class="btn ghost" data-go="trust-score"><i class="lc" data-lucide="arrow-up-right"></i>Профиль</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · COCKPIT ======================================================== -->
+    <section class="page hidden" id="page-cockpit" data-screen-label="03 Cockpit менеджера">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Cockpit менеджера</h1><div class="page-lead">Live · смена № 1428 · открыта 18:42 назад</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <span class="chip success"><span class="dot"></span>смена открыта</span>
+          <button class="tb-btn"><i class="lc" data-lucide="play"></i>Авто-обновление 5с</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="lock"></i>Закрыть смену</button>
+        </div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Выручка смены</span><span class="chip success"><span class="dot"></span>+14% к прогнозу</span></div>
+          <div class="val">1,42 <span style="font-size:24px;color:var(--slate-500);font-weight:500;">млн ₸</span></div>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>прогноз 1.24 млн</span>
+          <div class="row" style="gap:24px;font-size:12px;color:var(--slate-500);"><span><b style="color:var(--slate-900);font-weight:700;">142</b> чека</span><span><b style="color:var(--slate-900);font-weight:700;">10 014 ₸</b> ср. чек</span><span><b style="color:var(--slate-900);font-weight:700;">7</b> сотрудника</span></div>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Сейчас в зале</span><div class="val">42 / 60</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>загрузка 70%</span></div>
+        <div class="kpi-sm"><span class="lbl">Время подачи</span><div class="val">11:24 <span style="font-size:13px;color:var(--slate-500);font-weight:500;">мм:сс</span></div><span class="delta down"><i class="lc" data-lucide="arrow-down-right"></i>-1:08 от нормы</span></div>
+        <div class="kpi-sm"><span class="lbl">Открытых заказов</span><div class="val">14</div><span class="chip neutral" style="align-self:flex-start;">3 ожид. оплату</span></div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Выручка по часам · сегодня vs прогноз</div>
+            <span class="card-meta">Серая зона — доверительный интервал прогноза</span>
+          </div>
+          <div class="card-body">
+            <svg class="chart" viewBox="0 0 720 240" preserveAspectRatio="none">
+              <g stroke="#f4f5f7"><line x1="0" y1="60" x2="720" y2="60"/><line x1="0" y1="120" x2="720" y2="120"/><line x1="0" y1="180" x2="720" y2="180"/></g>
+              <!-- forecast band -->
+              <path d="M0,150 L60,140 L120,130 L180,90 L240,80 L300,100 L360,120 L420,90 L480,70 L540,60 L600,80 L660,110 L720,140 L720,170 L660,140 L600,110 L540,90 L480,100 L420,120 L360,150 L300,130 L240,110 L180,120 L120,160 L60,170 L0,180 Z" fill="#cbd5e1" fill-opacity="0.25"/>
+              <!-- forecast line -->
+              <path d="M0,165 L60,155 L120,145 L180,105 L240,95 L300,115 L360,135 L420,105 L480,85 L540,75 L600,95 L660,125 L720,155" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+              <!-- actual line (only past hours) -->
+              <path d="M0,170 L60,160 L120,140 L180,90 L240,80 L300,95 L360,110 L420,80" stroke="var(--brand-500)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- now marker -->
+              <line x1="420" y1="0" x2="420" y2="240" stroke="var(--slate-900)" stroke-width="1" stroke-dasharray="2 4"/>
+              <circle cx="420" cy="80" r="5" fill="var(--brand-500)"/>
+              <text x="425" y="20" font-size="10" fill="var(--slate-700)" font-weight="600">сейчас 18:42</text>
+              <!-- x labels -->
+              <g font-size="10" fill="var(--slate-400)"><text x="0" y="232">10</text><text x="120" y="232">12</text><text x="240" y="232">14</text><text x="360" y="232">16</text><text x="480" y="232">18</text><text x="600" y="232">20</text><text x="700" y="232">22</text></g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Открытые заказы</div>
+            <span class="card-meta">14</span>
+          </div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Стол</th><th>Открыт</th><th>Сумма</th></tr></thead>
+              <tbody>
+                <tr><td class="name">№4 <div class="sub">Айгерим К.</div></td><td class="muted">12 мин</td><td class="num">28 400</td></tr>
+                <tr><td class="name">№7 <div class="sub">Данияр М.</div></td><td class="muted">28 мин</td><td class="num">14 200</td></tr>
+                <tr><td class="name">№12 <div class="sub">Сауле Е.</div></td><td class="muted">42 мин <span class="chip warning"><span class="dot"></span>долго</span></div></td><td class="num">62 800</td></tr>
+                <tr><td class="name">№3 <div class="sub">Айгерим К.</div></td><td class="muted">8 мин</td><td class="num">9 100</td></tr>
+                <tr><td class="name">№15 <div class="sub">Сауле Е.</div></td><td class="muted">3 мин</td><td class="num">5 400</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · ANOMALIES ====================================================== -->
+    <section class="page hidden" id="page-anomalies" data-screen-label="04 Аномалии">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Детектор аномалий</h1><div class="page-lead">Z-score анализ выручки и заказов · чувствительность 2.0σ</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="sliders-horizontal"></i>Чувствительность 2.0σ</button>
+          <button class="tb-btn"><i class="lc" data-lucide="calendar"></i>30 дней</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(4,1fr);">
+        <div class="kpi-sm"><span class="lbl">Всего аномалий</span><div class="val">7</div><span class="chip neutral" style="align-self:flex-start;">за 30 дней</span></div>
+        <div class="kpi-sm"><span class="lbl">Критические</span><div class="val" style="color:var(--danger-700);">2</div><span class="chip danger" style="align-self:flex-start;"><span class="dot"></span>Z &gt; 3.0</span></div>
+        <div class="kpi-sm"><span class="lbl">Предупреждения</span><div class="val" style="color:var(--warning-700);">5</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>2.0 &lt; Z &lt; 3.0</span></div>
+        <div class="kpi-sm"><span class="lbl">Средняя выручка</span><div class="val">1,41 млн</div><span style="font-size:11px;color:var(--slate-500);">базовая линия</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Выручка по дням · границы Z=2.0σ</div><span class="card-meta">Жёлтая зона — норма; красные точки — выброс</span></div>
+        <div class="card-body">
+          <svg class="chart" viewBox="0 0 720 280" preserveAspectRatio="none">
+            <g stroke="#f4f5f7"><line x1="0" y1="60" x2="720" y2="60"/><line x1="0" y1="140" x2="720" y2="140"/><line x1="0" y1="220" x2="720" y2="220"/></g>
+            <!-- band -->
+            <rect x="0" y="100" width="720" height="100" fill="var(--warning-50)" fill-opacity="0.55"/>
+            <line x1="0" y1="100" x2="720" y2="100" stroke="var(--warning-500)" stroke-dasharray="4 4" stroke-width="1"/>
+            <line x1="0" y1="200" x2="720" y2="200" stroke="var(--warning-500)" stroke-dasharray="4 4" stroke-width="1"/>
+            <line x1="0" y1="150" x2="720" y2="150" stroke="var(--slate-400)" stroke-dasharray="2 4" stroke-width="1"/>
+            <!-- line -->
+            <path d="M0,160 L24,150 L48,170 L72,140 L96,180 L120,210 L144,190 L168,160 L192,80 L216,150 L240,170 L264,160 L288,150 L312,140 L336,160 L360,150 L384,170 L408,150 L432,160 L456,140 L480,260 L504,180 L528,150 L552,160 L576,150 L600,140 L624,160 L648,150 L672,160 L696,150 L720,140" stroke="var(--slate-700)" stroke-width="2" fill="none"/>
+            <!-- anomaly points -->
+            <circle cx="192" cy="80" r="6" fill="var(--danger-500)" stroke="#fff" stroke-width="2"/>
+            <circle cx="480" cy="260" r="6" fill="var(--danger-500)" stroke="#fff" stroke-width="2"/>
+            <circle cx="120" cy="210" r="5" fill="var(--warning-500)" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Список аномалий</div><span class="card-meta">7 событий</span></div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th>Дата</th><th>Точка</th><th>Метрика</th><th>Z-score</th><th>Отклонение</th><th>Статус</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">14 окт 2025</td><td class="name">Достык</td><td>Выручка</td><td class="num" style="color:var(--danger-700);">+3.4σ</td><td class="num">+62%</td><td><span class="chip danger"><span class="dot"></span>выброс вверх</span></td></tr>
+              <tr><td class="mono">22 окт 2025</td><td class="name">Манас</td><td>Заказы</td><td class="num" style="color:var(--danger-700);">−3.1σ</td><td class="num">−48%</td><td><span class="chip danger"><span class="dot"></span>провал</span></td></tr>
+              <tr><td class="mono">07 окт 2025</td><td class="name">Достык</td><td>Средний чек</td><td class="num" style="color:var(--warning-700);">+2.6σ</td><td class="num">+18%</td><td><span class="chip warning"><span class="dot"></span>предупр.</span></td></tr>
+              <tr><td class="mono">11 окт 2025</td><td class="name">Абая</td><td>Выручка</td><td class="num" style="color:var(--warning-700);">−2.3σ</td><td class="num">−15%</td><td><span class="chip warning"><span class="dot"></span>предупр.</span></td></tr>
+              <tr><td class="mono">17 окт 2025</td><td class="name">Манас</td><td>Возвраты</td><td class="num" style="color:var(--warning-700);">+2.2σ</td><td class="num">+9 шт</td><td><span class="chip warning"><span class="dot"></span>предупр.</span></td></tr>
+              <tr><td class="mono">25 окт 2025</td><td class="name">Достык</td><td>Списания</td><td class="num" style="color:var(--warning-700);">+2.1σ</td><td class="num">+42K ₸</td><td><span class="chip warning"><span class="dot"></span>предупр.</span></td></tr>
+              <tr><td class="mono">02 окт 2025</td><td class="name">Абая</td><td>Заказы</td><td class="num" style="color:var(--warning-700);">−2.0σ</td><td class="num">−12%</td><td><span class="chip warning"><span class="dot"></span>предупр.</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · HEATMAP ======================================================== -->
+    <section class="page hidden" id="page-heatmap" data-screen-label="05 Heatmap">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Тепловая карта спроса</h1><div class="page-lead">Заказы по часам и дням недели · последние 90 дней</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="sigma"></i>Метрика: заказы</button>
+          <button class="tb-btn"><i class="lc" data-lucide="layers"></i>Все точки</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Понедельник — Воскресенье · 10:00–24:00</div><div class="row" style="gap:6px;font-size:11px;color:var(--slate-500);"><span>0</span><div style="display:flex;gap:2px;"><div style="width:14px;height:14px;background:#fef3c7;border-radius:2px;"></div><div style="width:14px;height:14px;background:#fcd34d;border-radius:2px;"></div><div style="width:14px;height:14px;background:#f59e0b;border-radius:2px;"></div><div style="width:14px;height:14px;background:#d97706;border-radius:2px;"></div><div style="width:14px;height:14px;background:#92400e;border-radius:2px;"></div></div><span>40+</span></div></div>
+        <div class="card-body">
+          <div class="heat" id="heat-grid"></div>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Топ окон спроса</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Окно</th><th>Заказов</th><th>Выручка</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Пт 19:00–21:00</td><td class="num">428</td><td class="num">5,8 млн</td></tr>
+                <tr><td class="name">Сб 13:00–15:00</td><td class="num">364</td><td class="num">4,2 млн</td></tr>
+                <tr><td class="name">Сб 19:00–21:00</td><td class="num">352</td><td class="num">4,8 млн</td></tr>
+                <tr><td class="name">Вс 14:00–16:00</td><td class="num">298</td><td class="num">3,4 млн</td></tr>
+                <tr><td class="name">Чт 19:00–21:00</td><td class="num">241</td><td class="num">3,2 млн</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Провалы</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Окно</th><th>Заказов</th><th>Загрузка</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Пн 14:00–17:00</td><td class="num">38</td><td><span class="chip danger"><span class="dot"></span>14%</span></td></tr>
+                <tr><td class="name">Вт 14:00–17:00</td><td class="num">52</td><td><span class="chip danger"><span class="dot"></span>18%</span></td></tr>
+                <tr><td class="name">Ср 22:00–24:00</td><td class="num">61</td><td><span class="chip warning"><span class="dot"></span>22%</span></td></tr>
+                <tr><td class="name">Чт 10:00–12:00</td><td class="num">48</td><td><span class="chip warning"><span class="dot"></span>20%</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · ABC / XYZ ====================================================== -->
+    <section class="page hidden" id="page-abc" data-screen-label="06 ABC / XYZ">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">ABC / XYZ анализ</h1><div class="page-lead">Парето-классификация товаров по выручке и стабильности спроса</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="calendar"></i>Квартал</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="download"></i>Экспорт</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(3,1fr);">
+        <div class="kpi-sm"><span class="lbl">Группа A · 80% выручки</span><div class="val">18 SKU</div><span class="chip success" style="align-self:flex-start;"><span class="dot"></span>защитить</span></div>
+        <div class="kpi-sm"><span class="lbl">Группа B · 15% выручки</span><div class="val">42 SKU</div><span class="chip info" style="align-self:flex-start;"><span class="dot"></span>наблюдать</span></div>
+        <div class="kpi-sm"><span class="lbl">Группа C · 5% выручки</span><div class="val">96 SKU</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>оптимизировать</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Матрица 3×3</div><span class="card-meta">Колонки — ABC; строки — XYZ (стабильность спроса)</span></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:8px;font-size:12px;">
+            <div></div>
+            <div style="text-align:center;font-weight:600;color:var(--slate-700);">A · 80%</div>
+            <div style="text-align:center;font-weight:600;color:var(--slate-700);">B · 15%</div>
+            <div style="text-align:center;font-weight:600;color:var(--slate-700);">C · 5%</div>
+
+            <div style="display:flex;align-items:center;justify-content:flex-end;font-weight:600;color:var(--slate-700);padding-right:6px;">X · стабильно</div>
+            <div style="background:var(--success-50);border:1px solid var(--success-200);border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--success-700);">14</div><div style="color:var(--slate-500);font-size:11px;">Звёзды · контроль остатков</div></div>
+            <div style="background:var(--info-50);border:1px solid var(--info-200);border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--info-700);">22</div><div style="color:var(--slate-500);font-size:11px;">Надёжные · автозаказ</div></div>
+            <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--slate-700);">38</div><div style="color:var(--slate-500);font-size:11px;">Малая ставка · базовый запас</div></div>
+
+            <div style="display:flex;align-items:center;justify-content:flex-end;font-weight:600;color:var(--slate-700);padding-right:6px;">Y · колеблется</div>
+            <div style="background:var(--warning-50);border:1px solid var(--warning-200);border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--warning-700);">3</div><div style="color:var(--slate-500);font-size:11px;">Прогноз обязателен</div></div>
+            <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--slate-700);">14</div><div style="color:var(--slate-500);font-size:11px;">Сезонные акценты</div></div>
+            <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--slate-700);">42</div><div style="color:var(--slate-500);font-size:11px;">Под заказ</div></div>
+
+            <div style="display:flex;align-items:center;justify-content:flex-end;font-weight:600;color:var(--slate-700);padding-right:6px;">Z · хаотично</div>
+            <div style="background:var(--danger-50);border:1px solid var(--danger-200);border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--danger-700);">1</div><div style="color:var(--slate-500);font-size:11px;">Риск out-of-stock</div></div>
+            <div style="background:var(--warning-50);border:1px solid var(--warning-200);border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--warning-700);">6</div><div style="color:var(--slate-500);font-size:11px;">Тестировать</div></div>
+            <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:10px;padding:14px;"><div style="font-size:22px;font-weight:700;color:var(--slate-700);">16</div><div style="color:var(--slate-500);font-size:11px;">Кандидаты на вывод</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · COHORTS ======================================================== -->
+    <section class="page hidden" id="page-cohorts" data-screen-label="07 Когорты">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Когорты &amp; RFM</h1><div class="page-lead">Удержание клиентов по месяцу первого заказа</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="users"></i>Все клиенты</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Retention по когортам · месяцы 0–6</div><span class="card-meta">% клиентов, повторно заказавших</span></div>
+        <div class="card-body">
+          <table class="tbl">
+            <thead><tr><th>Когорта</th><th>Размер</th><th>M+0</th><th>M+1</th><th>M+2</th><th>M+3</th><th>M+4</th><th>M+5</th><th>M+6</th></tr></thead>
+            <tbody id="cohort-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">RFM сегменты</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <tbody>
+                <tr><td class="name">Champions <div class="sub">недавно, часто, много</div></td><td class="num">218</td><td><span class="chip success"><span class="dot"></span>защищать</span></td></tr>
+                <tr><td class="name">Loyal <div class="sub">регулярные покупатели</div></td><td class="num">412</td><td><span class="chip info"><span class="dot"></span>растить</span></td></tr>
+                <tr><td class="name">At Risk <div class="sub">давно не возвращались</div></td><td class="num">186</td><td><span class="chip warning"><span class="dot"></span>вернуть</span></td></tr>
+                <tr><td class="name">Lost <div class="sub">>120 дней без заказа</div></td><td class="num">94</td><td><span class="chip danger"><span class="dot"></span>winback</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">LTV по когортам</div></div>
+          <div class="card-body">
+            <svg class="chart" viewBox="0 0 360 200" preserveAspectRatio="none">
+              <g stroke="#f4f5f7"><line x1="0" y1="50" x2="360" y2="50"/><line x1="0" y1="100" x2="360" y2="100"/><line x1="0" y1="150" x2="360" y2="150"/></g>
+              <path d="M0,170 L60,150 L120,130 L180,115 L240,100 L300,90 L360,82" stroke="var(--brand-500)" stroke-width="2" fill="none"/>
+              <path d="M0,175 L60,160 L120,148 L180,138 L240,128 L300,120 L360,114" stroke="var(--info-500)" stroke-width="2" fill="none"/>
+              <path d="M0,180 L60,172 L120,165 L180,160 L240,155 L300,150 L360,145" stroke="var(--slate-400)" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+              <g font-size="9" fill="var(--slate-500)"><text x="0" y="195">M0</text><text x="120" y="195">M2</text><text x="240" y="195">M4</text><text x="340" y="195">M6</text></g>
+            </svg>
+            <div class="row" style="gap:14px;margin-top:8px;font-size:11px;"><span class="row" style="gap:5px;"><span style="width:10px;height:2px;background:var(--brand-500);"></span>Авг</span><span class="row" style="gap:5px;"><span style="width:10px;height:2px;background:var(--info-500);"></span>Сен</span><span class="row" style="gap:5px;"><span style="width:10px;height:2px;background:var(--slate-400);border-top:1px dashed;"></span>Окт</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · P&L ============================================================ -->
+    <section class="page hidden" id="page-pl" data-screen-label="08 P&L">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">P&amp;L отчёт</h1><div class="page-lead">Октябрь 2025 · все точки · сравнение с сентябрём</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="calendar"></i>Окт 2025</button>
+          <button class="tb-btn"><i class="lc" data-lucide="git-compare"></i>vs Сен 2025</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="download"></i>PDF</button>
+        </div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Чистая прибыль</span><span class="chip success"><span class="dot"></span>+18%</span></div>
+          <div class="val">8,4 <span style="font-size:24px;color:var(--slate-500);font-weight:500;">млн ₸</span></div>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>маржа 19.8% · +1.4 п.п.</span>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Выручка</span><div class="val">42,3 млн</div><span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+12.4%</span></div>
+        <div class="kpi-sm"><span class="lbl">Себестоимость</span><div class="val">14,1 млн</div><span class="delta down" style="color:var(--success-700);"><i class="lc" data-lucide="arrow-down-right"></i>−1.2 п.п.</span></div>
+        <div class="kpi-sm"><span class="lbl">Опер. расходы</span><div class="val">19,8 млн</div><span class="delta up" style="color:var(--warning-700);"><i class="lc" data-lucide="arrow-up-right"></i>+0.8 п.п.</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Структура · Окт 2025</div><span class="card-meta">Сравнение с предыдущим периодом</span></div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th></th><th>Окт 2025</th><th>% выручки</th><th>Сен 2025</th><th>Δ</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Выручка</td><td class="num">42 318 000</td><td class="num">100.0%</td><td class="num">37 642 000</td><td class="num" style="color:var(--success-700);">+12.4%</td></tr>
+              <tr><td class="muted" style="padding-left:28px;">— зал</td><td class="num">28 412 000</td><td class="num">67.1%</td><td class="num">25 240 000</td><td class="num" style="color:var(--success-700);">+12.6%</td></tr>
+              <tr><td class="muted" style="padding-left:28px;">— доставка</td><td class="num">9 412 000</td><td class="num">22.2%</td><td class="num">8 124 000</td><td class="num" style="color:var(--success-700);">+15.9%</td></tr>
+              <tr><td class="muted" style="padding-left:28px;">— самовывоз</td><td class="num">4 494 000</td><td class="num">10.6%</td><td class="num">4 278 000</td><td class="num" style="color:var(--success-700);">+5.0%</td></tr>
+              <tr style="background:#fafbfc;"><td class="name">Себестоимость (Food cost)</td><td class="num">14 088 000</td><td class="num">33.3%</td><td class="num">13 002 000</td><td class="num" style="color:var(--success-700);">−1.2 п.п.</td></tr>
+              <tr style="background:#fafbfc;"><td class="name">Валовая прибыль</td><td class="num">28 230 000</td><td class="num">66.7%</td><td class="num">24 640 000</td><td class="num" style="color:var(--success-700);">+1.2 п.п.</td></tr>
+              <tr><td class="name">ФОТ</td><td class="num">11 240 000</td><td class="num">26.6%</td><td class="num">10 184 000</td><td class="num" style="color:var(--warning-700);">+0.5 п.п.</td></tr>
+              <tr><td class="name">Аренда</td><td class="num">4 200 000</td><td class="num">9.9%</td><td class="num">4 200 000</td><td class="num muted">0</td></tr>
+              <tr><td class="name">Коммунальные</td><td class="num">1 412 000</td><td class="num">3.3%</td><td class="num">1 348 000</td><td class="num muted">+0.1 п.п.</td></tr>
+              <tr><td class="name">Маркетинг</td><td class="num">1 884 000</td><td class="num">4.4%</td><td class="num">1 412 000</td><td class="num" style="color:var(--warning-700);">+0.7 п.п.</td></tr>
+              <tr><td class="name">Прочие</td><td class="num">1 094 000</td><td class="num">2.6%</td><td class="num">1 042 000</td><td class="num muted">+0.0 п.п.</td></tr>
+              <tr style="background:var(--brand-50);"><td class="name" style="color:var(--slate-900);">Чистая прибыль</td><td class="num" style="color:var(--slate-900);">8 400 000</td><td class="num" style="color:var(--slate-900);">19.8%</td><td class="num">7 454 000</td><td class="num" style="color:var(--success-700);">+18.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 · CASHFLOW ======================================================= -->
+    <section class="page hidden" id="page-cashflow" data-screen-label="09 Cashflow">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Кассовые разрывы</h1><div class="page-lead">Прогноз движения денег · ноябрь 2025</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="calendar"></i>30 дней вперёд</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(4,1fr);">
+        <div class="kpi-sm"><span class="lbl">Остаток сегодня</span><div class="val">12,4 млн</div><span class="chip success" style="align-self:flex-start;"><span class="dot"></span>норма</span></div>
+        <div class="kpi-sm"><span class="lbl">Притоки за 30 дней</span><div class="val" style="color:var(--success-700);">+44,8 млн</div></div>
+        <div class="kpi-sm"><span class="lbl">Оттоки за 30 дней</span><div class="val" style="color:var(--danger-700);">−39,2 млн</div></div>
+        <div class="kpi-sm"><span class="lbl">Минимум прогноза</span><div class="val" style="color:var(--warning-700);">2,1 млн</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>22 ноя</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Прогноз остатка</div><span class="card-meta">Красная линия — критический минимум 2 млн</span></div>
+        <div class="card-body">
+          <svg class="chart" viewBox="0 0 720 280" preserveAspectRatio="none">
+            <defs><linearGradient id="cf-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.18"/><stop offset="100%" stop-color="#10b981" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#f4f5f7"><line x1="0" y1="60" x2="720" y2="60"/><line x1="0" y1="140" x2="720" y2="140"/><line x1="0" y1="220" x2="720" y2="220"/></g>
+            <line x1="0" y1="240" x2="720" y2="240" stroke="var(--danger-500)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="8" y="252" font-size="10" fill="var(--danger-700)" font-weight="600">критич. минимум</text>
+            <path d="M0,80 L48,90 L96,110 L144,140 L192,120 L240,150 L288,180 L336,200 L384,210 L432,240 L480,220 L528,180 L576,140 L624,110 L672,90 L720,70 L720,280 L0,280 Z" fill="url(#cf-grad)"/>
+            <path d="M0,80 L48,90 L96,110 L144,140 L192,120 L240,150 L288,180 L336,200 L384,210 L432,240 L480,220 L528,180 L576,140 L624,110 L672,90 L720,70" stroke="var(--success-600)" stroke-width="2" fill="none"/>
+            <circle cx="432" cy="240" r="5" fill="var(--warning-500)" stroke="#fff" stroke-width="2"/>
+            <text x="440" y="234" font-size="10" fill="var(--warning-700)" font-weight="600">22 ноя · 2.1 млн</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Крупные оттоки</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Дата</th><th>Контрагент</th><th>Сумма</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">05 ноя</td><td class="name">Аренда · 3 точки</td><td class="num">4 200 000</td></tr>
+                <tr><td class="mono">10 ноя</td><td class="name">ФОТ · аванс</td><td class="num">5 800 000</td></tr>
+                <tr><td class="mono">15 ноя</td><td class="name">Поставщик «Морепродукт»</td><td class="num">2 412 000</td></tr>
+                <tr><td class="mono">22 ноя</td><td class="name">Налоги (КПН)</td><td class="num" style="color:var(--danger-700);">3 100 000</td></tr>
+                <tr><td class="mono">25 ноя</td><td class="name">ФОТ · зарплата</td><td class="num">5 800 000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Рекомендации</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:14px;">
+            <div class="row" style="align-items:flex-start;gap:10px;font-size:13px;"><i class="lc" data-lucide="lightbulb" style="width:14px;height:14px;color:var(--info-600);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">Перенесите оплату «Морепродукт» с 15 на 18 ноя — выровняет 22 ноя на 1.5 млн</span></div>
+            <div class="row" style="align-items:flex-start;gap:10px;font-size:13px;"><i class="lc" data-lucide="lightbulb" style="width:14px;height:14px;color:var(--info-600);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">Дебиторы 4.2 млн просрочены &gt;14 дней — отправить напоминания</span></div>
+            <div class="row" style="align-items:flex-start;gap:10px;font-size:13px;"><i class="lc" data-lucide="alert-triangle" style="width:14px;height:14px;color:var(--warning-600);margin-top:2px;flex-shrink:0;"></i><span style="color:var(--slate-700);">При факте −5% от плана выручки 22 ноя уйдёт в минус</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · INVENTORY ====================================================== -->
+    <section class="page hidden" id="page-inventory" data-screen-label="10 Inventory">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Складской учёт</h1><div class="page-lead">3 склада · 218 SKU · последняя инвентаризация 24 окт</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="upload"></i>Импорт Excel</button>
+          <button class="tb-btn primary"><i class="lc" data-lucide="plus"></i>Списание</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(4,1fr);">
+        <div class="kpi-sm"><span class="lbl">Стоимость остатков</span><div class="val">12,8 млн</div></div>
+        <div class="kpi-sm"><span class="lbl">SKU ниже мин.</span><div class="val" style="color:var(--danger-700);">14</div><span class="chip danger" style="align-self:flex-start;"><span class="dot"></span>нужен заказ</span></div>
+        <div class="kpi-sm"><span class="lbl">Истекают в 7 дней</span><div class="val" style="color:var(--warning-700);">22</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>FIFO в работе</span></div>
+        <div class="kpi-sm"><span class="lbl">Списания за 30 дн.</span><div class="val">418 200 ₸</div><span class="delta down" style="color:var(--success-700);"><i class="lc" data-lucide="arrow-down-right"></i>−12% к прош. мес.</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="row" style="gap:14px;">
+            <div class="card-title">Остатки</div>
+            <div class="tabs" style="border:0;">
+              <button class="on">Все · 218</button>
+              <button>Манас · 84</button>
+              <button>Достык · 71</button>
+              <button>Абая · 63</button>
+            </div>
+          </div>
+          <div class="row" style="gap:6px;">
+            <button class="tb-btn"><i class="lc" data-lucide="filter"></i>Только &lt; мин.</button>
+            <button class="tb-btn icon"><i class="lc" data-lucide="search"></i></button>
+          </div>
+        </div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th>Ингредиент</th><th>Категория</th><th>Остаток</th><th>Min</th><th>Закупочная</th><th>Статус</th><th>Срок</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Лосось филе с/м <div class="sub">Морепродукты · Манас</div></td><td>Морепродукты</td><td class="num">3.2 кг</td><td class="num muted">5.0 кг</td><td class="num">12 200 ₸/кг</td><td><span class="chip danger"><span class="dot"></span>ниже мин.</span></td><td class="muted">+4 дня</td></tr>
+              <tr><td class="name">Куриное филе <div class="sub">Мясо · Манас</div></td><td>Мясо</td><td class="num">14.0 кг</td><td class="num muted">10.0 кг</td><td class="num">3 800 ₸/кг</td><td><span class="chip success"><span class="dot"></span>норма</span></td><td class="muted">+5 дней</td></tr>
+              <tr><td class="name">Кокосовое молоко <div class="sub">Бакалея · Достык</div></td><td>Бакалея</td><td class="num">2 банки</td><td class="num muted">8 банок</td><td class="num">1 200 ₸/шт</td><td><span class="chip danger"><span class="dot"></span>ниже мин.</span></td><td class="muted">+90 дней</td></tr>
+              <tr><td class="name">Авокадо хасс <div class="sub">Овощи · Достык</div></td><td>Овощи</td><td class="num">6 кг</td><td class="num muted">8 кг</td><td class="num">2 800 ₸/кг</td><td><span class="chip warning"><span class="dot"></span>истекает</span></td><td class="muted">+2 дня</td></tr>
+              <tr><td class="name">Лапша рамен <div class="sub">Бакалея · Манас</div></td><td>Бакалея</td><td class="num">22 пач</td><td class="num muted">15 пач</td><td class="num">540 ₸/шт</td><td><span class="chip success"><span class="dot"></span>норма</span></td><td class="muted">+45 дней</td></tr>
+              <tr><td class="name">Тигровая креветка <div class="sub">Морепродукты · Абая</div></td><td>Морепродукты</td><td class="num">1.8 кг</td><td class="num muted">3.0 кг</td><td class="num">8 400 ₸/кг</td><td><span class="chip danger"><span class="dot"></span>ниже мин.</span></td><td class="muted">+3 дня</td></tr>
+              <tr><td class="name">Соус терияки <div class="sub">Бакалея · Достык</div></td><td>Бакалея</td><td class="num">8 бут</td><td class="num muted">5 бут</td><td class="num">1 400 ₸/шт</td><td><span class="chip success"><span class="dot"></span>норма</span></td><td class="muted">+120 дней</td></tr>
+              <tr><td class="name">Манго свежее <div class="sub">Фрукты · Манас</div></td><td>Фрукты</td><td class="num">4 кг</td><td class="num muted">3 кг</td><td class="num">3 200 ₸/кг</td><td><span class="chip warning"><span class="dot"></span>истекает</span></td><td class="muted">+1 день</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · TRUST SCORE ==================================================== -->
+    <section class="page hidden" id="page-trust-score" data-screen-label="11 Trust Score">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Trust Score сотрудников</h1><div class="page-lead">Поведенческий рейтинг честности на основе списаний, отмен и расхождений</div></div>
+          <div class="subnav-host"></div>
+        </div>
+        <div class="ph-right">
+          <button class="tb-btn"><i class="lc" data-lucide="info"></i>Как считается</button>
+        </div>
+      </div>
+
+      <div class="hero-band" style="grid-template-columns:repeat(4,1fr);">
+        <div class="kpi-sm"><span class="lbl">Средний по команде</span><div class="val">82</div><span class="chip success" style="align-self:flex-start;"><span class="dot"></span>норма</span></div>
+        <div class="kpi-sm"><span class="lbl">Сотрудников &gt; 90</span><div class="val">7</div></div>
+        <div class="kpi-sm"><span class="lbl">В зоне риска (&lt; 70)</span><div class="val" style="color:var(--warning-700);">2</div><span class="chip warning" style="align-self:flex-start;"><span class="dot"></span>проверка</span></div>
+        <div class="kpi-sm"><span class="lbl">Критичных (&lt; 50)</span><div class="val" style="color:var(--danger-700);">1</div><span class="chip danger" style="align-self:flex-start;"><span class="dot"></span>требует решения</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Рейтинг сотрудников</div><span class="card-meta">15 человек · сортировка по убыванию</span></div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th>Сотрудник</th><th>Точка</th><th>Smen</th><th>Списания</th><th>Отмены</th><th>Расхожд.</th><th>Score</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Айгерим К. <div class="sub">Кассир</div></td><td>Достык</td><td class="num">12</td><td class="num">2</td><td class="num">1</td><td class="num muted">0 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:96%;height:100%;background:var(--success-500);"></div></div><span class="num" style="color:var(--success-700);">96</span></div></td></tr>
+              <tr><td class="name">Сауле Е. <div class="sub">Зал</div></td><td>Манас</td><td class="num">14</td><td class="num">3</td><td class="num">2</td><td class="num muted">800 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:91%;height:100%;background:var(--success-500);"></div></div><span class="num" style="color:var(--success-700);">91</span></div></td></tr>
+              <tr><td class="name">Данияр М. <div class="sub">Бар</div></td><td>Манас</td><td class="num">10</td><td class="num">5</td><td class="num">2</td><td class="num muted">1 400 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:88%;height:100%;background:var(--success-500);"></div></div><span class="num" style="color:var(--success-700);">88</span></div></td></tr>
+              <tr><td class="name">Ержан Т. <div class="sub">Кассир</div></td><td>Абая</td><td class="num">11</td><td class="num">8</td><td class="num">4</td><td class="num">2 200 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:var(--info-500);"></div></div><span class="num" style="color:var(--info-700);">78</span></div></td></tr>
+              <tr><td class="name">Айдана Б. <div class="sub">Зал</div></td><td>Достык</td><td class="num">9</td><td class="num">6</td><td class="num">3</td><td class="num">1 800 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:74%;height:100%;background:var(--info-500);"></div></div><span class="num" style="color:var(--info-700);">74</span></div></td></tr>
+              <tr><td class="name">Бауржан Ж. <div class="sub">Кассир</div></td><td>Манас</td><td class="num">13</td><td class="num">14</td><td class="num">9</td><td class="num">8 200 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--warning-500);"></div></div><span class="num" style="color:var(--warning-700);">64</span></div></td></tr>
+              <tr><td class="name">Тимур К. <div class="sub">Бар</div></td><td>Абая</td><td class="num">8</td><td class="num">11</td><td class="num">7</td><td class="num">5 400 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:62%;height:100%;background:var(--warning-500);"></div></div><span class="num" style="color:var(--warning-700);">62</span></div></td></tr>
+              <tr><td class="name">Алмат Н. <div class="sub">Кассир</div></td><td>Достык</td><td class="num">7</td><td class="num">19</td><td class="num">12</td><td class="num">12 800 ₸</td><td><div class="row" style="gap:8px;justify-content:flex-end;"><div style="width:40px;height:6px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:42%;height:100%;background:var(--danger-500);"></div></div><span class="num" style="color:var(--danger-700);">42</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · AUTH · LOGIN =================================================== -->
+    <section class="page hidden" id="page-auth-login" data-screen-label="12 Auth Login">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">Auth · Login</h1><div class="page-lead">Спецификация публичных страниц аутентификации</div></div>
+          <div class="subnav-host"></div>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card" style="padding:0;background:linear-gradient(180deg,#fafbfc 0%,#fff 100%);">
+          <div class="card-body" style="padding:48px;display:flex;flex-direction:column;align-items:center;gap:24px;min-height:520px;justify-content:center;">
+            <div class="wm-lockup">
+              <span class="wm-tile">w</span>
+              <span class="wm-text">wise<span class="a">A</span>pp</span>
+            </div>
+            <div style="text-align:center;max-width:320px;">
+              <div style="font-size:22px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;">Войти в кабинет</div>
+              <div style="font-size:13px;color:var(--slate-500);margin-top:6px;">Используйте корпоративный e-mail или войдите через iiko</div>
+            </div>
+            <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;">
+              <label style="font-size:11px;font-weight:600;color:var(--slate-600);letter-spacing:0.04em;text-transform:uppercase;">E-mail</label>
+              <input type="email" placeholder="director@bizfocus.kz" style="height:40px;padding:0 14px;border:1px solid #eef0f3;border-radius:10px;font:inherit;font-size:14px;color:var(--slate-900);outline:none;"/>
+              <label style="font-size:11px;font-weight:600;color:var(--slate-600);letter-spacing:0.04em;text-transform:uppercase;margin-top:8px;">Пароль</label>
+              <input type="password" placeholder="••••••••" style="height:40px;padding:0 14px;border:1px solid #eef0f3;border-radius:10px;font:inherit;font-size:14px;color:var(--slate-900);outline:none;"/>
+              <div class="row" style="justify-content:space-between;margin-top:4px;font-size:12px;"><label style="display:inline-flex;gap:6px;color:var(--slate-600);"><input type="checkbox"/> Запомнить</label><a href="#" style="color:var(--brand-700);font-weight:500;">Забыли пароль?</a></div>
+              <button class="btn primary" style="height:40px;justify-content:center;margin-top:8px;">Войти</button>
+              <div class="row" style="margin:8px 0;color:var(--slate-400);font-size:11px;"><div style="flex:1;height:1px;background:#eef0f3;"></div><span style="padding:0 10px;">или</span><div style="flex:1;height:1px;background:#eef0f3;"></div></div>
+              <button class="btn ghost" style="height:40px;justify-content:center;"><i class="lc" data-lucide="link"></i>Продолжить через iiko</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="gap:16px;">
+          <div class="card">
+            <div class="card-head"><div class="card-title">Спецификация wordmark</div></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:14px;font-size:12px;">
+              <div class="row" style="gap:14px;"><div class="wm-lockup"><span class="wm-tile">w</span><span class="wm-text">wise<span class="a">A</span>pp</span></div><span class="muted">Стандарт · 36px</span></div>
+              <div class="divider-h"></div>
+              <ul style="margin:0;padding-left:18px;color:var(--slate-700);line-height:1.7;">
+                <li>Tile: slate-900, radius 28% от стороны</li>
+                <li>Glyph «w»: brand-400 (амбер на тёмном — единственное использование brand)</li>
+                <li>Optical centering: −1px от геометрического</li>
+                <li>Wordmark: Inter 600 / -0.022em, заглавная A — brand-600</li>
+                <li>Clear space: 0.5× высоты tile со всех сторон</li>
+                <li>Минимальный размер: tile 24px / wordmark 18px</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><div class="card-title">Связанные страницы</div></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:8px;">
+              <button class="btn ghost" data-go="auth-register" style="justify-content:flex-start;"><i class="lc" data-lucide="user-plus"></i>Register · регистрация</button>
+              <button class="btn ghost" data-go="auth-reset" style="justify-content:flex-start;"><i class="lc" data-lucide="key-round"></i>Reset password · сброс пароля</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stub pages (everything else) ======================================== -->
+    <!-- Generic stub: shows that the page exists, with links to nearby screens -->
+    <!-- Generated dynamically below -->
+    <div id="stub-host"></div>
+
+  </div>
+</div>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-bg" id="drawer-bg"></div>
+
+<aside class="drawer" id="drawer-revenue">
+  <div class="drawer-head">
+    <i class="lc" data-lucide="trending-up" style="color:var(--brand-600);"></i>
+    <div class="title">Выручка по дням · детализация</div>
+    <button class="tool-btn" data-drawer-close><i class="lc" data-lucide="x"></i></button>
+  </div>
+  <div class="drawer-body">
+    <div class="col" style="gap:18px;">
+      <div class="hero-kpi" style="border:1px solid #eef0f3;">
+        <span class="lbl">Выручка за период</span>
+        <div class="val">42,3 млн ₸</div>
+        <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+12.4% к предыдущему периоду</span>
+      </div>
+      <div class="card-title">Разбивка по точкам</div>
+      <table class="tbl">
+        <tbody>
+          <tr><td class="name">Достык</td><td class="num">18 412 000 ₸</td><td class="num" style="color:var(--success-700);">+14%</td></tr>
+          <tr><td class="name">Манас</td><td class="num">14 218 000 ₸</td><td class="num" style="color:var(--success-700);">+11%</td></tr>
+          <tr><td class="name">Абая</td><td class="num">9 688 000 ₸</td><td class="num" style="color:var(--success-700);">+9%</td></tr>
+        </tbody>
+      </table>
+      <div class="card-title">Каналы</div>
+      <table class="tbl">
+        <tbody>
+          <tr><td class="name">Зал</td><td class="num">28 412 000 ₸</td><td class="muted">67.1%</td></tr>
+          <tr><td class="name">Доставка</td><td class="num">9 412 000 ₸</td><td class="muted">22.2%</td></tr>
+          <tr><td class="name">Самовывоз</td><td class="num">4 494 000 ₸</td><td class="muted">10.6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn ghost" data-drawer-close>Закрыть</button>
+    <button class="btn primary"><i class="lc" data-lucide="external-link"></i>Открыть Финансы</button>
+  </div>
+</aside>
+
+<!-- ============ COMMAND PALETTE ============ -->
+<div class="cmd-bg" id="cmd-bg">
+  <div class="cmd-panel">
+    <div class="cmd-input">
+      <i class="lc" data-lucide="search"></i>
+      <input id="cmd-input" type="text" placeholder="Перейти к странице или действию…" autocomplete="off"/>
+      <span class="esc">esc</span>
+    </div>
+    <div class="cmd-list" id="cmd-list"></div>
+    <div class="cmd-foot">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> навигация</span>
+      <span><kbd>↵</kbd> открыть</span>
+      <span><kbd>esc</kbd> закрыть</span>
+      <span style="margin-left:auto;">36 страниц</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Page generation: heatmap, cohorts, stubs ============ -->
+<script src="catalog.js"></script>
+<script>
+// ===== Heatmap data =====
+(function(){
+  const days = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  const hours = ['10','11','12','13','14','15','16','17','18','19','20','21','22','23'];
+  // Synthetic but realistic demand pattern: lunch peak + dinner peak; weekend stronger
+  function val(d,h){
+    const lunch = Math.exp(-Math.pow((h-13)/1.6, 2)) * (d>=4?14:10);
+    const dinner = Math.exp(-Math.pow((h-20)/1.8, 2)) * (d>=4?38:24);
+    const base = (d>=5?6:3);
+    const noise = ((d*7+h*3)%5) - 2;
+    return Math.max(0, Math.round(lunch + dinner + base + noise));
+  }
+  function color(v){
+    if (v < 5)  return '#fef3c7';
+    if (v < 12) return '#fcd34d';
+    if (v < 20) return '#f59e0b';
+    if (v < 32) return '#d97706';
+    return '#92400e';
+  }
+  const grid = document.getElementById('heat-grid');
+  if (grid) {
+    grid.style.gridTemplateColumns = `52px repeat(${hours.length}, 1fr)`;
+    let html = '<div></div>';
+    hours.forEach(h => html += `<div class="h">${h}</div>`);
+    days.forEach((d,di) => {
+      html += `<div class="y">${d}</div>`;
+      hours.forEach((h,hi) => {
+        const v = val(di, +h);
+        html += `<div class="cell" style="background:${color(v)};" title="${d} ${h}:00 — ${v} заказов"></div>`;
+      });
+    });
+    grid.innerHTML = html;
+  }
+})();
+
+// ===== Cohorts data =====
+(function(){
+  const cohorts = [
+    { name: 'Апр 2025', size: 412 },
+    { name: 'Май 2025', size: 488 },
+    { name: 'Июн 2025', size: 502 },
+    { name: 'Июл 2025', size: 541 },
+    { name: 'Авг 2025', size: 612 },
+    { name: 'Сен 2025', size: 684 },
+    { name: 'Окт 2025', size: 728 },
+  ];
+  function pct(m, base){
+    if (m === 0) return 100;
+    const decay = [100, 38, 28, 22, 18, 15, 13][m] || 0;
+    const noise = ((base*7+m*5)%6) - 3;
+    return Math.max(0, decay + noise);
+  }
+  function color(p){
+    if (p >= 80) return 'background:var(--brand-700);color:#fff;font-weight:700;';
+    if (p >= 35) return 'background:var(--brand-500);color:var(--slate-900);font-weight:600;';
+    if (p >= 25) return 'background:var(--brand-300);color:var(--slate-900);font-weight:600;';
+    if (p >= 15) return 'background:var(--brand-100);color:var(--slate-900);';
+    if (p > 0)   return 'background:var(--brand-50);color:var(--slate-700);';
+    return 'background:#fafbfc;color:var(--slate-400);';
+  }
+  const tb = document.getElementById('cohort-body');
+  if (tb) {
+    tb.innerHTML = cohorts.map((c,i) => {
+      const cells = [0,1,2,3,4,5,6].map(m => {
+        if (i + m >= cohorts.length && m > 0) return '<td class="muted">—</td>';
+        const p = pct(m, c.size);
+        return `<td class="num" style="${color(p)};border-radius:4px;">${p}%</td>`;
+      }).join('');
+      return `<tr><td class="name">${c.name}</td><td class="num muted">${c.size}</td>${cells}</tr>`;
+    }).join('');
+  }
+})();
+
+// ===== Stub pages for everything not hand-built =====
+(function(){
+  const built = new Set(['dashboard','action-center','cockpit','anomalies','heatmap','abc','cohorts','pl','cashflow','inventory','trust-score','auth-login']);
+  const host = document.getElementById('stub-host');
+  if (!host || !window.WA_PAGES) return;
+  const html = WA_PAGES.filter(p => !built.has(p.id)).map(p => {
+    const subnavIds = (window.WA_SUBNAV[p.id] || []);
+    const related = subnavIds.filter(s => s !== p.id).slice(0,4)
+      .map(s => {
+        const rp = WA_PAGES.find(x => x.id===s);
+        return rp ? `<button class="btn ghost" data-go="${rp.id}" style="justify-content:flex-start;"><i class="lc" data-lucide="arrow-up-right"></i>${rp.label}</button>` : '';
+      }).join('');
+    return `
+    <section class="page hidden" id="page-${p.id}" data-screen-label="${p.label}">
+      <div class="page-head">
+        <div class="ph-left">
+          <div><h1 class="page-h1">${p.label}</h1><div class="page-lead">Страница из ${WA_MISSIONS[p.mission].label.toLowerCase()} · группа: ${p.group}</div></div>
+          <div class="subnav-host"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body" style="padding:48px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+          <div style="width:56px;height:56px;border-radius:14px;background:#f4f5f7;display:flex;align-items:center;justify-content:center;color:var(--slate-500);">
+            <i class="lc" data-lucide="layout-template" style="width:24px;height:24px;"></i>
+          </div>
+          <div style="font-size:16px;font-weight:600;color:var(--slate-900);">${p.label} — экран в каркасе</div>
+          <div style="font-size:13px;color:var(--slate-500);max-width:480px;">Этот экран входит в карту приложения и доступен через ⌘K. Hi-fi версия наследует те же primitives: hero band, контекстный topbar, sub-nav, density toggle.</div>
+          <div class="row" style="gap:8px;margin-top:8px;"><button class="btn primary" data-go="dashboard"><i class="lc" data-lucide="home"></i>На главную</button><button class="btn ghost" id="open-cmd-stub-${p.id}"><i class="lc" data-lucide="command"></i>⌘K все страницы</button></div>
+        </div>
+      </div>
+      ${related ? `<div class="card"><div class="card-head"><div class="card-title">Соседние экраны кластера</div></div><div class="card-body" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">${related}</div></div>` : ''}
+    </section>`;
+  }).join('');
+  host.insertAdjacentHTML('beforeend', html);
+
+  // wire stub cmd buttons
+  document.querySelectorAll('[id^="open-cmd-stub-"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cmdBtn = document.getElementById('open-cmd-rail');
+      if (cmdBtn) cmdBtn.click();
+    });
+  });
+
+  // re-render lucide
+  if (window.lucide && lucide.createIcons) lucide.createIcons();
+})();
+</script>
+
+</body>
+</html>

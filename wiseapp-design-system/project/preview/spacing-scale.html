@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+.tokens { display: grid; grid-template-columns: 32px 1fr 80px; row-gap: 6px; column-gap: 12px; align-items: center; }
+.bar { background: #f59e0b; height: 8px; border-radius: 999px; }
+.t { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #475569; }
+.px { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #94a3b8; text-align: right; }
+</style></head><body>
+<div class="card">
+  <div class="row spread">
+    <div class="strong" style="font-weight: 700;">Spacing · Scale</div>
+    <div class="faint mono" style="font-size:11px;">tailwind defaults</div>
+  </div>
+  <div class="tokens">
+    <span class="t">1</span><div class="bar" style="width:4px;"></div><span class="px">4 px</span>
+    <span class="t">2</span><div class="bar" style="width:8px;"></div><span class="px">8 px</span>
+    <span class="t">3</span><div class="bar" style="width:12px;"></div><span class="px">12 px · py-3</span>
+    <span class="t">4</span><div class="bar" style="width:16px;"></div><span class="px">16 px · gap-4</span>
+    <span class="t">5</span><div class="bar" style="width:20px;"></div><span class="px">20 px · p-5</span>
+    <span class="t">6</span><div class="bar" style="width:24px;"></div><span class="px">24 px · gap-6</span>
+    <span class="t">8</span><div class="bar" style="width:32px;"></div><span class="px">32 px</span>
+    <span class="t">12</span><div class="bar" style="width:48px;"></div><span class="px">48 px</span>
+  </div>
+</div>
+</body></html>

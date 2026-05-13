@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>wiseApp — UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  body { margin: 0; background: var(--bg-app); }
+  .frame { display: grid; grid-template-columns: 256px 1fr; min-height: 100vh; }
+
+  /* ======== Sidebar ======== */
+  .sidebar { background: var(--bg-sidebar); border-right: 1px solid var(--slate-200); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .logo-lockup { display: flex; align-items: center; gap: 12px; padding: 8px 8px 18px; border-bottom: 1px solid var(--slate-200); margin-bottom: 12px; }
+  .logo-tile { padding: 8px; background: var(--brand-500); border-radius: 12px; box-shadow: var(--shadow-xs); display: inline-flex; }
+  .logo-tile .lc { color: var(--slate-800); }
+  .logo-word { font-size: 18px; font-weight: 800; color: var(--slate-900); letter-spacing: var(--tracking-tight); line-height: 1; }
+  .logo-tag { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+
+  .nav-cap { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-500); }
+  .nav-cap .lc { width: 14px; height: 14px; }
+
+  .nav-item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--slate-600); cursor: pointer; transition: all .15s; }
+  .nav-item .lc { width: 18px; height: 18px; color: var(--slate-500); flex-shrink: 0; }
+  .nav-item:hover { background: #fff; color: var(--slate-800); }
+  .nav-item.active { background: var(--brand-100); color: var(--brand-800); border: 1px solid var(--brand-200); box-shadow: var(--shadow-xs); }
+  .nav-item.active .lc { color: var(--brand-600); }
+  .nav-count { margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--brand-500); color: var(--slate-900); }
+
+  .sidebar-footer { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--slate-200); }
+  .user-pill { display: flex; align-items: center; gap: 10px; padding: 10px; background: #fff; border-radius: 14px; box-shadow: var(--shadow-xs); }
+  .avatar { width: 34px; height: 34px; border-radius: 999px; background: linear-gradient(135deg, var(--brand-400), var(--brand-600)); color: var(--slate-900); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+  .user-name { font-size: 13px; font-weight: 600; color: var(--slate-800); line-height: 1.2; }
+  .user-role { font-size: 11px; color: var(--slate-500); }
+  .logout-btn { margin-left: auto; padding: 6px; border-radius: 10px; color: var(--slate-500); cursor: pointer; transition: all .15s; }
+  .logout-btn:hover { background: var(--danger-50); color: var(--danger-600); }
+
+  /* ======== Main ======== */
+  .main { display: flex; flex-direction: column; min-width: 0; }
+  .topbar { height: 64px; padding: 0 24px; background: #fff; border-bottom: 1px solid var(--border-card); display: flex; align-items: center; gap: 14px; }
+  .crumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--slate-500); }
+  .crumb .sep { color: var(--slate-300); }
+  .crumb .here { color: var(--slate-800); font-weight: 600; }
+
+  .pill-search { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 999px; min-width: 280px; }
+  .pill-search input { background: transparent; border: 0; outline: 0; font: inherit; color: var(--slate-700); width: 100%; }
+  .pill-search input::placeholder { color: var(--slate-400); }
+
+  .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .icon-btn { width: 38px; height: 38px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--slate-600); cursor: pointer; transition: all .15s; position: relative; }
+  .icon-btn:hover { background: var(--slate-100); color: var(--slate-800); }
+  .icon-btn .dot { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; border-radius: 999px; background: var(--danger-500); border: 2px solid #fff; }
+  .email-pill { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--slate-50); border-radius: 999px; box-shadow: var(--shadow-inset); font-size: 13px; color: var(--slate-700); }
+
+  .page { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 24px; animation: fade .3s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .page-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .page-title-block { display: flex; gap: 16px; align-items: center; }
+  .page-title-icon { width: 56px; height: 56px; border-radius: 18px; background: var(--brand-100); color: var(--brand-700); display: flex; align-items: center; justify-content: center; }
+  .page-title-icon .lc { width: 28px; height: 28px; }
+  h1.page-title { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: var(--slate-900); line-height: 1.1; }
+  .page-sub { font-size: 14px; color: var(--slate-500); margin-top: 4px; }
+
+  .filter-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .seg { display: inline-flex; padding: 4px; background: #fff; border: 1px solid var(--border-card); border-radius: 14px; box-shadow: var(--shadow-card); }
+  .seg button { background: transparent; border: 0; padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 13px; font-weight: 600; color: var(--slate-500); cursor: pointer; transition: all .15s; }
+  .seg button.on { background: var(--slate-100); color: var(--slate-800); }
+  .filter-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; background: #fff; border: 1px solid var(--border-card); border-radius: 14px; font-size: 13px; font-weight: 600; color: var(--slate-700); cursor: pointer; box-shadow: var(--shadow-card); }
+  .filter-pill .lc { width: 16px; height: 16px; color: var(--slate-500); }
+
+  /* ======== KPI ======== */
+  .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kpi-card { background: #fff; border: 1px solid var(--border-card); border-radius: 20px; padding: 20px; box-shadow: var(--shadow-card); transition: all .2s; position: relative; overflow: hidden; }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .kpi-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .kpi-label { font-size: 13px; font-weight: 500; color: var(--slate-500); }
+  .kpi-value { font-size: 28px; font-weight: 700; color: var(--slate-900); letter-spacing: -0.02em; margin-top: 4px; line-height: 1.1; }
+  .kpi-delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; margin-top: 8px; padding: 3px 9px; border-radius: 999px; }
+  .kpi-delta.up { color: var(--success-700); background: var(--success-50); }
+  .kpi-delta.down { color: var(--danger-700); background: var(--danger-50); }
+  .kpi-delta .lc { width: 12px; height: 12px; }
+  .kpi-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+  .kpi-icon .lc { width: 20px; height: 20px; }
+  .kpi-icon.amber { background: var(--brand-100); color: var(--brand-700); }
+  .kpi-icon.emerald { background: var(--success-50); color: var(--success-700); }
+  .kpi-icon.sky { background: var(--info-50); color: var(--info-700); }
+  .kpi-icon.violet { background: #f5f3ff; color: #6d28d9; }
+
+  /* ======== Cards ======== */
+  .card { background: #fff; border: 1px solid var(--border-card); border-radius: 20px; box-shadow: var(--shadow-card); }
+  .card-head { padding: 18px 24px; border-bottom: 1px solid #f8fafc; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .card-title { font-size: 17px; font-weight: 600; color: var(--slate-900); }
+  .card-sub { font-size: 12px; color: var(--slate-500); margin-top: 2px; }
+  .card-body { padding: 18px 24px 22px; }
+  .card-action { font-size: 13px; color: var(--brand-700); font-weight: 700; cursor: pointer; }
+
+  .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+  /* Banner */
+  .banner { padding: 14px 16px; border-radius: 14px; display: flex; align-items: flex-start; gap: 12px; }
+  .banner.amber { background: var(--brand-50); border: 1px solid var(--brand-200); color: var(--brand-800); }
+  .banner.blue { background: var(--info-50); border: 1px solid #bfdbfe; color: var(--info-700); }
+  .banner .lc { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+  .banner-title { font-weight: 600; font-size: 14px; }
+  .banner-body { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+  /* Chart */
+  .chart-wrap { padding: 8px 0 0; position: relative; }
+  .chart-svg { width: 100%; height: 240px; display: block; }
+  .chart-tooltip { position: absolute; left: 56%; top: 24px; background: #fff; border: 1px solid var(--border-card); border-radius: 12px; padding: 10px 14px; box-shadow: var(--shadow-tooltip); pointer-events: none; }
+  .tt-label { font-size: 11px; color: var(--slate-500); }
+  .tt-value { font-size: 16px; font-weight: 700; color: var(--brand-700); }
+  .tt-sub { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+  .chart-legend { display: flex; gap: 18px; padding: 8px 24px 0; }
+  .chart-legend .key { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--slate-600); }
+  .chart-legend .swatch { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* List */
+  .row-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--slate-50); border-radius: 14px; transition: all .15s; }
+  .row-item + .row-item { margin-top: 8px; }
+  .row-item:hover { background: var(--bg-hover); }
+  .row-left { display: flex; gap: 12px; align-items: center; }
+  .rank { width: 32px; height: 32px; border-radius: 999px; background: #fff; border: 1px solid var(--slate-200); font-size: 14px; font-weight: 600; color: var(--slate-700); display: flex; align-items: center; justify-content: center; }
+  .rank.gold { background: var(--brand-100); border-color: var(--brand-200); color: var(--brand-800); }
+  .item-name { font-size: 14px; font-weight: 600; color: var(--slate-800); }
+  .item-sub { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+  .item-amt { font-size: 14px; font-weight: 700; color: var(--brand-700); }
+
+  /* Action Center */
+  .ac-list { display: flex; flex-direction: column; gap: 10px; }
+  .ac-item { padding: 14px; background: var(--slate-50); border-radius: 14px; border: 1px solid #f1f5f9; }
+  .ac-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .ac-sev { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 999px; }
+  .ac-sev.high { background: var(--danger-50); color: var(--danger-700); border: 1px solid #ffe4e6; }
+  .ac-sev.med  { background: var(--brand-50); color: var(--brand-800); border: 1px solid var(--brand-200); }
+  .ac-tag { font-size: 11px; color: var(--slate-500); }
+  .ac-title { font-size: 14px; font-weight: 600; color: var(--slate-900); line-height: 1.35; }
+  .ac-body { font-size: 13px; color: var(--slate-600); margin-top: 4px; line-height: 1.5; }
+  .ac-actions { display: flex; gap: 6px; margin-top: 10px; }
+  .btn-soft { font: inherit; font-size: 12px; font-weight: 600; padding: 6px 12px; border: 0; border-radius: 10px; cursor: pointer; transition: all .15s; }
+  .btn-soft.accept { background: var(--success-50); color: var(--success-700); }
+  .btn-soft.accept:hover { background: var(--success-100); }
+  .btn-soft.reject { background: var(--slate-100); color: var(--slate-600); }
+  .btn-soft.reject:hover { background: var(--slate-200); }
+  .btn-soft.done { background: var(--success-100); color: var(--success-700); }
+
+  /* Sources card */
+  .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .source { display: flex; align-items: center; gap: 10px; padding: 12px; background: var(--slate-50); border-radius: 12px; }
+  .source .dot { width: 8px; height: 8px; border-radius: 999px; }
+  .source .name { font-size: 13px; font-weight: 600; color: var(--slate-800); }
+  .source .meta { font-size: 11px; color: var(--slate-500); }
+  .source .pct { margin-left: auto; font-size: 13px; font-weight: 700; color: var(--slate-700); }
+
+  /* Heatmap */
+  .heatmap { display: grid; grid-template-columns: 50px repeat(12, 1fr); gap: 4px; font-size: 10px; color: var(--slate-500); }
+  .heatmap .h { text-align: center; padding: 2px 0; }
+  .heatmap .row-label { display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-weight: 600; color: var(--slate-600); }
+  .heatmap .cell { aspect-ratio: 1.4 / 1; border-radius: 4px; }
+
+  /* Footer */
+  .stamp { display: flex; gap: 8px; align-items: center; font-size: 11px; color: var(--slate-400); }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar">
+    <div class="logo-lockup">
+      <span class="logo-tile"><i class="lc" data-lucide="trending-up" style="width:20px;height:20px;stroke-width:2.4;"></i></span>
+      <div>
+        <div class="logo-word">wiseApp</div>
+        <div class="logo-tag">Cofix Almaty · 12 точек</div>
+      </div>
+    </div>
+
+    <div class="nav-cap"><span>📊 ОБЗОР</span><i class="lc" data-lucide="chevron-down"></i></div>
+    <div class="nav-item active"><i class="lc" data-lucide="layout-dashboard"></i> Dashboard</div>
+    <div class="nav-item"><i class="lc" data-lucide="activity"></i> Cockpit менеджера</div>
+    <div class="nav-item"><i class="lc" data-lucide="bell"></i> Action Center <span class="nav-count">12</span></div>
+
+    <div class="nav-cap"><span>📈 АНАЛИТИКА</span><i class="lc" data-lucide="chevron-down"></i></div>
+    <div class="nav-item"><i class="lc" data-lucide="flame"></i> Heatmap спроса</div>
+    <div class="nav-item"><i class="lc" data-lucide="users"></i> Когорты &amp; RFM</div>
+    <div class="nav-item"><i class="lc" data-lucide="grid-3x3"></i> ABC / XYZ</div>
+    <div class="nav-item"><i class="lc" data-lucide="cloud-sun"></i> Погода × спрос</div>
+
+    <div class="nav-cap"><span>💰 ФИНАНСЫ</span><i class="lc" data-lucide="chevron-down"></i></div>
+    <div class="nav-item"><i class="lc" data-lucide="dollar-sign"></i> P&amp;L Отчёт</div>
+    <div class="nav-item"><i class="lc" data-lucide="wallet"></i> Кассовые разрывы</div>
+
+    <div class="nav-cap"><span>🛡️ БЕЗОПАСНОСТЬ</span><i class="lc" data-lucide="chevron-down"></i></div>
+    <div class="nav-item"><i class="lc" data-lucide="shield"></i> Фрод-детектор</div>
+    <div class="nav-item"><i class="lc" data-lucide="user-check"></i> Trust Score</div>
+
+    <div class="sidebar-footer">
+      <div class="user-pill">
+        <div class="avatar">ЕК</div>
+        <div>
+          <div class="user-name">Елена Касымова</div>
+          <div class="user-role">network_manager</div>
+        </div>
+        <div class="logout-btn"><i class="lc" data-lucide="log-out" style="width:16px;height:16px;"></i></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="crumb"><i class="lc" data-lucide="home" style="width:14px;height:14px;color:var(--slate-400)"></i> <span class="sep">/</span> <span>Обзор</span> <span class="sep">/</span> <span class="here">Dashboard</span></div>
+      <div class="pill-search" style="margin-left:24px;">
+        <i class="lc" data-lucide="search" style="width:16px;height:16px;color:var(--slate-400)"></i>
+        <input placeholder="Найти товар, ресторан, отчёт…">
+        <span class="caption mono" style="font-size:10px;color:var(--slate-400);font-family:var(--font-mono);">⌘K</span>
+      </div>
+      <div class="topbar-right">
+        <div class="email-pill"><i class="lc" data-lucide="mail" style="width:14px;height:14px;"></i> elena@cofix.kz</div>
+        <div class="icon-btn"><i class="lc" data-lucide="calendar-clock" style="width:18px;height:18px;"></i></div>
+        <div class="icon-btn"><i class="lc" data-lucide="bell" style="width:18px;height:18px;"></i><span class="dot"></span></div>
+        <div class="icon-btn"><i class="lc" data-lucide="settings" style="width:18px;height:18px;"></i></div>
+      </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page">
+      <!-- Page head -->
+      <div class="page-head">
+        <div class="page-title-block">
+          <div class="page-title-icon"><i class="lc" data-lucide="layout-dashboard"></i></div>
+          <div>
+            <h1 class="page-title">Dashboard</h1>
+            <div class="page-sub">Что произошло, что не так и что сделать сегодня · 14 мая 2025, 09:14</div>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <div class="seg">
+            <button>День</button><button class="on">Неделя</button><button>Месяц</button><button>Квартал</button>
+          </div>
+          <div class="filter-pill"><i class="lc" data-lucide="store"></i> Все рестораны (12) <i class="lc" data-lucide="chevron-down"></i></div>
+          <div class="filter-pill"><i class="lc" data-lucide="filter"></i> Фильтр</div>
+        </div>
+      </div>
+
+      <!-- Banner -->
+      <div class="banner amber">
+        <i class="lc" data-lucide="alert-triangle"></i>
+        <div>
+          <div class="banner-title">Данные ограничены по правам iiko API</div>
+          <div class="banner-body">Freshness lag: 23 мин · Источник <code class="code">delivery</code> вернул пустой набор заказов — это нормальная ситуация, а не ошибка подключения.</div>
+        </div>
+      </div>
+
+      <!-- KPI -->
+      <div class="kpi-strip">
+        <div class="kpi-card">
+          <div class="kpi-row">
+            <div>
+              <div class="kpi-label">Выручка</div>
+              <div class="kpi-value">2 451 880 ₸</div>
+              <div class="kpi-delta up"><i class="lc" data-lucide="arrow-up-right"></i> +12.4%</div>
+            </div>
+            <div class="kpi-icon amber"><i class="lc" data-lucide="dollar-sign"></i></div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-row">
+            <div>
+              <div class="kpi-label">Средний чек</div>
+              <div class="kpi-value">1 245 ₸</div>
+              <div class="kpi-delta down"><i class="lc" data-lucide="arrow-down-right"></i> −3.1%</div>
+            </div>
+            <div class="kpi-icon emerald"><i class="lc" data-lucide="trending-up"></i></div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-row">
+            <div>
+              <div class="kpi-label">Заказы</div>
+              <div class="kpi-value">1 968</div>
+              <div class="kpi-delta up"><i class="lc" data-lucide="arrow-up-right"></i> +8.7%</div>
+            </div>
+            <div class="kpi-icon sky"><i class="lc" data-lucide="receipt"></i></div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-row">
+            <div>
+              <div class="kpi-label">Активные дни</div>
+              <div class="kpi-value">7 / 7</div>
+              <div class="kpi-delta up"><i class="lc" data-lucide="check"></i> 100% покрытие</div>
+            </div>
+            <div class="kpi-icon violet"><i class="lc" data-lucide="calendar-clock"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart + Action Center -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Тренд выручки</div>
+              <div class="card-sub">7 дней · сравнение с предыдущей неделей</div>
+            </div>
+            <div class="chart-legend">
+              <span class="key"><span class="swatch" style="background:var(--brand-500)"></span> Эта неделя</span>
+              <span class="key"><span class="swatch" style="background:var(--slate-300)"></span> Прошлая</span>
+            </div>
+          </div>
+          <div class="card-body" style="padding:8px 12px 14px;">
+            <div class="chart-wrap">
+              <svg class="chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="fillBrand" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="40"  x2="700" y2="40"  stroke="#f1f5f9" stroke-dasharray="3 3"/>
+                <line x1="0" y1="100" x2="700" y2="100" stroke="#f1f5f9" stroke-dasharray="3 3"/>
+                <line x1="0" y1="160" x2="700" y2="160" stroke="#f1f5f9" stroke-dasharray="3 3"/>
+                <line x1="0" y1="200" x2="700" y2="200" stroke="#e2e8f0"/>
+                <!-- Last week (gray) -->
+                <polyline fill="none" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"
+                  points="40,160 140,150 240,150 340,118 440,128 540,108 640,116"/>
+                <!-- This week (brand) -->
+                <path d="M40,180 L140,150 L240,156 L340,90 L440,108 L540,72 L640,82 L640,200 L40,200 Z" fill="url(#fillBrand)"/>
+                <polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                  points="40,180 140,150 240,156 340,90 440,108 540,72 640,82"/>
+                <circle cx="540" cy="72" r="6" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+                <line x1="540" y1="72" x2="540" y2="200" stroke="#f59e0b" stroke-dasharray="2 3" stroke-opacity="0.5"/>
+                <!-- x-axis labels -->
+                <g font-size="11" fill="#94a3b8" font-family="Inter, sans-serif">
+                  <text x="40"  y="220" text-anchor="middle">пн</text>
+                  <text x="140" y="220" text-anchor="middle">вт</text>
+                  <text x="240" y="220" text-anchor="middle">ср</text>
+                  <text x="340" y="220" text-anchor="middle">чт</text>
+                  <text x="440" y="220" text-anchor="middle">пт</text>
+                  <text x="540" y="220" text-anchor="middle">сб</text>
+                  <text x="640" y="220" text-anchor="middle">вс</text>
+                </g>
+                <!-- y-axis labels -->
+                <g font-size="11" fill="#94a3b8" font-family="Inter, sans-serif">
+                  <text x="6" y="44">600к</text>
+                  <text x="6" y="104">400к</text>
+                  <text x="6" y="164">200к</text>
+                </g>
+              </svg>
+              <div class="chart-tooltip">
+                <div class="tt-label">сб, 17 мая</div>
+                <div class="tt-value">512 800 ₸</div>
+                <div class="tt-sub">+18.4% vs прошлая</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Action Center</div>
+              <div class="card-sub">3 открытых · 12 за неделю</div>
+            </div>
+            <div class="card-action">Все →</div>
+          </div>
+          <div class="card-body">
+            <div class="ac-list">
+              <div class="ac-item">
+                <div class="ac-head">
+                  <span class="ac-sev high">high</span>
+                  <span class="ac-tag">Безопасность · 09:02</span>
+                </div>
+                <div class="ac-title">Аномалия списаний на ТТ #07 (Абая)</div>
+                <div class="ac-body">За смену списано 14 порций кофейных зерён против медианы 4. Trust Score кассира снижен до 42.</div>
+                <div class="ac-actions">
+                  <button class="btn-soft accept">Принять</button>
+                  <button class="btn-soft reject">Отклонить</button>
+                </div>
+              </div>
+              <div class="ac-item">
+                <div class="ac-head">
+                  <span class="ac-sev med">medium</span>
+                  <span class="ac-tag">Спрос · 08:46</span>
+                </div>
+                <div class="ac-title">Капучино заканчивается на ТТ #03</div>
+                <div class="ac-body">При текущем темпе остатков хватит на 2.4 часа. Запросить досыл со склада до 12:00.</div>
+                <div class="ac-actions">
+                  <button class="btn-soft accept">Принять</button>
+                  <button class="btn-soft reject">Отклонить</button>
+                </div>
+              </div>
+              <div class="ac-item" style="opacity:0.7;">
+                <div class="ac-head">
+                  <span class="ac-sev" style="background:var(--success-100);color:var(--success-700);">done</span>
+                  <span class="ac-tag">Когорты · вчера</span>
+                </div>
+                <div class="ac-title">Запущена реактивация 28 спящих гостей</div>
+                <div class="ac-body">SMS отправлены, конверсия будет посчитана через 7 дней.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom row: Top products / Sources / Heatmap -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Топ товары</div>
+              <div class="card-sub">по выручке за неделю</div>
+            </div>
+            <div class="card-action">Все товары →</div>
+          </div>
+          <div class="card-body">
+            <div class="row-item">
+              <div class="row-left">
+                <div class="rank gold">1</div>
+                <div><div class="item-name">Капучино 350мл</div><div class="item-sub">412 заказов · 21% выручки</div></div>
+              </div>
+              <div class="item-amt">512 800 ₸</div>
+            </div>
+            <div class="row-item">
+              <div class="row-left">
+                <div class="rank gold">2</div>
+                <div><div class="item-name">Раф ванильный</div><div class="item-sub">298 заказов · 16% выручки</div></div>
+              </div>
+              <div class="item-amt">387 250 ₸</div>
+            </div>
+            <div class="row-item">
+              <div class="row-left">
+                <div class="rank">3</div>
+                <div><div class="item-name">Латте 350мл</div><div class="item-sub">241 заказ · 12% выручки</div></div>
+              </div>
+              <div class="item-amt">298 410 ₸</div>
+            </div>
+            <div class="row-item">
+              <div class="row-left">
+                <div class="rank">4</div>
+                <div><div class="item-name">Круассан с миндалём</div><div class="item-sub">214 заказов</div></div>
+              </div>
+              <div class="item-amt">194 180 ₸</div>
+            </div>
+            <div class="row-item">
+              <div class="row-left">
+                <div class="rank">5</div>
+                <div><div class="item-name">Какао с маршмеллоу</div><div class="item-sub">187 заказов</div></div>
+              </div>
+              <div class="item-amt">158 340 ₸</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Источники заказов</div>
+                <div class="card-sub">распределение по каналам</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="sources-grid">
+                <div class="source"><span class="dot" style="background:var(--brand-500)"></span><div><div class="name">POS касса</div><div class="meta">1 412</div></div><div class="pct">71%</div></div>
+                <div class="source"><span class="dot" style="background:var(--info-500)"></span><div><div class="name">Glovo</div><div class="meta">312</div></div><div class="pct">15%</div></div>
+                <div class="source"><span class="dot" style="background:var(--success-500)"></span><div><div class="name">Wolt</div><div class="meta">198</div></div><div class="pct">10%</div></div>
+                <div class="source"><span class="dot" style="background:var(--slate-300)"></span><div><div class="name">Yandex Eda</div><div class="meta">46 · 2.3%</div></div><div class="pct">2%</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Heatmap спроса</div>
+                <div class="card-sub">часы × дни недели · по чекам</div>
+              </div>
+              <div class="card-action">Открыть →</div>
+            </div>
+            <div class="card-body">
+              <div class="heatmap" id="heatmap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stamp">
+        <i class="lc" data-lucide="refresh-cw" style="width:12px;height:12px;"></i>
+        Обновлено 2 минуты назад · Источник: iikoCloud · API freshness 23 мин
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // Build heatmap
+  (function(){
+    const days = ['пн','вт','ср','чт','пт','сб','вс'];
+    const hrs  = ['8','9','10','11','12','13','14','15','16','17','18','19'];
+    const wrap = document.getElementById('heatmap');
+    let html = '<div></div>';
+    hrs.forEach(h => html += '<div class="h">'+h+'</div>');
+    days.forEach((d,di) => {
+      html += '<div class="row-label">'+d+'</div>';
+      hrs.forEach((h,hi) => {
+        // synthetic: peaks at 9–10 and 13–14, weaker on пн, strongest сб
+        let v = 0.2;
+        if (hi===1||hi===2) v = 0.7;
+        if (hi===5||hi===6) v = 0.85;
+        if (di===5) v += 0.15; // sat boost
+        if (di===0) v -= 0.1;
+        if (hi>=9) v *= 0.55;
+        v = Math.max(0.08, Math.min(1, v + (Math.random()*0.18 - 0.09)));
+        const a = v.toFixed(2);
+        html += '<div class="cell" style="background:rgba(245,158,11,'+a+')"></div>';
+      });
+    });
+    wrap.innerHTML = html;
+  })();
+  lucide.createIcons();
+</script>
+</body>
+</html>

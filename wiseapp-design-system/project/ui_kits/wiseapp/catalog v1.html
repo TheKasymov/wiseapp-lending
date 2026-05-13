@@ -1,0 +1,1437 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>wiseApp · Каталог экранов</title>
+<link rel="stylesheet" href="catalog.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+
+  <!-- Rail (icon-only nav, command palette is primary) -->
+  <aside class="rail">
+    <div class="rail-logo">w</div>
+
+    <div class="rail-item active" data-tab="dashboard">
+      <i class="lc" data-lucide="layout-dashboard"></i>
+      <span class="rail-tooltip">Dashboard</span>
+    </div>
+    <div class="rail-item" data-tab="cockpit">
+      <i class="lc" data-lucide="activity"></i>
+      <span class="rail-tooltip">Cockpit менеджера</span>
+    </div>
+    <div class="rail-item" data-tab="action-center">
+      <i class="lc" data-lucide="bell"></i>
+      <span class="rail-tooltip">Action Center</span>
+    </div>
+
+    <div class="rail-divider"></div>
+
+    <div class="rail-item" data-tab="heatmap">
+      <i class="lc" data-lucide="flame"></i>
+      <span class="rail-tooltip">Heatmap спроса</span>
+    </div>
+    <div class="rail-item" data-tab="cohorts">
+      <i class="lc" data-lucide="users"></i>
+      <span class="rail-tooltip">Когорты &amp; RFM</span>
+    </div>
+    <div class="rail-item" data-tab="abc">
+      <i class="lc" data-lucide="grid-3x3"></i>
+      <span class="rail-tooltip">ABC / XYZ</span>
+    </div>
+
+    <div class="rail-divider"></div>
+
+    <div class="rail-item" data-tab="pl">
+      <i class="lc" data-lucide="wallet"></i>
+      <span class="rail-tooltip">P&amp;L Отчёт</span>
+    </div>
+    <div class="rail-item" data-tab="cashflow">
+      <i class="lc" data-lucide="trending-up"></i>
+      <span class="rail-tooltip">Кассовые разрывы</span>
+    </div>
+    <div class="rail-item" data-tab="fraud">
+      <i class="lc" data-lucide="shield"></i>
+      <span class="rail-tooltip">Фрод-детектор &amp; Trust Score</span>
+    </div>
+
+    <div class="rail-divider"></div>
+
+    <div class="rail-item" data-tab="import">
+      <i class="lc" data-lucide="upload"></i>
+      <span class="rail-tooltip">Импорт CSV / Excel</span>
+    </div>
+    <div class="rail-item" data-tab="settings">
+      <i class="lc" data-lucide="settings"></i>
+      <span class="rail-tooltip">Настройки и интеграции</span>
+    </div>
+    <div class="rail-item" data-tab="auth">
+      <i class="lc" data-lucide="lock"></i>
+      <span class="rail-tooltip">Auth (Login / Register / Reset)</span>
+    </div>
+
+    <div class="rail-spacer"></div>
+
+    <div class="rail-item" id="open-cmd-rail">
+      <i class="lc" data-lucide="command"></i>
+      <span class="rail-tooltip">Команды (⌘K)</span>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Topbar (contextual: tb-context filled per tab) -->
+    <header class="topbar">
+      <div class="row" id="tb-context"></div>
+      <div class="tb-spacer"></div>
+      <button class="cmdk" id="open-cmd">
+        <i class="lc" data-lucide="search"></i>
+        <span>Поиск или команда…</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <div class="density-toggle" id="density">
+        <button data-d="comfortable" class="on">Просторно</button>
+        <button data-d="compact">Плотно</button>
+      </div>
+      <button class="tb-btn icon" title="Уведомления"><i class="lc" data-lucide="bell"></i></button>
+      <div class="avatar-sm">ЕК</div>
+    </header>
+
+    <!-- ============ PAGES (only one visible) ============ -->
+
+    <!-- ============ 1. DASHBOARD ============ -->
+    <section class="page" data-page="dashboard">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Сегодня, 6 мая</h1>
+          <div class="page-lead">Что произошло, что не так, что сделать.</div>
+        </div>
+        <div class="row" style="gap:6px;">
+          <button class="btn ghost"><i class="lc" data-lucide="download"></i> Экспорт</button>
+          <button class="btn primary"><i class="lc" data-lucide="sparkles"></i> AI-разбор</button>
+        </div>
+      </div>
+
+      <!-- Hero KPI band: 1 hero + 3 secondary -->
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread">
+            <span class="lbl">Выручка · сегодня</span>
+            <span class="chip success"><span class="dot"></span>+12.4% к вчера</span>
+          </div>
+          <div>
+            <div class="val">2 451 880 <span style="font-size:24px;color:var(--slate-400);font-weight:500;letter-spacing:0;">₸</span></div>
+            <div class="muted" style="font-size:12px;margin-top:6px;">План на день: <span class="mono" style="color:var(--slate-700);font-weight:600;">2 600 000 ₸</span> · 94%</div>
+          </div>
+          <svg class="spark" viewBox="0 0 600 80" preserveAspectRatio="none">
+            <defs><linearGradient id="heroGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+            </linearGradient></defs>
+            <path d="M0,60 L60,55 L120,58 L180,42 L240,46 L300,30 L360,38 L420,22 L480,28 L540,16 L600,20 L600,80 L0,80 Z" fill="url(#heroGrad)"/>
+            <polyline fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              points="0,60 60,55 120,58 180,42 240,46 300,30 360,38 420,22 480,28 540,16 600,20"/>
+            <g font-size="9" fill="#94a3b8" font-family="Inter">
+              <text x="0" y="76">8:00</text><text x="300" y="76" text-anchor="middle">14:00</text><text x="600" y="76" text-anchor="end">22:00</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="kpi-sm">
+          <span class="lbl">Средний чек</span>
+          <span class="val">1 245 ₸</span>
+          <span class="delta down"><i class="lc" data-lucide="arrow-down-right"></i>−3.1%</span>
+          <div class="micro"><span style="height:6px"></span><span style="height:9px"></span><span style="height:7px"></span><span style="height:11px"></span><span style="height:10px"></span><span style="height:13px" class="on"></span><span style="height:9px" class="on"></span></div>
+        </div>
+        <div class="kpi-sm">
+          <span class="lbl">Заказов</span>
+          <span class="val">1 968</span>
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+8.7%</span>
+          <div class="micro"><span style="height:8px"></span><span style="height:11px"></span><span style="height:9px"></span><span style="height:13px"></span><span style="height:14px"></span><span style="height:17px" class="on"></span><span style="height:18px" class="on"></span></div>
+        </div>
+        <div class="kpi-sm">
+          <span class="lbl">Food cost</span>
+          <span class="val">31.4%</span>
+          <span class="delta up" style="color:var(--success-700)"><i class="lc" data-lucide="arrow-down-right"></i>−0.8 п.п.</span>
+          <div class="micro"><span style="height:13px"></span><span style="height:14px"></span><span style="height:12px"></span><span style="height:11px"></span><span style="height:10px"></span><span style="height:9px" class="on"></span><span style="height:8px" class="on"></span></div>
+        </div>
+      </div>
+
+      <!-- Two-zone: chart + ranked actions -->
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Выручка по часам</div>
+              <div class="card-meta">Сегодня vs средний день недели · все 12 точек</div>
+            </div>
+            <div class="card-tools">
+              <button class="tool-btn" title="Развернуть"><i class="lc" data-lucide="maximize-2"></i></button>
+              <button class="tool-btn" title="Скачать"><i class="lc" data-lucide="download"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <svg class="chart" viewBox="0 0 700 240" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="40"  x2="700" y2="40"  stroke="#eef0f3"/>
+              <line x1="0" y1="100" x2="700" y2="100" stroke="#eef0f3"/>
+              <line x1="0" y1="160" x2="700" y2="160" stroke="#eef0f3"/>
+              <line x1="0" y1="200" x2="700" y2="200" stroke="#e2e8f0"/>
+              <!-- baseline (avg) -->
+              <polyline fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round"
+                points="40,170 110,150 180,130 250,110 320,118 390,104 460,98 530,108 600,128 660,160"/>
+              <!-- today -->
+              <path d="M40,180 L110,160 L180,138 L250,90 L320,108 L390,72 L460,82 L530,78 L600,108 L660,142 L660,200 L40,200 Z" fill="url(#chartGrad)"/>
+              <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                points="40,180 110,160 180,138 250,90 320,108 390,72 460,82 530,78 600,108 660,142"/>
+              <circle cx="390" cy="72" r="4" fill="#fff" stroke="#f59e0b" stroke-width="2.5"/>
+              <g font-size="10" fill="#94a3b8" font-family="Inter">
+                <text x="40"  y="220" text-anchor="middle">8:00</text>
+                <text x="180" y="220" text-anchor="middle">10:00</text>
+                <text x="320" y="220" text-anchor="middle">12:00</text>
+                <text x="460" y="220" text-anchor="middle">14:00</text>
+                <text x="600" y="220" text-anchor="middle">16:00</text>
+                <text x="660" y="220" text-anchor="middle">18:00</text>
+              </g>
+              <g font-size="10" fill="#94a3b8" font-family="Inter">
+                <text x="6" y="44">600к</text><text x="6" y="104">400к</text><text x="6" y="164">200к</text>
+              </g>
+            </svg>
+            <div class="row" style="gap:18px;font-size:11px;padding-top:10px;border-top:1px solid #f4f5f7;margin-top:8px;">
+              <span class="row" style="gap:6px;"><span style="width:14px;height:2px;background:var(--brand-500);"></span><span class="muted">Сегодня</span></span>
+              <span class="row" style="gap:6px;"><span style="width:14px;height:2px;background:var(--slate-400);border-top:1px dashed var(--slate-400);"></span><span class="muted">Средний день</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action priority -->
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Что сделать сегодня</div>
+              <div class="card-meta">3 задачи в фокусе</div>
+            </div>
+            <button class="tool-btn"><i class="lc" data-lucide="more-horizontal"></i></button>
+          </div>
+          <div class="card-body" style="padding:6px;">
+            <div class="action-row" data-open-drawer>
+              <div class="ar-rank danger">1</div>
+              <div class="ar-text">
+                <div class="ar-title">Аномалия списаний на ТТ #07</div>
+                <div class="ar-meta">14 порций vs медиана 4 · кассир Ж. Алишер</div>
+              </div>
+              <i class="lc" data-lucide="chevron-right" style="color:var(--slate-400);width:14px;height:14px;"></i>
+            </div>
+            <div class="action-row">
+              <div class="ar-rank warning">2</div>
+              <div class="ar-text">
+                <div class="ar-title">Капучино заканчивается на ТТ #03</div>
+                <div class="ar-meta">Хватит на 2.4 ч · досыл до 12:00</div>
+              </div>
+              <i class="lc" data-lucide="chevron-right" style="color:var(--slate-400);width:14px;height:14px;"></i>
+            </div>
+            <div class="action-row">
+              <div class="ar-rank info">3</div>
+              <div class="ar-text">
+                <div class="ar-title">28 спящих гостей · реактивация</div>
+                <div class="ar-meta">SMS-сегмент готов · последний визит &gt;30 дней</div>
+              </div>
+              <i class="lc" data-lucide="chevron-right" style="color:var(--slate-400);width:14px;height:14px;"></i>
+            </div>
+          </div>
+          <style>
+            .action-row { display: grid; grid-template-columns: 28px 1fr 14px; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; cursor: pointer; transition: background .12s; }
+            .action-row:hover { background: #f4f5f7; }
+            .ar-rank { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+            .ar-rank.danger  { background: var(--danger-50);  color: var(--danger-700); }
+            .ar-rank.warning { background: var(--warning-50); color: var(--warning-700); }
+            .ar-rank.info    { background: var(--info-50);    color: var(--info-700); }
+            .ar-title { font-size: 13px; font-weight: 600; color: var(--slate-900); line-height: 1.3; }
+            .ar-meta  { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+          </style>
+        </div>
+      </div>
+
+      <!-- Top products + sources, side by side -->
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Топ товары</div>
+            <div class="card-meta">по выручке · день</div>
+          </div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th style="width:36px;">#</th><th>Товар</th><th class="num">Заказы</th><th class="num">Доля</th><th class="num">Выручка</th></tr></thead>
+              <tbody>
+                <tr><td class="muted mono">1</td><td><div class="name">Капучино 350мл</div><div class="sub">Кофе</div></td><td class="num">412</td><td class="num">21%</td><td class="num">512 800 ₸</td></tr>
+                <tr><td class="muted mono">2</td><td><div class="name">Раф ванильный</div><div class="sub">Кофе</div></td><td class="num">298</td><td class="num">16%</td><td class="num">387 250 ₸</td></tr>
+                <tr><td class="muted mono">3</td><td><div class="name">Латте 350мл</div><div class="sub">Кофе</div></td><td class="num">241</td><td class="num">12%</td><td class="num">298 410 ₸</td></tr>
+                <tr><td class="muted mono">4</td><td><div class="name">Круассан с миндалём</div><div class="sub">Выпечка</div></td><td class="num">214</td><td class="num">8%</td><td class="num">194 180 ₸</td></tr>
+                <tr><td class="muted mono">5</td><td><div class="name">Какао с маршмеллоу</div><div class="sub">Напитки</div></td><td class="num">187</td><td class="num">7%</td><td class="num">158 340 ₸</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Источники заказов</div><div class="card-meta">за день</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div>
+                <div class="spread" style="margin-bottom:6px;"><span style="font-size:13px;color:var(--slate-700);font-weight:500;">POS касса</span><span class="mono" style="font-size:13px;color:var(--slate-900);font-weight:600;">71% · 1 412</span></div>
+                <div style="height:6px;background:#f4f5f7;border-radius:999px;overflow:hidden;"><div style="width:71%;height:100%;background:var(--slate-800);"></div></div>
+              </div>
+              <div>
+                <div class="spread" style="margin-bottom:6px;"><span style="font-size:13px;color:var(--slate-700);font-weight:500;">Glovo</span><span class="mono" style="font-size:13px;color:var(--slate-900);font-weight:600;">15% · 312</span></div>
+                <div style="height:6px;background:#f4f5f7;border-radius:999px;overflow:hidden;"><div style="width:15%;height:100%;background:var(--slate-500);"></div></div>
+              </div>
+              <div>
+                <div class="spread" style="margin-bottom:6px;"><span style="font-size:13px;color:var(--slate-700);font-weight:500;">Wolt</span><span class="mono" style="font-size:13px;color:var(--slate-900);font-weight:600;">10% · 198</span></div>
+                <div style="height:6px;background:#f4f5f7;border-radius:999px;overflow:hidden;"><div style="width:10%;height:100%;background:var(--slate-400);"></div></div>
+              </div>
+              <div>
+                <div class="spread" style="margin-bottom:6px;"><span style="font-size:13px;color:var(--slate-700);font-weight:500;">Yandex Eda</span><span class="mono" style="font-size:13px;color:var(--slate-500);">2% · 46</span></div>
+                <div style="height:6px;background:#f4f5f7;border-radius:999px;overflow:hidden;"><div style="width:2%;height:100%;background:var(--slate-300);"></div></div>
+              </div>
+              <div class="row" style="padding-top:8px;border-top:1px solid #f4f5f7;font-size:11px;color:var(--slate-500);">
+                <i class="lc" data-lucide="info" style="width:12px;height:12px;"></i>
+                Yandex Eda: данные за период не пришли — это нормальная ситуация.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other pages will be appended below -->
+    <!-- ============ 2. COCKPIT ============ -->
+    <section class="page hidden" data-page="cockpit">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Cockpit · смена 06.05, 08:00–20:00</h1>
+          <div class="page-lead">Прямой эфир по всем 12 точкам · обновлено 14 секунд назад</div>
+        </div>
+        <div class="row" style="gap:6px;">
+          <span class="chip success"><span class="dot"></span>iiko · ok</span>
+          <span class="chip warning"><span class="dot"></span>delivery · lag 23м</span>
+        </div>
+      </div>
+
+      <!-- Health strip -->
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread">
+            <span class="lbl">Здоровье сети</span>
+            <span class="chip warning"><span class="dot"></span>2 точки требуют внимания</span>
+          </div>
+          <div class="row" style="gap:12px;align-items:flex-end;">
+            <div class="val" style="font-size:56px;">10<span style="color:var(--slate-300);font-size:32px;">/12</span></div>
+            <div class="muted" style="font-size:12px;padding-bottom:8px;">точек в зелёной зоне</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:4px;">
+            <div title="ТТ #01 · Абая" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #02" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #03 · low stock" style="height:32px;border-radius:4px;background:var(--warning-100);"></div>
+            <div title="ТТ #04" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #05" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #06" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #07 · фрод" style="height:32px;border-radius:4px;background:var(--danger-100);"></div>
+            <div title="ТТ #08" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #09" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #10" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #11" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+            <div title="ТТ #12" style="height:32px;border-radius:4px;background:var(--success-100);"></div>
+          </div>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Открытых задач</span><span class="val">7</span><span class="delta down"><i class="lc" data-lucide="arrow-up-right"></i>+2 за час</span></div>
+        <div class="kpi-sm"><span class="lbl">Скорость обслуживания</span><span class="val">2:18</span><span class="delta up"><i class="lc" data-lucide="arrow-down-right"></i>−12с</span></div>
+        <div class="kpi-sm"><span class="lbl">Trust Score min</span><span class="val">42</span><span class="delta down"><i class="lc" data-lucide="alert-triangle"></i>ТТ #07</span></div>
+      </div>
+
+      <!-- Live feed + Per-store list -->
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Живая лента событий</div><div class="card-meta">последние 30 минут</div></div>
+          <div class="card-body" style="padding:0;">
+            <div class="feed">
+              <div class="feed-row"><span class="feed-time mono">09:14</span><span class="chip danger"><span class="dot"></span>фрод</span><div><div class="feed-msg">Аномалия списания · ТТ #07 · кассир Ж. Алишер</div><div class="feed-meta">14 порций кофейных зерён · медиана 4</div></div></div>
+              <div class="feed-row"><span class="feed-time mono">09:08</span><span class="chip warning"><span class="dot"></span>склад</span><div><div class="feed-msg">Капучино заканчивается · ТТ #03</div><div class="feed-meta">остаток 12 порций · темп 5/час</div></div></div>
+              <div class="feed-row"><span class="feed-time mono">09:02</span><span class="chip info"><span class="dot"></span>спрос</span><div><div class="feed-msg">Резкий подъём заказов · ТТ #11</div><div class="feed-meta">+38% к среднему часу пятницы</div></div></div>
+              <div class="feed-row"><span class="feed-time mono">08:46</span><span class="chip neutral"><span class="dot"></span>смена</span><div><div class="feed-msg">Открыта смена · ТТ #05, ТТ #08</div><div class="feed-meta">все 12 точек активны</div></div></div>
+              <div class="feed-row"><span class="feed-time mono">08:34</span><span class="chip success"><span class="dot"></span>оплата</span><div><div class="feed-msg">Эквайринг восстановлен · ТТ #04</div><div class="feed-meta">downtime 6 минут</div></div></div>
+            </div>
+            <style>
+              .feed-row { display: grid; grid-template-columns: 50px 80px 1fr; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #f4f5f7; align-items: flex-start; }
+              .feed-row:last-child { border-bottom: 0; }
+              .feed-time { font-size: 11px; color: var(--slate-500); padding-top: 2px; }
+              .feed-row .chip { align-self: flex-start; margin-top: 1px; }
+              .feed-msg { font-size: 13px; color: var(--slate-900); font-weight: 500; line-height: 1.3; }
+              .feed-meta { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+            </style>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div class="card-title">Точки</div><div class="card-meta">12 активных</div></div>
+          <div class="card-body" style="padding:6px;">
+            <div class="store-row"><span class="status-dot success"></span><div><div class="store-name">ТТ #01 · Абая</div><div class="store-meta">312 800 ₸ · 248 заказов</div></div><span class="mono store-num">+14%</span></div>
+            <div class="store-row"><span class="status-dot success"></span><div><div class="store-name">ТТ #02 · Сатпаева</div><div class="store-meta">298 410 ₸ · 232 заказа</div></div><span class="mono store-num">+8%</span></div>
+            <div class="store-row warn"><span class="status-dot warning"></span><div><div class="store-name">ТТ #03 · Достык</div><div class="store-meta">остаток капучино 2.4ч</div></div><span class="mono store-num">−4%</span></div>
+            <div class="store-row danger"><span class="status-dot danger"></span><div><div class="store-name">ТТ #07 · Маркова</div><div class="store-meta">аномалия списаний</div></div><span class="mono store-num">42<small>tr</small></span></div>
+            <div class="store-row"><span class="status-dot success"></span><div><div class="store-name">ТТ #08 · Толе би</div><div class="store-meta">312 заказов</div></div><span class="mono store-num">+22%</span></div>
+            <div class="store-row"><span class="status-dot success"></span><div><div class="store-name">ТТ #11 · Жибек жолы</div><div class="store-meta">всплеск заказов</div></div><span class="mono store-num">+38%</span></div>
+            <style>
+              .store-row { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; padding: 8px 10px; border-radius: 8px; align-items: center; cursor: pointer; }
+              .store-row:hover { background: #f4f5f7; }
+              .status-dot { width: 8px; height: 8px; border-radius: 999px; }
+              .status-dot.success { background: var(--success-500); }
+              .status-dot.warning { background: var(--warning-500); }
+              .status-dot.danger  { background: var(--danger-500); }
+              .store-name { font-size: 13px; font-weight: 600; color: var(--slate-900); }
+              .store-meta { font-size: 11px; color: var(--slate-500); margin-top: 1px; }
+              .store-num { font-size: 12px; font-weight: 600; color: var(--slate-700); }
+              .store-row.danger .store-num { color: var(--danger-700); }
+              .store-row.warn .store-num   { color: var(--warning-700); }
+            </style>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. ACTION CENTER ============ -->
+    <section class="page hidden" data-page="action-center">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Action Center</h1>
+          <div class="page-lead">Очередь рекомендаций от AI-агента · created → seen → accepted/done/dismissed</div>
+        </div>
+        <div class="row" style="gap:6px;">
+          <button class="btn ghost"><i class="lc" data-lucide="filter"></i> Фильтр</button>
+          <button class="btn primary"><i class="lc" data-lucide="check-check"></i> Принять все безопасные</button>
+        </div>
+      </div>
+
+      <!-- Counters -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);">
+        <div class="kpi-sm"><span class="lbl">Открытых</span><span class="val">12</span><span class="muted" style="font-size:11px;">из них 3 high</span></div>
+        <div class="kpi-sm"><span class="lbl">Новых сегодня</span><span class="val">8</span><span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+3</span></div>
+        <div class="kpi-sm"><span class="lbl">Принято / неделя</span><span class="val">47</span><span class="muted" style="font-size:11px;">acceptance 73%</span></div>
+        <div class="kpi-sm"><span class="lbl">Эффект</span><span class="val">+184к ₸</span><span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>оценка</span></div>
+        <div class="kpi-sm"><span class="lbl">Среднее время реакции</span><span class="val">14м</span><span class="delta up"><i class="lc" data-lucide="arrow-down-right"></i>−6м</span></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="card">
+        <div class="card-head" style="border-bottom:0;padding-bottom:0;">
+          <div class="tabs">
+            <button class="on">Открытые <span class="chip neutral" style="margin-left:6px;">12</span></button>
+            <button>Принятые <span class="chip neutral" style="margin-left:6px;">47</span></button>
+            <button>Отклонённые <span class="chip neutral" style="margin-left:6px;">9</span></button>
+            <button>Все</button>
+          </div>
+          <div class="row" style="gap:6px;">
+            <button class="btn ghost" style="font-size:12px;padding:5px 10px;"><i class="lc" data-lucide="layers"></i> Группировка</button>
+          </div>
+        </div>
+        <div class="card-body flush">
+          <table class="tbl ac-tbl">
+            <thead><tr>
+              <th style="width:24px;"></th>
+              <th style="width:80px;">Тип</th>
+              <th>Описание</th>
+              <th style="width:100px;">Точка</th>
+              <th style="width:120px;" class="num">Эффект</th>
+              <th style="width:80px;">Создано</th>
+              <th style="width:240px;">Действия</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="status-dot danger"></span></td>
+                <td><span class="chip danger"><span class="dot"></span>фрод</span></td>
+                <td><div class="name">Аномалия списаний на ТТ #07</div><div class="sub">14 порций vs медиана 4 · кассир Ж. Алишер</div></td>
+                <td class="muted">ТТ #07</td>
+                <td class="num" style="color:var(--danger-700);">−18 400 ₸</td>
+                <td class="muted mono">09:14</td>
+                <td><div class="row" style="gap:6px;"><button class="btn primary" style="padding:5px 10px;font-size:12px;">Расследовать</button><button class="btn ghost" style="padding:5px 10px;font-size:12px;">Отложить</button></div></td>
+              </tr>
+              <tr>
+                <td><span class="status-dot warning"></span></td>
+                <td><span class="chip warning"><span class="dot"></span>склад</span></td>
+                <td><div class="name">Капучино заканчивается на ТТ #03</div><div class="sub">2.4ч до нуля · досыл со склада до 12:00</div></td>
+                <td class="muted">ТТ #03</td>
+                <td class="num" style="color:var(--success-700);">+34 200 ₸</td>
+                <td class="muted mono">08:46</td>
+                <td><div class="row" style="gap:6px;"><button class="btn primary" style="padding:5px 10px;font-size:12px;">Заказать</button><button class="btn ghost" style="padding:5px 10px;font-size:12px;">Отклонить</button></div></td>
+              </tr>
+              <tr>
+                <td><span class="status-dot info"></span></td>
+                <td><span class="chip info"><span class="dot"></span>спрос</span></td>
+                <td><div class="name">Запустить реактивацию 28 спящих гостей</div><div class="sub">Последний визит &gt; 30 дней · средний чек 1 440 ₸</div></td>
+                <td class="muted">все</td>
+                <td class="num" style="color:var(--success-700);">+40 320 ₸</td>
+                <td class="muted mono">вчера</td>
+                <td><div class="row" style="gap:6px;"><button class="btn primary" style="padding:5px 10px;font-size:12px;">Запустить SMS</button><button class="btn ghost" style="padding:5px 10px;font-size:12px;">Отклонить</button></div></td>
+              </tr>
+              <tr>
+                <td><span class="status-dot warning"></span></td>
+                <td><span class="chip warning"><span class="dot"></span>цена</span></td>
+                <td><div class="name">Поднять цену на «Раф ванильный» на 5%</div><div class="sub">Эластичность −0.3 · спрос стабилен 4 недели</div></td>
+                <td class="muted">все</td>
+                <td class="num" style="color:var(--success-700);">+58 700 ₸</td>
+                <td class="muted mono">вчера</td>
+                <td><div class="row" style="gap:6px;"><button class="btn primary" style="padding:5px 10px;font-size:12px;">Применить</button><button class="btn ghost" style="padding:5px 10px;font-size:12px;">A/B</button></div></td>
+              </tr>
+              <tr>
+                <td><span class="status-dot info"></span></td>
+                <td><span class="chip info"><span class="dot"></span>смена</span></td>
+                <td><div class="name">Усилить пиковую смену 13:00–15:00 на ТТ #11</div><div class="sub">+38% заказов · скорость падает до 3:42</div></td>
+                <td class="muted">ТТ #11</td>
+                <td class="num muted">оценка</td>
+                <td class="muted mono">2 дня</td>
+                <td><div class="row" style="gap:6px;"><button class="btn primary" style="padding:5px 10px;font-size:12px;">Спланировать</button><button class="btn ghost" style="padding:5px 10px;font-size:12px;">Отклонить</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. HEATMAP ============ -->
+    <section class="page hidden" data-page="heatmap">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Heatmap спроса</h1>
+          <div class="page-lead">Чеки по часам × дням недели · усреднение за 4 недели</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Тепловая карта</div>
+          <div class="row" style="gap:6px;">
+            <span class="chip neutral">чеки</span>
+            <span class="chip neutral">выручка</span>
+            <span class="chip neutral">средний чек</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="heat" id="heatmap-grid"></div>
+          <div class="row" style="gap:8px;margin-top:14px;font-size:11px;color:var(--slate-500);">
+            <span>Низкий</span>
+            <span style="display:inline-flex;gap:2px;">
+              <span style="width:14px;height:14px;border-radius:3px;background:rgba(245,158,11,0.10);"></span>
+              <span style="width:14px;height:14px;border-radius:3px;background:rgba(245,158,11,0.25);"></span>
+              <span style="width:14px;height:14px;border-radius:3px;background:rgba(245,158,11,0.45);"></span>
+              <span style="width:14px;height:14px;border-radius:3px;background:rgba(245,158,11,0.65);"></span>
+              <span style="width:14px;height:14px;border-radius:3px;background:rgba(245,158,11,0.85);"></span>
+            </span>
+            <span>Высокий</span>
+            <span style="margin-left:auto;">Пик: <b style="color:var(--slate-900);">пт 13:00 · 287 чеков/час</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Окна возможностей</div><div class="card-meta">недозагруженные часы с эластичным спросом</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Окно</th><th>Текущее</th><th>Потенциал</th><th class="num">Эффект</th></tr></thead>
+              <tbody>
+                <tr><td><b>Вт 15:00–16:00</b></td><td>54 чека</td><td>~120 чеков</td><td class="num" style="color:var(--success-700);">+82 000 ₸/нед</td></tr>
+                <tr><td><b>Ср 11:00–12:00</b></td><td>78 чеков</td><td>~140 чеков</td><td class="num" style="color:var(--success-700);">+74 600 ₸/нед</td></tr>
+                <tr><td><b>Чт 17:00–18:00</b></td><td>92 чека</td><td>~160 чеков</td><td class="num" style="color:var(--success-700);">+68 200 ₸/нед</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Распределение по неделе</div><div class="card-meta">% от общего</div></div>
+          <div class="card-body">
+            <div style="display:flex;gap:6px;align-items:flex-end;height:140px;">
+              <div style="flex:1;height:55%;background:var(--slate-200);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">пн</span></div>
+              <div style="flex:1;height:62%;background:var(--slate-300);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">вт</span></div>
+              <div style="flex:1;height:78%;background:var(--slate-400);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">ср</span></div>
+              <div style="flex:1;height:88%;background:var(--slate-600);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">чт</span></div>
+              <div style="flex:1;height:100%;background:var(--slate-900);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">пт</span></div>
+              <div style="flex:1;height:96%;background:var(--brand-500);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-700);font-weight:600;">сб</span></div>
+              <div style="flex:1;height:72%;background:var(--slate-400);border-radius:4px 4px 0 0;position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--slate-500);">вс</span></div>
+            </div>
+            <div style="margin-top:30px;padding-top:14px;border-top:1px solid #f4f5f7;font-size:12px;color:var(--slate-500);line-height:1.5;">
+              Главный день — <b style="color:var(--slate-900);">суббота</b> (21% всех чеков). Понедельник просел на 8 п.п. ниже среднего — стоит протестировать <span style="color:var(--brand-700);font-weight:600;">«Понедельник со скидкой 20%»</span>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. COHORTS & RFM ============ -->
+    <section class="page hidden" data-page="cohorts">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Когорты &amp; RFM</h1>
+          <div class="page-lead">12 480 гостей · удержание по неделям первого визита</div>
+        </div>
+        <button class="btn primary"><i class="lc" data-lucide="send"></i> Запустить SMS · 28 спящих</button>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Удержание гостей</span><span class="chip success"><span class="dot"></span>+4 п.п. за квартал</span></div>
+          <div class="val">38<span style="font-size:24px;color:var(--slate-400);font-weight:500;">%</span></div>
+          <div class="muted" style="font-size:12px;">M2-retention · среднее по 12 когортам</div>
+          <svg class="spark" viewBox="0 0 600 80" preserveAspectRatio="none">
+            <polyline class="spark-line" stroke="#0f172a" points="0,55 60,52 120,48 180,44 240,42 300,38 360,34 420,32 480,28 540,24 600,22"/>
+          </svg>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Champions</span><span class="val">1 248</span><span class="muted" style="font-size:11px;">10% базы · 38% выручки</span></div>
+        <div class="kpi-sm"><span class="lbl">At risk</span><span class="val">1 920</span><span class="delta down"><i class="lc" data-lucide="arrow-up-right"></i>+184</span></div>
+        <div class="kpi-sm"><span class="lbl">Hibernating</span><span class="val">3 412</span><span class="muted" style="font-size:11px;">&gt; 60 дней</span></div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Cohort retention</div><div class="card-meta">когорта × M0…M5</div></div>
+          <div class="card-body" style="overflow-x:auto;">
+            <table class="tbl" style="font-size:12px;">
+              <thead><tr><th>Когорта</th><th class="num">Размер</th><th class="num">M0</th><th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th><th class="num">M5</th></tr></thead>
+              <tbody id="cohort-tbl"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">RFM-сегменты</div><div class="card-meta">5×5 матрица</div></div>
+          <div class="card-body">
+            <div id="rfm-grid" style="display:grid;grid-template-columns:24px repeat(5,1fr);gap:3px;font-size:10px;color:var(--slate-500);"></div>
+            <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f4f5f7;font-size:12px;color:var(--slate-700);line-height:1.6;">
+              <div class="row" style="gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--success-500);"></span><b>Champions</b><span class="muted">купили недавно, часто, на крупный чек</span></div>
+              <div class="row" style="gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--warning-500);"></span><b>At risk</b><span class="muted">давно были, раньше любили</span></div>
+              <div class="row" style="gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--danger-300);"></span><b>Hibernating</b><span class="muted">давно были, мало платили</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. ABC / XYZ ============ -->
+    <section class="page hidden" data-page="abc">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">ABC × XYZ матрица</h1>
+          <div class="page-lead">142 SKU · по выручке (ABC) и стабильности спроса (XYZ)</div>
+        </div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">«Двигатели»</span><span class="chip neutral">AX + AY</span></div>
+          <div class="val">22<span style="font-size:24px;color:var(--slate-400);font-weight:500;"> SKU</span></div>
+          <div class="muted" style="font-size:12px;">15% позиций → 71% выручки · защищать запас</div>
+        </div>
+        <div class="kpi-sm"><span class="lbl">«Кандидаты на вывод»</span><span class="val">38</span><span class="muted" style="font-size:11px;">CZ + BZ</span></div>
+        <div class="kpi-sm"><span class="lbl">Out-of-stock неделя</span><span class="val">12</span><span class="delta down"><i class="lc" data-lucide="arrow-up-right"></i>+3</span></div>
+        <div class="kpi-sm"><span class="lbl">Излишек</span><span class="val">4.2%</span><span class="delta up"><i class="lc" data-lucide="arrow-down-right"></i>−1.1 п.п.</span></div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">ABC × XYZ</div><div class="card-meta">SKU в ячейках · кликни для списка</div></div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:60px repeat(3,1fr);gap:6px;text-align:center;font-size:11px;font-weight:600;color:var(--slate-500);">
+              <div></div><div>X<br><span style="font-weight:400;">стабильно</span></div><div>Y<br><span style="font-weight:400;">сезонно</span></div><div>Z<br><span style="font-weight:400;">непредсказуемо</span></div>
+            </div>
+            <div id="abc-grid" style="display:grid;grid-template-columns:60px repeat(3,1fr);gap:6px;margin-top:6px;"></div>
+            <div class="row" style="margin-top:14px;font-size:11px;color:var(--slate-500);gap:14px;">
+              <span class="row" style="gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--success-100);"></span>защищать</span>
+              <span class="row" style="gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--warning-100);"></span>оптимизировать</span>
+              <span class="row" style="gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--danger-100);"></span>выводить</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">AX · топ двигатели</div><div class="card-meta">8 SKU · 41% выручки</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <tbody>
+                <tr><td><div class="name">Капучино 350мл</div><div class="sub">Кофе</div></td><td class="num">14.2%</td><td><span class="chip success"><span class="dot"></span>защ.</span></td></tr>
+                <tr><td><div class="name">Раф ванильный</div><div class="sub">Кофе</div></td><td class="num">9.8%</td><td><span class="chip success"><span class="dot"></span>защ.</span></td></tr>
+                <tr><td><div class="name">Латте 350мл</div><div class="sub">Кофе</div></td><td class="num">7.6%</td><td><span class="chip success"><span class="dot"></span>защ.</span></td></tr>
+                <tr><td><div class="name">Американо</div><div class="sub">Кофе</div></td><td class="num">4.4%</td><td><span class="chip success"><span class="dot"></span>защ.</span></td></tr>
+                <tr><td><div class="name">Эспрессо</div><div class="sub">Кофе</div></td><td class="num">2.4%</td><td><span class="chip success"><span class="dot"></span>защ.</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. P&L ============ -->
+    <section class="page hidden" data-page="pl">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">P&amp;L · Апрель 2026</h1>
+          <div class="page-lead">Сравнение с март · все 12 точек</div>
+        </div>
+        <div class="row" style="gap:6px;"><button class="btn ghost"><i class="lc" data-lucide="download"></i> .xlsx</button><button class="btn primary"><i class="lc" data-lucide="file-text"></i> Сформировать PDF</button></div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Чистая прибыль</span><span class="chip success"><span class="dot"></span>+18.4% м/м</span></div>
+          <div class="val">14.2<span style="font-size:24px;color:var(--slate-400);font-weight:500;">M ₸</span></div>
+          <div class="muted" style="font-size:12px;">Маржа 19.4% · план 18%</div>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Выручка</span><span class="val">73.1M</span><span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+9%</span></div>
+        <div class="kpi-sm"><span class="lbl">COGS</span><span class="val">22.9M</span><span class="muted" style="font-size:11px;">31.4% выручки</span></div>
+        <div class="kpi-sm"><span class="lbl">OpEx</span><span class="val">36.0M</span><span class="muted" style="font-size:11px;">49.2%</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Отчёт о прибылях и убытках</div><div class="card-meta">апрель vs март · абсолют и %</div></div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th>Статья</th><th class="num">Апрель</th><th class="num">Март</th><th class="num">Δ</th><th class="num">% выручки</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Выручка</td><td class="num">73 142 800</td><td class="num">67 084 200</td><td class="num" style="color:var(--success-700);">+9.0%</td><td class="num">100.0%</td></tr>
+              <tr><td class="muted">— POS</td><td class="num">52 482 100</td><td class="num">48 802 900</td><td class="num muted">+7.5%</td><td class="num muted">71.8%</td></tr>
+              <tr><td class="muted">— Доставка</td><td class="num">20 660 700</td><td class="num">18 281 300</td><td class="num muted">+13.0%</td><td class="num muted">28.2%</td></tr>
+              <tr style="border-top:2px solid #eef0f3;"><td class="name">COGS (себестоимость)</td><td class="num">−22 947 200</td><td class="num">−21 600 400</td><td class="num" style="color:var(--danger-700);">+6.2%</td><td class="num">31.4%</td></tr>
+              <tr style="border-top:2px solid #eef0f3;"><td class="name" style="color:var(--slate-900);font-weight:700;">Валовая прибыль</td><td class="num" style="font-weight:700;">50 195 600</td><td class="num">45 483 800</td><td class="num" style="color:var(--success-700);">+10.4%</td><td class="num">68.6%</td></tr>
+              <tr><td class="muted">ФОТ</td><td class="num">−18 240 000</td><td class="num">−17 880 000</td><td class="num muted">+2.0%</td><td class="num muted">24.9%</td></tr>
+              <tr><td class="muted">Аренда</td><td class="num">−9 800 000</td><td class="num">−9 800 000</td><td class="num muted">0%</td><td class="num muted">13.4%</td></tr>
+              <tr><td class="muted">Маркетинг</td><td class="num">−4 200 000</td><td class="num">−2 800 000</td><td class="num" style="color:var(--danger-700);">+50%</td><td class="num muted">5.7%</td></tr>
+              <tr><td class="muted">Прочее</td><td class="num">−3 760 000</td><td class="num">−3 048 000</td><td class="num muted">+23%</td><td class="num muted">5.1%</td></tr>
+              <tr style="border-top:2px solid var(--slate-900);background:#fafbfc;"><td class="name" style="color:var(--slate-900);font-weight:700;">Чистая прибыль</td><td class="num" style="font-weight:700;color:var(--slate-900);font-size:15px;">14 195 600</td><td class="num" style="font-weight:600;">11 955 800</td><td class="num" style="color:var(--success-700);font-weight:600;">+18.7%</td><td class="num" style="font-weight:700;">19.4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. CASHFLOW ============ -->
+    <section class="page hidden" data-page="cashflow">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Кассовые разрывы</h1>
+          <div class="page-lead">Прогноз остатка на счёте на 30 дней вперёд</div>
+        </div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Остаток сегодня</span><span class="chip warning"><span class="dot"></span>разрыв 18 мая</span></div>
+          <div class="val">8.4<span style="font-size:24px;color:var(--slate-400);font-weight:500;">M ₸</span></div>
+          <div class="muted" style="font-size:12px;">Минимум: <b style="color:var(--danger-700);">−1.2M ₸</b> на 18.05 · нужен буфер 3M ₸</div>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Поступления / 30д</span><span class="val">68.2M</span></div>
+        <div class="kpi-sm"><span class="lbl">Расходы / 30д</span><span class="val">75.8M</span></div>
+        <div class="kpi-sm"><span class="lbl">DSO / DPO</span><span class="val">12 / 28</span><span class="muted" style="font-size:11px;">дней</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Прогноз остатка</div><div class="card-meta">сегодня → +30 дней</div></div>
+        <div class="card-body">
+          <svg class="chart" viewBox="0 0 800 260" preserveAspectRatio="none">
+            <line x1="0" y1="80"  x2="800" y2="80"  stroke="#eef0f3"/>
+            <line x1="0" y1="140" x2="800" y2="140" stroke="#eef0f3"/>
+            <line x1="0" y1="200" x2="800" y2="200" stroke="#eef0f3"/>
+            <!-- danger zone (negative) -->
+            <rect x="0" y="200" width="800" height="40" fill="rgba(239,68,68,0.06)"/>
+            <line x1="0" y1="200" x2="800" y2="200" stroke="#fecaca" stroke-dasharray="4 4"/>
+            <text x="6" y="232" font-size="10" fill="#b91c1c" font-family="Inter" font-weight="600">разрыв</text>
+            <!-- forecast band -->
+            <path d="M0,90 L60,98 L120,86 L180,108 L240,124 L300,150 L360,180 L420,212 L480,196 L540,170 L600,142 L660,118 L720,102 L780,90 L780,260 L0,260 Z" fill="rgba(15,23,42,0.04)"/>
+            <!-- actual (solid) -->
+            <polyline fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              points="0,90 60,98 120,86 180,108 240,124 300,150"/>
+            <!-- forecast (dashed) -->
+            <polyline fill="none" stroke="#0f172a" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"
+              points="300,150 360,180 420,212 480,196 540,170 600,142 660,118 720,102 780,90"/>
+            <!-- danger marker -->
+            <circle cx="420" cy="212" r="5" fill="#fff" stroke="#ef4444" stroke-width="2.5"/>
+            <text x="420" y="234" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle" font-family="Inter">18 мая · −1.2M</text>
+            <g font-size="10" fill="#94a3b8" font-family="Inter">
+              <text x="0"   y="252">сегодня</text>
+              <text x="240" y="252" text-anchor="middle">+10</text>
+              <text x="420" y="252" text-anchor="middle">+18</text>
+              <text x="600" y="252" text-anchor="middle">+24</text>
+              <text x="780" y="252" text-anchor="end">+30</text>
+            </g>
+            <g font-size="10" fill="#94a3b8" font-family="Inter">
+              <text x="6" y="84">10M</text><text x="6" y="144">5M</text><text x="6" y="200">0</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Крупнейшие платежи</div><div class="card-meta">ближайшие 14 дней</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <tbody>
+                <tr><td><div class="name">Аренда (12 точек)</div><div class="sub">10 мая</div></td><td class="num" style="color:var(--danger-700);">−9.8M</td></tr>
+                <tr><td><div class="name">ФОТ (1-я половина)</div><div class="sub">15 мая</div></td><td class="num" style="color:var(--danger-700);">−9.1M</td></tr>
+                <tr><td><div class="name">Поставщик кофе «Vienna»</div><div class="sub">17 мая</div></td><td class="num" style="color:var(--danger-700);">−4.2M</td></tr>
+                <tr><td><div class="name">Налог (НДС Q1)</div><div class="sub">20 мая</div></td><td class="num" style="color:var(--danger-700);">−3.4M</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Что предлагает агент</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+            <div class="row" style="gap:10px;align-items:flex-start;padding:10px;background:#fafbfc;border-radius:10px;">
+              <span class="chip warning" style="margin-top:1px;"><span class="dot"></span>action</span>
+              <div><b>Перенести оплату «Vienna» на 22 мая</b><div class="muted" style="font-size:11px;margin-top:2px;">Договорная отсрочка 5 дней — закроет разрыв.</div></div>
+            </div>
+            <div class="row" style="gap:10px;align-items:flex-start;padding:10px;background:#fafbfc;border-radius:10px;">
+              <span class="chip info" style="margin-top:1px;"><span class="dot"></span>action</span>
+              <div><b>Запросить аванс по доставке Glovo (3.0M)</b><div class="muted" style="font-size:11px;margin-top:2px;">DSO с Glovo сейчас 12 дней, можно сократить до 5.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. FRAUD ============ -->
+    <section class="page hidden" data-page="fraud">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Фрод-детектор &amp; Trust Score</h1>
+          <div class="page-lead">24 кассира · 18 правил · обновляется в реальном времени</div>
+        </div>
+      </div>
+
+      <div class="hero-band">
+        <div class="hero-kpi">
+          <div class="spread"><span class="lbl">Trust Score сети</span><span class="chip success"><span class="dot"></span>выше нормы</span></div>
+          <div class="val">81<span style="font-size:24px;color:var(--slate-400);font-weight:500;">/100</span></div>
+          <div class="muted" style="font-size:12px;">Распределение: <b>15</b> зелёных · <b>7</b> жёлтых · <b>2</b> красных</div>
+          <svg class="spark" viewBox="0 0 600 60" preserveAspectRatio="none">
+            <polyline class="spark-line" stroke="#0f172a" points="0,32 60,30 120,28 180,30 240,26 300,24 360,28 420,22 480,18 540,22 600,20"/>
+          </svg>
+        </div>
+        <div class="kpi-sm"><span class="lbl">Открытые кейсы</span><span class="val">3</span><span class="delta down"><i class="lc" data-lucide="alert-triangle"></i>1 high</span></div>
+        <div class="kpi-sm"><span class="lbl">Предотвращено / мес</span><span class="val">412к ₸</span><span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i>+18%</span></div>
+        <div class="kpi-sm"><span class="lbl">False positive</span><span class="val">8.2%</span><span class="muted" style="font-size:11px;">цель &lt; 10%</span></div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Кассиры по Trust Score</div><div class="card-meta">сортировка: возрастание</div></div>
+          <div class="card-body flush">
+            <table class="tbl">
+              <thead><tr><th>Кассир</th><th>Точка</th><th>Score</th><th class="num">Смен / мес</th><th>Кейсы</th></tr></thead>
+              <tbody>
+                <tr><td><div class="name">Ж. Алишер</div><div class="sub">с 2024</div></td><td class="muted">ТТ #07</td><td><div class="row" style="gap:8px;"><span class="trust danger">42</span><div class="trust-bar"><div style="width:42%;background:var(--danger-500);"></div></div></div></td><td class="num">21</td><td><span class="chip danger"><span class="dot"></span>1 open</span></td></tr>
+                <tr><td><div class="name">М. Айгуль</div><div class="sub">с 2025</div></td><td class="muted">ТТ #03</td><td><div class="row" style="gap:8px;"><span class="trust warning">68</span><div class="trust-bar"><div style="width:68%;background:var(--warning-500);"></div></div></div></td><td class="num">19</td><td><span class="chip neutral">0</span></td></tr>
+                <tr><td><div class="name">Д. Рахим</div><div class="sub">с 2023</div></td><td class="muted">ТТ #11</td><td><div class="row" style="gap:8px;"><span class="trust success">82</span><div class="trust-bar"><div style="width:82%;background:var(--success-500);"></div></div></div></td><td class="num">22</td><td><span class="chip neutral">0</span></td></tr>
+                <tr><td><div class="name">К. Анна</div><div class="sub">с 2022</div></td><td class="muted">ТТ #01</td><td><div class="row" style="gap:8px;"><span class="trust success">94</span><div class="trust-bar"><div style="width:94%;background:var(--success-500);"></div></div></div></td><td class="num">20</td><td><span class="chip neutral">0</span></td></tr>
+              </tbody>
+            </table>
+            <style>
+              .trust { font-size: 12px; font-weight: 700; font-family: var(--font-mono); padding: 2px 6px; border-radius: 6px; min-width: 30px; text-align: center; }
+              .trust.danger  { background: var(--danger-50);  color: var(--danger-700); }
+              .trust.warning { background: var(--warning-50); color: var(--warning-700); }
+              .trust.success { background: var(--success-50); color: var(--success-700); }
+              .trust-bar { width: 80px; height: 5px; background: #f4f5f7; border-radius: 999px; overflow: hidden; }
+              .trust-bar > div { height: 100%; }
+            </style>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Активные правила</div><div class="card-meta">18 включено · 4 в тестировании</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+            <div class="row" style="gap:10px;justify-content:space-between;padding:10px;border:1px solid #eef0f3;border-radius:10px;"><div><b style="font-size:13px;">Списания &gt; 3× медианы</b><div class="muted" style="font-size:11px;margin-top:2px;">пороги по точке · окно 1 час</div></div><span class="chip success"><span class="dot"></span>on</span></div>
+            <div class="row" style="gap:10px;justify-content:space-between;padding:10px;border:1px solid #eef0f3;border-radius:10px;"><div><b style="font-size:13px;">Возвраты без чека</b><div class="muted" style="font-size:11px;margin-top:2px;">&gt; 2 за смену</div></div><span class="chip success"><span class="dot"></span>on</span></div>
+            <div class="row" style="gap:10px;justify-content:space-between;padding:10px;border:1px solid #eef0f3;border-radius:10px;"><div><b style="font-size:13px;">Скидка 100%</b><div class="muted" style="font-size:11px;margin-top:2px;">любой случай · уведомление</div></div><span class="chip success"><span class="dot"></span>on</span></div>
+            <div class="row" style="gap:10px;justify-content:space-between;padding:10px;border:1px solid #eef0f3;border-radius:10px;"><div><b style="font-size:13px;">Открытие кассы &gt; 6× / час</b><div class="muted" style="font-size:11px;margin-top:2px;">в тестировании</div></div><span class="chip warning"><span class="dot"></span>test</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. IMPORT WIZARD ============ -->
+    <section class="page hidden" data-page="import">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Импорт CSV / Excel</h1>
+          <div class="page-lead">Шаг 2 из 3 · сопоставить колонки</div>
+        </div>
+      </div>
+
+      <!-- Wizard steps -->
+      <div class="card">
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+            <div class="wstep done"><div class="wstep-num">1</div><div><div class="wstep-title">Загрузить файл</div><div class="wstep-meta">orders_2026-04.csv · 3.2MB · 14 920 строк</div></div></div>
+            <div class="wstep cur"><div class="wstep-num">2</div><div><div class="wstep-title">Сопоставить колонки</div><div class="wstep-meta">8 из 10 распознано автоматически</div></div></div>
+            <div class="wstep"><div class="wstep-num">3</div><div><div class="wstep-title">Проверить и применить</div><div class="wstep-meta">Превью первых 100 строк</div></div></div>
+          </div>
+          <style>
+            .wstep { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: flex-start; padding: 4px 0; position: relative; }
+            .wstep:not(:last-child)::after { content: ""; position: absolute; left: 16px; top: 36px; bottom: -8px; width: 1px; background: #eef0f3; }
+            .wstep-num { width: 28px; height: 28px; border-radius: 999px; background: #f4f5f7; color: var(--slate-500); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 1px solid #eef0f3; }
+            .wstep.done .wstep-num { background: var(--slate-900); color: #fff; border-color: var(--slate-900); }
+            .wstep.cur .wstep-num  { background: var(--brand-500); color: var(--slate-900); border-color: var(--brand-500); }
+            .wstep-title { font-size: 14px; font-weight: 600; color: var(--slate-900); }
+            .wstep.done .wstep-title { color: var(--slate-500); }
+            .wstep-meta  { font-size: 11px; color: var(--slate-500); margin-top: 2px; }
+          </style>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">Сопоставление колонок</div><div class="card-meta">Колонка из файла → поле wiseApp</div></div>
+        <div class="card-body flush">
+          <table class="tbl">
+            <thead><tr><th>Колонка файла</th><th>Превью</th><th>Поле wiseApp</th><th>Статус</th></tr></thead>
+            <tbody>
+              <tr><td><b class="mono">order_id</b></td><td class="mono muted">A-148291, A-148292…</td><td><span class="map-sel">ID заказа <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip success"><span class="dot"></span>авто</span></td></tr>
+              <tr><td><b class="mono">created_at</b></td><td class="mono muted">2026-04-01 08:14:12</td><td><span class="map-sel">Дата заказа <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip success"><span class="dot"></span>авто</span></td></tr>
+              <tr><td><b class="mono">total_kzt</b></td><td class="mono muted">1240, 980, 2460…</td><td><span class="map-sel">Сумма ₸ <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip success"><span class="dot"></span>авто</span></td></tr>
+              <tr><td><b class="mono">store</b></td><td class="mono muted">tt07, tt03, tt01…</td><td><span class="map-sel">Точка <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip success"><span class="dot"></span>авто</span></td></tr>
+              <tr style="background:#fffbeb;"><td><b class="mono">discount</b></td><td class="mono muted">0, 0, 200…</td><td><span class="map-sel" style="color:var(--warning-700);">Не выбрано <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip warning"><span class="dot"></span>требует</span></td></tr>
+              <tr style="background:#fffbeb;"><td><b class="mono">cashier_id</b></td><td class="mono muted">k_alisher, m_aigul…</td><td><span class="map-sel" style="color:var(--warning-700);">Не выбрано <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip warning"><span class="dot"></span>требует</span></td></tr>
+              <tr><td><b class="mono">payment</b></td><td class="mono muted">card, cash, glovo…</td><td><span class="map-sel">Тип оплаты <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip success"><span class="dot"></span>авто</span></td></tr>
+              <tr><td class="muted"><b class="mono">notes</b></td><td class="mono muted">— пусто —</td><td><span class="map-sel" style="color:var(--slate-400);">Игнорировать <i class="lc" data-lucide="chevron-down"></i></span></td><td><span class="chip neutral">пропуск</span></td></tr>
+            </tbody>
+          </table>
+          <style>
+            .map-sel { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; border: 1px solid #eef0f3; border-radius: 8px; background: #fff; font-size: 12px; font-weight: 500; color: var(--slate-700); cursor: pointer; }
+            .map-sel .lc { width: 12px; height: 12px; color: var(--slate-400); }
+          </style>
+        </div>
+      </div>
+
+      <div class="row" style="justify-content:space-between;">
+        <button class="btn ghost"><i class="lc" data-lucide="arrow-left"></i> Назад</button>
+        <div class="row" style="gap:8px;">
+          <button class="btn ghost">Сохранить шаблон</button>
+          <button class="btn primary">Дальше · превью <i class="lc" data-lucide="arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11. SETTINGS ============ -->
+    <section class="page hidden" data-page="settings">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Настройки</h1>
+          <div class="page-lead">Интеграции · доступы · биллинг · уведомления</div>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="col" style="gap:var(--gap);">
+          <div class="card">
+            <div class="card-head"><div class="card-title">Интеграции</div><div class="card-meta">3 из 7 подключено</div></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:8px;">
+              <div class="int-row"><div><b>iiko POS</b><div class="muted" style="font-size:11px;">синхронизация каждые 5 минут · последний sync 14с назад</div></div><span class="chip success"><span class="dot"></span>подключено</span></div>
+              <div class="int-row"><div><b>Glovo</b><div class="muted" style="font-size:11px;">3 ресторана · API key срок ещё 84 дня</div></div><span class="chip success"><span class="dot"></span>подключено</span></div>
+              <div class="int-row"><div><b>Wolt</b><div class="muted" style="font-size:11px;">2 точки · merchant ID 14728</div></div><span class="chip success"><span class="dot"></span>подключено</span></div>
+              <div class="int-row"><div><b>Yandex Eda</b><div class="muted" style="font-size:11px;">данные за период не пришли — это нормальная ситуация</div></div><span class="chip warning"><span class="dot"></span>проверить</span></div>
+              <div class="int-row"><div><b>1С Бухгалтерия</b><div class="muted" style="font-size:11px;">не подключено</div></div><button class="btn subtle" style="font-size:12px;padding:5px 10px;">Подключить</button></div>
+              <div class="int-row"><div><b>Telegram бот</b><div class="muted" style="font-size:11px;">уведомления управляющим</div></div><button class="btn subtle" style="font-size:12px;padding:5px 10px;">Подключить</button></div>
+            </div>
+            <style>
+              .int-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid #eef0f3; border-radius: 10px; }
+              .int-row b { font-size: 13px; color: var(--slate-900); }
+            </style>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><div class="card-title">Уведомления</div></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+              <label class="row" style="justify-content:space-between;padding:8px 4px;"><span>Аномалии (фрод, списания)</span><input type="checkbox" checked></label>
+              <label class="row" style="justify-content:space-between;padding:8px 4px;"><span>Низкий остаток (склад)</span><input type="checkbox" checked></label>
+              <label class="row" style="justify-content:space-between;padding:8px 4px;"><span>Кассовые разрывы (прогноз)</span><input type="checkbox" checked></label>
+              <label class="row" style="justify-content:space-between;padding:8px 4px;"><span>Ежедневный дайджест 22:00</span><input type="checkbox"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="gap:var(--gap);">
+          <div class="card">
+            <div class="card-head"><div class="card-title">Команда</div><div class="card-meta">8 человек · 3 роли</div></div>
+            <div class="card-body flush">
+              <table class="tbl">
+                <tbody>
+                  <tr><td><div class="row" style="gap:10px;"><div class="avatar-sm" style="background:var(--slate-200);color:var(--slate-700);">ЕК</div><div><div class="name">Ермек Касымов <small style="color:var(--slate-400);font-weight:500;">· вы</small></div><div class="sub">e.kasymov@…</div></div></div></td><td><span class="chip neutral">Owner</span></td></tr>
+                  <tr><td><div class="row" style="gap:10px;"><div class="avatar-sm" style="background:var(--slate-200);color:var(--slate-700);">АН</div><div><div class="name">Анель Нурланова</div><div class="sub">a.nurlanova@…</div></div></div></td><td><span class="chip neutral">Manager</span></td></tr>
+                  <tr><td><div class="row" style="gap:10px;"><div class="avatar-sm" style="background:var(--slate-200);color:var(--slate-700);">ДТ</div><div><div class="name">Данияр Турсынов</div><div class="sub">d.tursynov@…</div></div></div></td><td><span class="chip neutral">Manager</span></td></tr>
+                  <tr><td><div class="row" style="gap:10px;"><div class="avatar-sm" style="background:var(--slate-200);color:var(--slate-700);">МА</div><div><div class="name">Мадина Айдарова</div><div class="sub">m.aydarova@…</div></div></div></td><td><span class="chip neutral">Viewer</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-body" style="border-top:1px solid #f4f5f7;"><button class="btn subtle"><i class="lc" data-lucide="user-plus"></i> Пригласить</button></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><div class="card-title">Биллинг</div></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:14px;">
+              <div class="spread"><span class="muted" style="font-size:12px;">Тариф</span><b style="font-size:14px;">Pro · 12 точек</b></div>
+              <div class="spread"><span class="muted" style="font-size:12px;">Сумма / мес</span><b class="mono" style="font-size:14px;">144 000 ₸</b></div>
+              <div class="spread"><span class="muted" style="font-size:12px;">Следующее списание</span><b style="font-size:14px;">1 июня 2026</b></div>
+              <div class="spread"><span class="muted" style="font-size:12px;">Способ оплаты</span><b style="font-size:14px;">Visa · 4242</b></div>
+              <button class="btn ghost" style="align-self:flex-start;">Изменить тариф</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 12. AUTH (Login / Register / Reset) ============ -->
+    <section class="page hidden" data-page="auth">
+      <div class="page-head">
+        <div>
+          <h1 class="page-h1">Auth · 3 экрана</h1>
+          <div class="page-lead">Login · Register · Reset password — единое визуальное правило</div>
+        </div>
+        <div class="wm-lockup">
+          <span class="wm-tile">w</span>
+          <span class="wm-text">wise<span class="a">A</span>pp</span>
+        </div>
+      </div>
+
+      <!-- Wordmark spec strip -->
+      <div class="card">
+        <div class="card-head"><div class="card-title">Wordmark</div><div class="card-meta">Inter 600 · −0.022em · единственная заглавная — A</div></div>
+        <div class="card-body" style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;">
+          <div>
+            <div class="muted" style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-bottom:14px;">Lockup</div>
+            <div style="background:#fafbfc;border:1px solid #eef0f3;border-radius:12px;padding:32px;display:flex;align-items:center;justify-content:center;">
+              <div class="wm-lockup" style="gap:14px;">
+                <span class="wm-tile" style="width:56px;height:56px;border-radius:14px;font-size:26px;"><span style="position:relative;top:-1px;">w</span></span>
+                <span class="wm-text" style="font-size:36px;">wise<span class="a">A</span>pp</span>
+              </div>
+            </div>
+            <div class="muted" style="font-size:11px;margin-top:8px;line-height:1.5;">tile : wordmark = 1 : 2.4 · gap = 0.4× tile · capital A — единственный акцент</div>
+          </div>
+
+          <div>
+            <div class="muted" style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-bottom:14px;">Tile · clear space</div>
+            <div style="background:repeating-linear-gradient(45deg,#fafbfc,#fafbfc 6px,#f4f5f7 6px,#f4f5f7 12px);border:1px solid #eef0f3;border-radius:12px;padding:24px;display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="position:relative;padding:16px;border:1px dashed #cbd5e1;border-radius:18px;background:#fff;">
+                <span class="wm-tile" style="width:64px;height:64px;border-radius:16px;font-size:30px;"><span style="position:relative;top:-1px;">w</span></span>
+              </div>
+            </div>
+            <div class="muted" style="font-size:11px;margin-top:8px;line-height:1.5;">safe area = 25% от стороны плитки · radius = 25% (28% для 40px+)</div>
+          </div>
+
+          <div>
+            <div class="muted" style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-bottom:14px;">Размеры</div>
+            <div style="display:flex;flex-direction:column;gap:14px;background:#fafbfc;border:1px solid #eef0f3;border-radius:12px;padding:18px;">
+              <div class="row" style="gap:10px;"><span class="wm-tile" style="width:16px;height:16px;border-radius:5px;font-size:9px;">w</span><span class="wm-text" style="font-size:11px;">wise<span class="a">A</span>pp</span><span class="muted" style="font-size:10px;margin-left:auto;">16 · favicon</span></div>
+              <div class="row" style="gap:10px;"><span class="wm-tile" style="width:24px;height:24px;border-radius:7px;font-size:12px;">w</span><span class="wm-text" style="font-size:14px;">wise<span class="a">A</span>pp</span><span class="muted" style="font-size:10px;margin-left:auto;">24 · inline</span></div>
+              <div class="row" style="gap:10px;"><span class="wm-tile" style="width:32px;height:32px;border-radius:9px;font-size:15px;">w</span><span class="wm-text" style="font-size:18px;">wise<span class="a">A</span>pp</span><span class="muted" style="font-size:10px;margin-left:auto;">32 · auth</span></div>
+              <div class="row" style="gap:10px;"><span class="wm-tile" style="width:48px;height:48px;border-radius:12px;font-size:22px;">w</span><span class="wm-text" style="font-size:28px;">wise<span class="a">A</span>pp</span><span class="muted" style="font-size:10px;margin-left:auto;">48 · hero</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" style="border-top:1px solid #f4f5f7;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+          <div class="dont-row" style="background:var(--success-50);">
+            <div class="row" style="gap:6px;color:var(--success-700);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;"><i class="lc" data-lucide="check"></i>Do</div>
+            <div class="wm-lockup" style="margin-top:10px;"><span class="wm-tile">w</span><span class="wm-text" style="font-size:18px;">wise<span class="a">A</span>pp</span></div>
+            <div class="muted" style="font-size:11px;margin-top:8px;">Capital A акцентирована amber-600</div>
+          </div>
+          <div class="dont-row" style="background:#fafbfc;">
+            <div class="row" style="gap:6px;color:var(--slate-500);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;"><i class="lc" data-lucide="x"></i>Don't</div>
+            <div class="wm-lockup" style="margin-top:10px;"><span class="wm-tile" style="background:var(--brand-500);color:var(--slate-900);">w</span><span class="wm-text" style="font-size:18px;color:var(--slate-900);">wiseApp</span></div>
+            <div class="muted" style="font-size:11px;margin-top:8px;">Не инвертировать tile в брендовый цвет</div>
+          </div>
+          <div class="dont-row" style="background:#fafbfc;">
+            <div class="row" style="gap:6px;color:var(--slate-500);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;"><i class="lc" data-lucide="x"></i>Don't</div>
+            <div class="wm-lockup" style="margin-top:10px;"><span class="wm-tile">w</span><span class="wm-text" style="font-size:18px;font-weight:400;letter-spacing:0;">wiseapp</span></div>
+            <div class="muted" style="font-size:11px;margin-top:8px;">Не использовать regular weight и нулевой трекинг</div>
+          </div>
+          <div class="dont-row" style="background:#fafbfc;">
+            <div class="row" style="gap:6px;color:var(--slate-500);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;"><i class="lc" data-lucide="x"></i>Don't</div>
+            <div class="wm-lockup" style="margin-top:10px;"><span class="wm-tile">W</span><span class="wm-text" style="font-size:18px;">WiseApp</span></div>
+            <div class="muted" style="font-size:11px;margin-top:8px;">Не делать W заглавной — единственная заглавная: A</div>
+          </div>
+          <style>
+            .dont-row { padding: 14px; border-radius: 10px; border: 1px solid #eef0f3; }
+          </style>
+        </div>
+      </div>
+
+      <div class="zone-grid-3">
+        <!-- Login -->
+        <div class="auth-card">
+          <div class="auth-head">Вход</div>
+          <div class="auth-form">
+            <label>Email<input type="email" value="e.kasymov@cofix.kz"></label>
+            <label>Пароль<input type="password" value="••••••••••••"></label>
+            <div class="row" style="justify-content:space-between;font-size:12px;"><label class="row" style="gap:6px;color:var(--slate-700);"><input type="checkbox" checked> Запомнить</label><a href="#" style="color:var(--slate-700);">Забыли?</a></div>
+            <button class="btn primary" style="justify-content:center;">Войти</button>
+            <div class="auth-divider"><span>или</span></div>
+            <button class="btn ghost" style="justify-content:center;"><i class="lc" data-lucide="log-in"></i> Войти через iiko</button>
+          </div>
+          <div class="auth-foot">Нет аккаунта? <a href="#">Зарегистрироваться</a></div>
+        </div>
+        <!-- Register -->
+        <div class="auth-card">
+          <div class="auth-head">Регистрация</div>
+          <div class="auth-form">
+            <label>Компания<input type="text" placeholder="Cofix Almaty"></label>
+            <label>Email<input type="email" placeholder="вы@компания.kz"></label>
+            <label>Пароль<input type="password" placeholder="8+ символов"></label>
+            <div style="font-size:11px;color:var(--slate-500);line-height:1.5;">Создавая аккаунт, вы соглашаетесь с <a href="#" style="color:var(--slate-700);">условиями</a> и <a href="#" style="color:var(--slate-700);">политикой данных</a>.</div>
+            <button class="btn primary" style="justify-content:center;">Создать аккаунт</button>
+          </div>
+          <div class="auth-foot">Уже с нами? <a href="#">Войти</a></div>
+        </div>
+        <!-- Reset -->
+        <div class="auth-card">
+          <div class="auth-head">Сброс пароля</div>
+          <div class="auth-form">
+            <div style="font-size:13px;color:var(--slate-700);line-height:1.5;">Укажите email — пришлём ссылку для смены пароля. Ссылка действует 30 минут.</div>
+            <label>Email<input type="email" placeholder="вы@компания.kz"></label>
+            <button class="btn primary" style="justify-content:center;">Отправить ссылку</button>
+          </div>
+          <div class="auth-foot"><a href="#">← Вернуться к входу</a></div>
+        </div>
+      </div>
+      <style>
+        .auth-card { background: #fff; border: 1px solid #eef0f3; border-radius: 16px; overflow: hidden; }
+        .auth-head { padding: 16px 20px; border-bottom: 1px solid #f4f5f7; font-size: 15px; font-weight: 600; color: var(--slate-900); }
+        .auth-form { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .auth-form label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--slate-500); font-weight: 500; }
+        .auth-form input { padding: 9px 12px; border: 1px solid #eef0f3; border-radius: 8px; font: inherit; font-size: 13px; color: var(--slate-900); background: #fff; outline: none; }
+        .auth-form input:focus { border-color: var(--brand-500); box-shadow: 0 0 0 3px rgba(245,158,11,0.18); }
+        .auth-divider { position: relative; text-align: center; font-size: 11px; color: var(--slate-400); margin: 4px 0; }
+        .auth-divider::before, .auth-divider::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: #eef0f3; }
+        .auth-divider::before { left: 0; } .auth-divider::after { right: 0; }
+        .auth-divider span { background: #fff; padding: 0 8px; }
+        .auth-foot { padding: 12px 20px; border-top: 1px solid #f4f5f7; font-size: 12px; color: var(--slate-500); text-align: center; }
+        .auth-foot a { color: var(--slate-900); font-weight: 600; text-decoration: none; }
+      </style>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============ DRAWER (pull-out detail) ============ -->
+<div class="drawer-bg" id="drawerBg"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="chip danger"><span class="dot"></span>фрод · high</span>
+    <div class="title" style="margin-left:8px;">Аномалия списаний</div>
+    <button class="tool-btn" id="closeDrawer"><i class="lc" data-lucide="x"></i></button>
+  </div>
+  <div class="drawer-body">
+    <div style="font-size:18px;font-weight:600;color:var(--slate-900);letter-spacing:-0.01em;">ТТ #07 · Маркова, кассир Ж. Алишер</div>
+    <div class="muted" style="font-size:13px;margin-top:4px;">Создано 09:14 · агент <code class="code">fraud-detector v3.2</code></div>
+
+    <div class="card" style="margin-top:18px;border-radius:12px;">
+      <div class="card-body">
+        <div style="font-size:13px;color:var(--slate-700);line-height:1.5;">
+          За смену списано <b>14 порций кофейных зерён</b> при медиане <b>4</b> для этой точки.
+          Trust Score кассира снижен с 78 до <b style="color:var(--danger-700);">42</b>.
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="gap:8px;margin-top:18px;">
+      <div class="kpi-sm" style="flex:1;"><span class="lbl">Списано</span><span class="val">14</span><span class="muted" style="font-size:11px;">порций</span></div>
+      <div class="kpi-sm" style="flex:1;"><span class="lbl">Медиана точки</span><span class="val">4</span><span class="muted" style="font-size:11px;">за 30 дней</span></div>
+      <div class="kpi-sm" style="flex:1;"><span class="lbl">Оценка ущерба</span><span class="val" style="color:var(--danger-700);">−18.4к</span><span class="muted" style="font-size:11px;">тенге</span></div>
+    </div>
+
+    <div style="font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--slate-500);font-weight:600;margin:20px 0 8px;">Хронология</div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+      <div class="row" style="gap:10px;align-items:flex-start;"><span class="mono muted" style="width:50px;font-size:11px;flex-shrink:0;padding-top:2px;">08:12</span><div><b>Открыта смена</b><div class="muted" style="font-size:11px;">кассир Ж. Алишер</div></div></div>
+      <div class="row" style="gap:10px;align-items:flex-start;"><span class="mono muted" style="width:50px;font-size:11px;flex-shrink:0;padding-top:2px;">08:46</span><div><b>Списание 4 порции</b><div class="muted" style="font-size:11px;">в норме</div></div></div>
+      <div class="row" style="gap:10px;align-items:flex-start;"><span class="mono" style="width:50px;font-size:11px;flex-shrink:0;color:var(--danger-700);padding-top:2px;">09:02</span><div style="color:var(--danger-700);"><b>Списание +6 (всего 10)</b><div style="color:var(--danger-700);font-size:11px;opacity:0.8;">аномальный паттерн</div></div></div>
+      <div class="row" style="gap:10px;align-items:flex-start;"><span class="mono" style="width:50px;font-size:11px;flex-shrink:0;color:var(--danger-700);padding-top:2px;">09:13</span><div style="color:var(--danger-700);"><b>Списание +4 (всего 14)</b><div style="color:var(--danger-700);font-size:11px;opacity:0.8;">trigger threshold</div></div></div>
+      <div class="row" style="gap:10px;align-items:flex-start;"><span class="mono muted" style="width:50px;font-size:11px;flex-shrink:0;padding-top:2px;">09:14</span><div><b>Создана задача</b><div class="muted" style="font-size:11px;">отправлено управляющему</div></div></div>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn ghost">Отложить</button>
+    <button class="btn ghost danger-ghost"><i class="lc" data-lucide="x"></i> Отклонить</button>
+    <button class="btn primary"><i class="lc" data-lucide="search"></i> Расследовать</button>
+  </div>
+</div>
+
+<!-- ============ COMMAND PALETTE ============ -->
+<div class="cmd-bg" id="cmdBg">
+  <div class="cmd-panel">
+    <div class="cmd-input">
+      <i class="lc" data-lucide="search"></i>
+      <input id="cmdInput" placeholder="Куда перейти, что найти, что сделать…" autocomplete="off">
+      <span class="esc">esc</span>
+    </div>
+    <div class="cmd-list" id="cmdList"></div>
+    <div class="cmd-foot">
+      <span><kbd>↑↓</kbd> навигация</span>
+      <span><kbd>↵</kbd> перейти</span>
+      <span><kbd>esc</kbd> закрыть</span>
+      <span style="margin-left:auto;">12 из 47 команд</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ JS ============ -->
+<script>
+  // ---------- Tab switching ----------
+  const tabs = {
+    'dashboard':     { title: 'Dashboard',         sub: 'все 12 точек · сегодня', ctx: scopeAll },
+    'cockpit':       { title: 'Cockpit менеджера', sub: 'live · обновлено 14с',   ctx: scopeAll },
+    'action-center': { title: 'Action Center',     sub: '12 открытых задач',      ctx: scopeAll },
+    'heatmap':       { title: 'Heatmap спроса',    sub: '4 недели усреднение',    ctx: scopePeriod },
+    'cohorts':       { title: 'Когорты & RFM',     sub: '12 480 гостей',          ctx: scopePeriod },
+    'abc':           { title: 'ABC / XYZ',         sub: '142 SKU',                ctx: scopePeriod },
+    'pl':            { title: 'P&L Отчёт',         sub: 'апрель 2026',            ctx: scopeMonth },
+    'cashflow':      { title: 'Кассовые разрывы',  sub: 'прогноз 30 дней',        ctx: scopeAll },
+    'fraud':         { title: 'Фрод-детектор',     sub: 'Trust Score · 24 кассира', ctx: scopeAll },
+    'import':        { title: 'Импорт',            sub: 'CSV / Excel',            ctx: scopeNone },
+    'settings':      { title: 'Настройки',         sub: 'интеграции, доступы, биллинг', ctx: scopeNone },
+    'auth':          { title: 'Auth',              sub: 'Login · Register · Reset', ctx: scopeNone },
+  };
+
+  function scopeAll() {
+    return `
+      <div class="tb-title">${currentTab.title}</div>
+      <div class="tb-sub">${currentTab.sub}</div>
+      <button class="scope-select" style="margin-left:14px;"><span class="dot"></span>Все 12 точек <i class="lc" data-lucide="chevron-down"></i></button>
+      <div class="density-toggle" style="background:transparent;border:1px solid #eef0f3;padding:0;">
+        <button class="on" style="padding:6px 10px;">День</button>
+        <button style="padding:6px 10px;">Неделя</button>
+        <button style="padding:6px 10px;">Месяц</button>
+      </div>`;
+  }
+  function scopePeriod() {
+    return `
+      <div class="tb-title">${currentTab.title}</div>
+      <div class="tb-sub">${currentTab.sub}</div>
+      <button class="scope-select" style="margin-left:14px;"><i class="lc" data-lucide="calendar"></i>Апр 2026 <i class="lc" data-lucide="chevron-down"></i></button>
+      <button class="scope-select"><span class="dot"></span>Все точки <i class="lc" data-lucide="chevron-down"></i></button>`;
+  }
+  function scopeMonth() {
+    return `
+      <div class="tb-title">${currentTab.title}</div>
+      <div class="tb-sub">${currentTab.sub}</div>
+      <button class="scope-select" style="margin-left:14px;"><i class="lc" data-lucide="calendar"></i>Апр 2026 <i class="lc" data-lucide="chevron-down"></i></button>
+      <button class="tb-btn"><i class="lc" data-lucide="git-compare"></i>Сравнить с март</button>`;
+  }
+  function scopeNone() {
+    return `<div class="tb-title">${currentTab.title}</div><div class="tb-sub">${currentTab.sub}</div>`;
+  }
+
+  let currentTab = tabs.dashboard;
+  function switchTab(name) {
+    if (!tabs[name]) return;
+    currentTab = tabs[name];
+    document.querySelectorAll('.rail-item[data-tab]').forEach(el => el.classList.toggle('active', el.dataset.tab === name));
+    document.querySelectorAll('.page').forEach(p => p.classList.toggle('hidden', p.dataset.page !== name));
+    document.getElementById('tb-context').innerHTML = currentTab.ctx();
+    lucide.createIcons();
+    location.hash = name;
+  }
+  document.querySelectorAll('.rail-item[data-tab]').forEach(el => {
+    el.addEventListener('click', () => switchTab(el.dataset.tab));
+  });
+
+  // ---------- Density toggle ----------
+  const density = document.getElementById('density');
+  density.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    document.documentElement.dataset.density = b.dataset.d;
+    density.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  });
+  document.documentElement.dataset.density = 'comfortable';
+
+  // ---------- Drawer ----------
+  const drawer = document.getElementById('drawer');
+  const drawerBg = document.getElementById('drawerBg');
+  function openDrawer() { drawer.classList.add('open'); drawerBg.classList.add('open'); }
+  function closeDrawer() { drawer.classList.remove('open'); drawerBg.classList.remove('open'); }
+  drawerBg.addEventListener('click', closeDrawer);
+  document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-open-drawer]');
+    if (t) openDrawer();
+  });
+
+  // ---------- Command palette ----------
+  const cmdBg = document.getElementById('cmdBg');
+  const cmdInput = document.getElementById('cmdInput');
+  const cmdList = document.getElementById('cmdList');
+
+  const commands = [
+    // Navigation
+    { sec: 'Перейти', label: 'Dashboard',       icon: 'layout-dashboard', tab: 'dashboard',     crumb: 'Обзор' },
+    { sec: 'Перейти', label: 'Cockpit менеджера', icon: 'activity',       tab: 'cockpit',       crumb: 'Обзор' },
+    { sec: 'Перейти', label: 'Action Center',   icon: 'bell',             tab: 'action-center', crumb: 'Обзор · 12' },
+    { sec: 'Перейти', label: 'Heatmap спроса',  icon: 'flame',            tab: 'heatmap',       crumb: 'Аналитика' },
+    { sec: 'Перейти', label: 'Когорты и RFM',   icon: 'users',            tab: 'cohorts',       crumb: 'Аналитика' },
+    { sec: 'Перейти', label: 'ABC / XYZ',       icon: 'grid-3x3',         tab: 'abc',           crumb: 'Аналитика' },
+    { sec: 'Перейти', label: 'P&L Отчёт',       icon: 'wallet',           tab: 'pl',            crumb: 'Финансы' },
+    { sec: 'Перейти', label: 'Кассовые разрывы',icon: 'trending-up',      tab: 'cashflow',      crumb: 'Финансы' },
+    { sec: 'Перейти', label: 'Фрод-детектор',   icon: 'shield',           tab: 'fraud',         crumb: 'Безопасность' },
+    { sec: 'Перейти', label: 'Импорт CSV / Excel', icon: 'upload',        tab: 'import',        crumb: 'Данные' },
+    { sec: 'Перейти', label: 'Настройки',       icon: 'settings',         tab: 'settings',      crumb: 'Система' },
+    // Actions
+    { sec: 'Действия', label: 'Принять все безопасные рекомендации', icon: 'check-check', tab: 'action-center', crumb: '7 шт.' },
+    { sec: 'Действия', label: 'Запустить SMS-реактивацию (28 гостей)', icon: 'send',     tab: 'cohorts',       crumb: '+40к ₸' },
+    { sec: 'Действия', label: 'Расследовать аномалию ТТ #07',          icon: 'search',   tab: 'fraud',         crumb: 'high' },
+    { sec: 'Действия', label: 'Скачать P&L (апрель)',                  icon: 'download', tab: 'pl',            crumb: '.xlsx' },
+    // Filters
+    { sec: 'Фильтры', label: 'Только сегодня',         icon: 'calendar',  crumb: 'период' },
+    { sec: 'Фильтры', label: 'Только ТТ #07 · Маркова', icon: 'store',    crumb: 'точка' },
+  ];
+
+  let cmdIndex = 0;
+  let cmdFiltered = commands;
+  function renderCmd() {
+    const q = cmdInput.value.trim().toLowerCase();
+    cmdFiltered = q ? commands.filter(c => c.label.toLowerCase().includes(q) || c.crumb.toLowerCase().includes(q)) : commands;
+    if (cmdIndex >= cmdFiltered.length) cmdIndex = Math.max(0, cmdFiltered.length - 1);
+    let html = '';
+    let lastSec = null;
+    cmdFiltered.forEach((c, i) => {
+      if (c.sec !== lastSec) { html += `<div class="cmd-section">${c.sec}</div>`; lastSec = c.sec; }
+      html += `<div class="cmd-row ${i===cmdIndex?'on':''}" data-i="${i}">
+        <i class="lc" data-lucide="${c.icon}"></i>
+        <span class="label">${c.label}</span>
+        <span class="crumb">${c.crumb}</span>
+      </div>`;
+    });
+    cmdList.innerHTML = html || '<div style="padding:24px;text-align:center;color:var(--slate-400);font-size:13px;">Ничего не найдено</div>';
+    lucide.createIcons();
+  }
+  function openCmd() { cmdBg.classList.add('open'); cmdInput.value=''; cmdIndex=0; renderCmd(); setTimeout(()=>cmdInput.focus(),50); }
+  function closeCmd() { cmdBg.classList.remove('open'); }
+  document.getElementById('open-cmd').addEventListener('click', openCmd);
+  document.getElementById('open-cmd-rail').addEventListener('click', openCmd);
+  cmdBg.addEventListener('click', e => { if (e.target === cmdBg) closeCmd(); });
+  cmdInput.addEventListener('input', () => { cmdIndex = 0; renderCmd(); });
+  cmdInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCmd();
+    else if (e.key === 'ArrowDown') { cmdIndex = Math.min(cmdFiltered.length-1, cmdIndex+1); renderCmd(); e.preventDefault(); }
+    else if (e.key === 'ArrowUp')   { cmdIndex = Math.max(0, cmdIndex-1); renderCmd(); e.preventDefault(); }
+    else if (e.key === 'Enter') { const c = cmdFiltered[cmdIndex]; if (c?.tab) switchTab(c.tab); closeCmd(); }
+  });
+  cmdList.addEventListener('click', e => {
+    const r = e.target.closest('.cmd-row'); if (!r) return;
+    const c = cmdFiltered[+r.dataset.i]; if (c?.tab) switchTab(c.tab); closeCmd();
+  });
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openCmd(); }
+    if (e.key === 'Escape') { closeCmd(); closeDrawer(); }
+  });
+
+  // ---------- Heatmap ----------
+  (function buildHeatmap() {
+    const wrap = document.getElementById('heatmap-grid');
+    if (!wrap) return;
+    const days = ['пн','вт','ср','чт','пт','сб','вс'];
+    const hrs  = [];
+    for (let h = 8; h <= 22; h++) hrs.push(h+':00');
+    wrap.style.gridTemplateColumns = `40px repeat(${hrs.length}, 1fr)`;
+    let html = '<div></div>';
+    hrs.forEach(h => html += `<div class="h">${h.split(':')[0]}</div>`);
+    days.forEach((d, di) => {
+      html += `<div class="y">${d}</div>`;
+      hrs.forEach((h, hi) => {
+        // morning peak 9-10, lunch 13-14, evening 18; sat strongest, mon weakest
+        let v = 0.10;
+        if (hi === 1 || hi === 2) v = 0.65;            // 9, 10
+        if (hi === 5 || hi === 6) v = 0.78;            // 13, 14
+        if (hi === 10) v = 0.55;                        // 18
+        if (hi >= 12) v = 0.18;                         // 20+
+        if (di === 4) v += 0.10;                        // пт
+        if (di === 5) v += 0.18;                        // сб peak
+        if (di === 0) v -= 0.05;                        // пн dip
+        if (di === 6) v -= 0.05;                        // вс
+        v = Math.max(0.05, Math.min(0.95, v + (Math.random()*0.10 - 0.05)));
+        html += `<div class="cell" style="background:rgba(245,158,11,${v.toFixed(2)})"></div>`;
+      });
+    });
+    wrap.innerHTML = html;
+  })();
+
+  // ---------- Cohort table ----------
+  (function buildCohort() {
+    const tb = document.getElementById('cohort-tbl');
+    if (!tb) return;
+    const cohorts = [
+      ['Ноя 2025', 1240, 100, 64, 48, 41, 36, 32],
+      ['Дек 2025', 1488,  100, 68, 52, 44, 38, 34],
+      ['Янв 2026', 1612,  100, 70, 55, 47, 40, null],
+      ['Фев 2026', 1804,  100, 72, 58, 49, null, null],
+      ['Мар 2026', 2102,  100, 74, 60, null, null, null],
+      ['Апр 2026', 2380,  100, 76, null, null, null, null],
+      ['Май 2026', 1854,  100, null, null, null, null, null],
+    ];
+    tb.innerHTML = cohorts.map(([n, sz, ...vals]) => {
+      const cells = vals.map(v => v === null ? '<td class="muted" style="text-align:right;">—</td>' : `<td class="num" style="background:rgba(245,158,11,${(v/100*0.7).toFixed(2)});color:${v>50?'var(--slate-900)':'var(--slate-700)'};font-weight:600;">${v}%</td>`).join('');
+      return `<tr><td class="name">${n}</td><td class="num muted">${sz}</td>${cells}</tr>`;
+    }).join('');
+  })();
+
+  // ---------- RFM 5x5 grid ----------
+  (function buildRFM() {
+    const wrap = document.getElementById('rfm-grid');
+    if (!wrap) return;
+    // header
+    let html = '<div></div>';
+    for (let f = 1; f <= 5; f++) html += `<div style="text-align:center;font-weight:600;color:var(--slate-500);">F${f}</div>`;
+    // rows: R from 5 (best) to 1
+    for (let r = 5; r >= 1; r--) {
+      html += `<div style="text-align:right;font-weight:600;color:var(--slate-500);padding-right:4px;">R${r}</div>`;
+      for (let f = 1; f <= 5; f++) {
+        let bg = '#f4f5f7', col = 'var(--slate-700)', label = '';
+        if (r >= 4 && f >= 4) { bg = 'var(--success-100)'; col = 'var(--success-700)'; label = 'Champ'; }
+        else if (r >= 4 && f >= 2) { bg = 'var(--success-50)'; col = 'var(--success-700)'; label = 'Loyal'; }
+        else if (r >= 4) { bg = 'var(--info-50)'; col = 'var(--info-700)'; label = 'New'; }
+        else if (r >= 2 && f >= 4) { bg = 'var(--warning-100)'; col = 'var(--warning-700)'; label = 'At risk'; }
+        else if (r >= 2) { bg = 'var(--warning-50)'; col = 'var(--warning-700)'; label = 'Potential'; }
+        else if (f >= 4) { bg = 'var(--danger-100)'; col = 'var(--danger-700)'; label = 'Cant lose'; }
+        else { bg = 'var(--danger-50)'; col = 'var(--danger-700)'; label = 'Hibern.'; }
+        const n = Math.round(60 + Math.random() * 480);
+        html += `<div style="background:${bg};color:${col};border-radius:6px;padding:8px 6px;text-align:center;font-size:10px;font-weight:600;cursor:pointer;">${label}<div style="font-size:13px;font-weight:700;margin-top:2px;font-family:var(--font-mono);">${n}</div></div>`;
+      }
+    }
+    wrap.innerHTML = html;
+  })();
+
+  // ---------- ABC × XYZ grid ----------
+  (function buildABC() {
+    const wrap = document.getElementById('abc-grid');
+    if (!wrap) return;
+    const rows = [
+      ['A', [{n: 'AX', l:'8 SKU · 41% выручки', c:'success'}, {n:'AY', l:'14 SKU · 30%', c:'success'}, {n:'AZ', l:'5 SKU · 9%', c:'warning'}]],
+      ['B', [{n: 'BX', l:'18 SKU · 9%', c:'success'}, {n:'BY', l:'24 SKU · 6%', c:'warning'}, {n:'BZ', l:'12 SKU · 2%', c:'danger'}]],
+      ['C', [{n: 'CX', l:'14 SKU · 1.5%', c:'warning'}, {n:'CY', l:'21 SKU · 1.0%', c:'warning'}, {n:'CZ', l:'26 SKU · 0.5%', c:'danger'}]],
+    ];
+    let html = '';
+    rows.forEach(([letter, cells]) => {
+      html += `<div style="display:flex;align-items:center;justify-content:flex-end;font-weight:700;color:var(--slate-500);padding-right:8px;">${letter}<br><span style="font-size:9px;font-weight:500;">${letter==='A'?'80% выр':letter==='B'?'15%':'5%'}</span></div>`;
+      cells.forEach(c => {
+        const bg = c.c === 'success' ? 'var(--success-50)' : c.c === 'warning' ? 'var(--warning-50)' : 'var(--danger-50)';
+        const col = c.c === 'success' ? 'var(--success-700)' : c.c === 'warning' ? 'var(--warning-700)' : 'var(--danger-700)';
+        html += `<div style="background:${bg};color:${col};border-radius:8px;padding:14px 12px;cursor:pointer;"><div style="font-size:14px;font-weight:700;">${c.n}</div><div style="font-size:11px;font-weight:500;margin-top:4px;opacity:0.9;">${c.l}</div></div>`;
+      });
+    });
+    wrap.innerHTML = html;
+  })();
+
+  // ---------- Init ----------
+  switchTab(location.hash?.slice(1) || 'dashboard');
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

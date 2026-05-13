@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>wiseApp · UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  body { margin: 0; background: var(--bg-app); padding: 40px; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+
+  .head { display: flex; align-items: center; gap: 18px; padding-bottom: 28px; border-bottom: 1px solid var(--slate-200); margin-bottom: 36px; }
+  .tile { padding: 12px; background: var(--brand-500); border-radius: 16px; box-shadow: var(--shadow-xs); display: inline-flex; }
+  .tile .lc { width: 28px; height: 28px; color: var(--slate-900); stroke-width: 2.4; }
+  h1 { margin: 0; font-size: 36px; font-weight: 800; letter-spacing: -0.025em; color: var(--slate-900); line-height: 1; }
+  .head-sub { font-size: 14px; color: var(--slate-500); margin-top: 6px; }
+
+  .meta-row { display: flex; gap: 14px; margin-left: auto; }
+  .meta { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: #fff; border: 1px solid var(--border-card); border-radius: 999px; box-shadow: var(--shadow-card); font-size: 12px; font-weight: 600; color: var(--slate-700); }
+  .meta .lc { width: 14px; height: 14px; color: var(--brand-600); }
+
+  .cap { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-500); margin-bottom: 14px; padding-left: 4px; }
+
+  .pages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 44px; }
+  .page-card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--border-card); border-radius: 22px; box-shadow: var(--shadow-card); overflow: hidden; transition: all .2s; }
+  .page-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+  .preview { background: var(--slate-50); position: relative; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .preview-iframe-shell { position: absolute; inset: 0; transform: scale(0.32); transform-origin: 0 0; width: 312%; height: 312%; pointer-events: none; }
+  .preview-iframe-shell iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+
+  .pc-body { padding: 18px 20px 20px; }
+  .pc-title { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 700; color: var(--slate-900); }
+  .pc-title .lc { width: 18px; height: 18px; color: var(--brand-600); }
+  .pc-sub { font-size: 13px; color: var(--slate-500); margin-top: 6px; line-height: 1.45; }
+  .pc-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+  .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--slate-100); color: var(--slate-600); }
+  .open { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--brand-700); }
+  .open .lc { width: 14px; height: 14px; }
+
+  /* Recipes */
+  .recipes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .recipe { background: #fff; border: 1px solid var(--border-card); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow-card); }
+  .recipe-h { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--slate-900); margin-bottom: 8px; }
+  .recipe-h .lc { width: 16px; height: 16px; color: var(--slate-500); }
+  .recipe-body { font-size: 13px; color: var(--slate-600); line-height: 1.55; }
+  .recipe-body code { background: var(--slate-50); border: 1px solid var(--border-divider); padding: 1px 6px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; color: var(--slate-700); }
+
+  .footer { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--slate-200); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--slate-500); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Head -->
+  <div class="head">
+    <span class="tile"><i class="lc" data-lucide="trending-up"></i></span>
+    <div>
+      <h1>wiseApp · UI Kit</h1>
+      <div class="head-sub">Управленческая аналитика для ресторанного бизнеса · Russian-first · Inter · light + amber</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta"><i class="lc" data-lucide="palette"></i> 9 chart colors</span>
+      <span class="meta"><i class="lc" data-lucide="type"></i> Inter 300–800</span>
+      <span class="meta"><i class="lc" data-lucide="circle-dot"></i> brand-500</span>
+    </div>
+  </div>
+
+  <!-- Pages -->
+  <div class="cap">Page recreations</div>
+  <div class="pages">
+    <a class="page-card" href="dashboard.html">
+      <div class="preview">
+        <div class="preview-iframe-shell"><iframe src="dashboard.html" loading="lazy" scrolling="no"></iframe></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title"><i class="lc" data-lucide="layout-dashboard"></i> Dashboard</div>
+        <div class="pc-sub">Sidebar, topbar, KPI strip, revenue chart, Action Center, top products, sources, heatmap.</div>
+        <div class="pc-foot">
+          <div class="tag-row">
+            <span class="tag">sidebar</span><span class="tag">KPI</span><span class="tag">chart</span><span class="tag">heatmap</span>
+          </div>
+          <span class="open">Открыть <i class="lc" data-lucide="arrow-up-right"></i></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="page-card" href="cockpit.html">
+      <div class="preview">
+        <div class="preview-iframe-shell"><iframe src="cockpit.html" loading="lazy" scrolling="no"></iframe></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title"><i class="lc" data-lucide="activity"></i> Cockpit менеджера</div>
+        <div class="pc-sub">Hero KPI с прогнозом, ключевые риски, прогноз выручки с CI, todo-список, сетка ресторанов.</div>
+        <div class="pc-foot">
+          <div class="tag-row">
+            <span class="tag">forecast</span><span class="tag">risks</span><span class="tag">todo</span><span class="tag">network</span>
+          </div>
+          <span class="open">Открыть <i class="lc" data-lucide="arrow-up-right"></i></span>
+        </div>
+      </div>
+    </a>
+
+    <a class="page-card" href="login.html">
+      <div class="preview">
+        <div class="preview-iframe-shell"><iframe src="login.html" loading="lazy" scrolling="no"></iframe></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title"><i class="lc" data-lucide="lock"></i> Login</div>
+        <div class="pc-sub">Brand pitch + 36px login modal с decorative orbs, SSO, remember-me и forgot.</div>
+        <div class="pc-foot">
+          <div class="tag-row">
+            <span class="tag">auth</span><span class="tag">brand</span><span class="tag">SSO</span>
+          </div>
+          <span class="open">Открыть <i class="lc" data-lucide="arrow-up-right"></i></span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Recipes -->
+  <div class="cap">Component recipes</div>
+  <div class="recipes">
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="square"></i> Card</div>
+      <div class="recipe-body"><code>bg-white</code> · <code>border 1px #f3f4f6</code> · <code>radius 20px</code> · <code>shadow 0 4px 30px rgba(0,0,0,.02)</code> · header <code>border-b #f8fafc</code></div>
+    </div>
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="circle-dot"></i> Primary CTA</div>
+      <div class="recipe-body"><code>bg brand-500</code> · <code>text slate-900</code> · <code>radius pill</code> · <code>shadow brand glow</code> · hover <code>brand-600 + translateY(-1)</code> · active <code>scale .98</code></div>
+    </div>
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="badge"></i> Status pill</div>
+      <div class="recipe-body"><code>bg {tint}-50</code> · <code>border 1px {tint}-100/200</code> · <code>text {tint}-700</code> · <code>radius pill</code> · text-xs/600 · padding <code>2px 9px</code></div>
+    </div>
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="line-chart"></i> Recharts series</div>
+      <div class="recipe-body"><code>stroke brand-500 / 3px</code> · linecap round · grid <code>#f1f5f9 dashArray 3 3</code> · axis text <code>#94a3b8 / 11px</code> · tooltip white card with shadow-tooltip</div>
+    </div>
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="layout-grid"></i> KPI strip</div>
+      <div class="recipe-body"><code>grid grid-cols-{2..4} gap-4</code> · card <code>p-5 rounded-[20–28px]</code> · icon tile <code>p-3 rounded-xl bg-{tint}/10</code> · delta as semantic pill</div>
+    </div>
+    <div class="recipe">
+      <div class="recipe-h"><i class="lc" data-lucide="sidebar"></i> Sidebar nav item</div>
+      <div class="recipe-body">default <code>text-slate-600 hover:bg-white</code> · active <code>bg-brand-100 text-brand-800 ring-1 ring-brand-200</code> · section caps ALL CAPS w/ emoji prefix</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>wiseApp / BizFocus · github.com/TheKasymov/bizfocus</span>
+    <span>v1.0 · Light theme · Russian-first</span>
+  </div>
+
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

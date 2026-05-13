@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>wiseApp — Cockpit менеджера</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  body { margin: 0; background: var(--bg-app); }
+
+  /* compact sidebar (icon rail) */
+  .frame { display: grid; grid-template-columns: 76px 1fr; min-height: 100vh; }
+  .rail { background: var(--bg-sidebar); border-right: 1px solid var(--slate-200); padding: 14px 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .rail-tile { padding: 8px; background: var(--brand-500); border-radius: 12px; box-shadow: var(--shadow-xs); display: inline-flex; margin-bottom: 12px; }
+  .rail-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; color: var(--slate-500); cursor: pointer; transition: all .15s; position: relative; }
+  .rail-btn:hover { background: #fff; color: var(--slate-800); }
+  .rail-btn.active { background: var(--brand-100); color: var(--brand-700); border: 1px solid var(--brand-200); }
+  .rail-btn .badge { position: absolute; top: 4px; right: 4px; width: 8px; height: 8px; border-radius: 999px; background: var(--danger-500); border: 2px solid var(--bg-sidebar); }
+  .rail .avatar { margin-top: auto; width: 38px; height: 38px; border-radius: 999px; background: linear-gradient(135deg, var(--brand-400), var(--brand-600)); color: var(--slate-900); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+
+  /* main */
+  .main { padding: 24px 32px; display: flex; flex-direction: column; gap: 22px; animation: fade .3s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .title-grp { display: flex; align-items: center; gap: 16px; }
+  .title-icon { width: 56px; height: 56px; border-radius: 18px; background: var(--brand-100); color: var(--brand-700); display: flex; align-items: center; justify-content: center; }
+  .title-icon .lc { width: 28px; height: 28px; }
+  h1.page-title { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: var(--slate-900); line-height: 1.1; }
+  .page-sub { font-size: 14px; color: var(--slate-500); margin-top: 4px; }
+
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seg { display: inline-flex; padding: 4px; background: #fff; border: 1px solid var(--border-card); border-radius: 14px; box-shadow: var(--shadow-card); }
+  .seg button { background: transparent; border: 0; padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 13px; font-weight: 600; color: var(--slate-500); cursor: pointer; }
+  .seg button.on { background: var(--slate-100); color: var(--slate-800); }
+  .filter-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; background: #fff; border: 1px solid var(--border-card); border-radius: 14px; font-size: 13px; font-weight: 600; color: var(--slate-700); cursor: pointer; box-shadow: var(--shadow-card); }
+  .filter-pill .lc { width: 16px; height: 16px; color: var(--slate-500); }
+  .filter-pill.brand { background: var(--brand-500); color: var(--slate-900); border-color: var(--brand-500); box-shadow: var(--shadow-brand); }
+  .filter-pill.brand .lc { color: var(--slate-900); }
+
+  /* Section caption */
+  .caption-row { display: flex; align-items: center; justify-content: space-between; padding: 0 4px; }
+  .caption-row .cap { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-500); }
+  .caption-row .all { font-size: 12px; color: var(--brand-700); font-weight: 700; cursor: pointer; }
+
+  /* KPI tiles row */
+  .kpi-strip { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 16px; }
+  .kpi { background: #fff; border: 1px solid var(--border-card); border-radius: 20px; padding: 20px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 12px; }
+  .kpi.hero { background: linear-gradient(135deg, #fef3c7 0%, #fff 70%); border-color: var(--brand-200); }
+  .kpi-l { font-size: 13px; font-weight: 500; color: var(--slate-500); }
+  .kpi-v { font-size: 32px; font-weight: 800; color: var(--slate-900); letter-spacing: -0.02em; line-height: 1; }
+  .kpi-v.sm { font-size: 26px; font-weight: 700; }
+  .kpi-foot { display: flex; align-items: center; justify-content: space-between; }
+  .delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; }
+  .delta.up { color: var(--success-700); background: var(--success-50); }
+  .delta.down { color: var(--danger-700); background: var(--danger-50); }
+  .delta .lc { width: 12px; height: 12px; }
+
+  /* Spark */
+  .spark { width: 100%; height: 36px; }
+
+  /* 12-col grid */
+  .grid12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
+  .span-7 { grid-column: span 7; }
+  .span-5 { grid-column: span 5; }
+  .span-8 { grid-column: span 8; }
+  .span-4 { grid-column: span 4; }
+  .span-6 { grid-column: span 6; }
+
+  .card { background: #fff; border: 1px solid var(--border-card); border-radius: 20px; box-shadow: var(--shadow-card); }
+  .card-head { padding: 16px 22px; border-bottom: 1px solid #f8fafc; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .card-title { font-size: 16px; font-weight: 600; color: var(--slate-900); display: flex; align-items: center; gap: 8px; }
+  .card-title .lc { width: 16px; height: 16px; color: var(--slate-500); }
+  .card-sub { font-size: 12px; color: var(--slate-500); margin-top: 2px; }
+  .card-body { padding: 18px 22px 22px; }
+
+  /* Risks */
+  .risk-list { display: flex; flex-direction: column; gap: 10px; }
+  .risk { display: grid; grid-template-columns: 38px 1fr auto; gap: 14px; padding: 14px; border-radius: 14px; background: var(--slate-50); border: 1px solid #f1f5f9; transition: all .15s; }
+  .risk:hover { background: var(--slate-100); }
+  .risk-icn { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .risk-icn .lc { width: 18px; height: 18px; }
+  .risk-icn.danger { background: var(--danger-50); color: var(--danger-700); }
+  .risk-icn.amber  { background: var(--brand-50); color: var(--brand-700); border: 1px solid var(--brand-200); }
+  .risk-icn.info   { background: var(--info-50);  color: var(--info-700); }
+  .risk-title { font-size: 14px; font-weight: 600; color: var(--slate-900); }
+  .risk-sub   { font-size: 12px; color: var(--slate-500); margin-top: 2px; line-height: 1.4; }
+  .risk-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .sev { font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 999px; }
+  .sev.high  { background: var(--danger-50); color: var(--danger-700); border: 1px solid #ffe4e6; }
+  .sev.med   { background: var(--brand-50);  color: var(--brand-800); border: 1px solid var(--brand-200); }
+  .sev.low   { background: var(--info-50);   color: var(--info-700); border: 1px solid #bfdbfe; }
+  .risk-time { font-size: 11px; color: var(--slate-400); }
+
+  /* Actions todo list */
+  .todo { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; padding: 12px 14px; border-radius: 12px; align-items: flex-start; transition: background .15s; }
+  .todo:hover { background: var(--slate-50); }
+  .todo + .todo { border-top: 1px solid #f8fafc; }
+  .check-empty { width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid var(--slate-300); margin-top: 1px; }
+  .check-done  { width: 18px; height: 18px; border-radius: 6px; background: var(--success-500); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .check-done .lc { width: 12px; height: 12px; }
+  .todo-title { font-size: 14px; font-weight: 600; color: var(--slate-800); }
+  .todo.done .todo-title { color: var(--slate-400); text-decoration: line-through; }
+  .todo-meta  { font-size: 11px; color: var(--slate-500); margin-top: 2px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .chip { font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 999px; background: var(--slate-100); color: var(--slate-600); }
+  .chip.brand { background: var(--brand-100); color: var(--brand-800); }
+  .chip.info { background: var(--info-50); color: var(--info-700); }
+  .todo-eta { font-size: 11px; color: var(--slate-500); white-space: nowrap; }
+
+  /* Forecast band */
+  .forecast { padding: 10px 22px 4px; }
+  .forecast-svg { width: 100%; height: 200px; display: block; }
+
+  /* Restaurants strip */
+  .rest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 16px 22px 22px; }
+  .rest { padding: 12px; background: var(--slate-50); border-radius: 14px; border: 1px solid #f1f5f9; transition: all .15s; cursor: pointer; }
+  .rest:hover { background: #fff; border-color: var(--brand-200); box-shadow: var(--shadow-card); }
+  .rest-name { font-size: 13px; font-weight: 700; color: var(--slate-800); display: flex; align-items: center; justify-content: space-between; }
+  .health-dot { width: 8px; height: 8px; border-radius: 999px; }
+  .rest-rev  { font-size: 18px; font-weight: 700; color: var(--slate-900); margin-top: 6px; letter-spacing: -0.02em; }
+  .rest-d    { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 600; margin-top: 4px; }
+  .rest-d.up   { color: var(--success-700); }
+  .rest-d.down { color: var(--danger-700); }
+  .rest-d .lc { width: 11px; height: 11px; }
+  .progress { margin-top: 8px; height: 5px; border-radius: 999px; background: var(--slate-200); overflow: hidden; }
+  .progress > span { display: block; height: 100%; background: var(--brand-500); border-radius: 999px; }
+  .rest-target { font-size: 10px; color: var(--slate-500); margin-top: 4px; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <!-- Rail -->
+  <aside class="rail">
+    <span class="rail-tile"><i class="lc" data-lucide="trending-up" style="width:20px;height:20px;color:var(--slate-900);stroke-width:2.4;"></i></span>
+    <div class="rail-btn"><i class="lc" data-lucide="layout-dashboard" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn active"><i class="lc" data-lucide="activity" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn"><i class="lc" data-lucide="bell" style="width:20px;height:20px;"></i><span class="badge"></span></div>
+    <div class="rail-btn"><i class="lc" data-lucide="flame" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn"><i class="lc" data-lucide="users" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn"><i class="lc" data-lucide="grid-3x3" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn"><i class="lc" data-lucide="dollar-sign" style="width:20px;height:20px;"></i></div>
+    <div class="rail-btn"><i class="lc" data-lucide="shield" style="width:20px;height:20px;"></i></div>
+    <div class="avatar">ЕК</div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Header -->
+    <div class="head">
+      <div class="title-grp">
+        <div class="title-icon"><i class="lc" data-lucide="activity"></i></div>
+        <div>
+          <h1 class="page-title">Cockpit менеджера</h1>
+          <div class="page-sub">Что произошло, что не так и что сделать сегодня · ср, 14 мая 2025</div>
+        </div>
+      </div>
+      <div class="filter-bar">
+        <div class="seg">
+          <button class="on">Сегодня</button><button>Вчера</button><button>7 дней</button>
+        </div>
+        <div class="filter-pill"><i class="lc" data-lucide="store"></i> Cofix Almaty (12) <i class="lc" data-lucide="chevron-down"></i></div>
+        <div class="filter-pill brand"><i class="lc" data-lucide="zap"></i> Запросить инсайт</div>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <div style="background: var(--info-50); border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 14px; display: flex; align-items: flex-start; gap: 10px;">
+      <i class="lc" data-lucide="info" style="width:16px;height:16px;color:var(--info-700);flex-shrink:0;margin-top:2px;"></i>
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--info-700);">Идет первичная синхронизация: часть данных пока заполняется</div>
+        <div style="font-size: 12px; color: var(--info-700); opacity: 0.8;">Источник <code class="code">prices</code> пока не заполнен · ETA 14:30</div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="caption-row"><span class="cap">📊 СВОДКА ДНЯ</span><span class="all">Подробнее →</span></div>
+    <div class="kpi-strip">
+      <div class="kpi hero">
+        <div class="kpi-l">Прогноз выручки на сегодня</div>
+        <div class="kpi-v">328 400 ₸</div>
+        <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+          <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"
+            points="0,28 30,22 60,24 90,16 120,18 150,10 180,12 200,8"/>
+          <circle cx="200" cy="8" r="3" fill="#f59e0b"/>
+        </svg>
+        <div class="kpi-foot">
+          <span class="delta up"><i class="lc" data-lucide="arrow-up-right"></i> +12.4% к плану</span>
+          <span style="font-size: 11px; color: var(--slate-500);">обновлено в 09:14</span>
+        </div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-l">Чеков с открытия</div>
+        <div class="kpi-v sm">412</div>
+        <span class="delta up" style="align-self: flex-start;"><i class="lc" data-lucide="arrow-up-right"></i> +8.7%</span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-l">Средний чек</div>
+        <div class="kpi-v sm">1 245 ₸</div>
+        <span class="delta down" style="align-self: flex-start;"><i class="lc" data-lucide="arrow-down-right"></i> −3.1%</span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-l">Trust Score сети</div>
+        <div class="kpi-v sm">82 / 100</div>
+        <span class="delta down" style="align-self: flex-start;"><i class="lc" data-lucide="arrow-down-right"></i> −4 п. за неделю</span>
+      </div>
+    </div>
+
+    <!-- Risks + Forecast -->
+    <div class="grid12">
+      <div class="card span-7">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><i class="lc" data-lucide="alert-triangle"></i> Ключевые риски</div>
+            <div class="card-sub">3 события требуют внимания</div>
+          </div>
+          <span style="font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--danger-50); color: var(--danger-700); border: 1px solid #ffe4e6;">3 high</span>
+        </div>
+        <div class="card-body">
+          <div class="risk-list">
+            <div class="risk">
+              <div class="risk-icn danger"><i class="lc" data-lucide="shield-alert"></i></div>
+              <div>
+                <div class="risk-title">Аномалия списаний на ТТ #07 (Абая)</div>
+                <div class="risk-sub">14 порций кофейных зерён за смену против медианы 4. Trust Score кассира снижен до 42.</div>
+              </div>
+              <div class="risk-meta"><span class="sev high">high</span><span class="risk-time">09:02</span></div>
+            </div>
+            <div class="risk">
+              <div class="risk-icn amber"><i class="lc" data-lucide="package-x"></i></div>
+              <div>
+                <div class="risk-title">Капучино заканчивается на ТТ #03 (Достык)</div>
+                <div class="risk-sub">При текущем темпе остатков хватит на 2.4 часа. Запросить досыл со склада до 12:00.</div>
+              </div>
+              <div class="risk-meta"><span class="sev med">medium</span><span class="risk-time">08:46</span></div>
+            </div>
+            <div class="risk">
+              <div class="risk-icn info"><i class="lc" data-lucide="users"></i></div>
+              <div>
+                <div class="risk-title">28 спящих гостей · риск оттока</div>
+                <div class="risk-sub">RFM-сегмент «Once-loyal» не делал заказов 21+ день. Запустить реактивацию?</div>
+              </div>
+              <div class="risk-meta"><span class="sev low">low</span><span class="risk-time">сегодня</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card span-5">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><i class="lc" data-lucide="trending-up"></i> Прогноз выручки</div>
+            <div class="card-sub">XGBoost · MAPE 6.2% · окно 14:00–22:00</div>
+          </div>
+        </div>
+        <div class="forecast">
+          <svg class="forecast-svg" viewBox="0 0 480 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="brandFill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="40"  x2="480" y2="40"  stroke="#f1f5f9" stroke-dasharray="3 3"/>
+            <line x1="0" y1="100" x2="480" y2="100" stroke="#f1f5f9" stroke-dasharray="3 3"/>
+            <line x1="0" y1="160" x2="480" y2="160" stroke="#e2e8f0"/>
+            <!-- Confidence band -->
+            <path d="M20,140 L80,120 L140,108 L200,90 L260,72 L320,60 L380,52 L440,46 L440,80 L380,90 L320,98 L260,108 L200,124 L140,138 L80,150 L20,164 Z" fill="url(#brandFill)"/>
+            <!-- Actual (solid) -->
+            <polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              points="20,150 80,132 140,120 200,108"/>
+            <!-- Predicted (dashed) -->
+            <polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 4"
+              points="200,108 260,90 320,76 380,62 440,52"/>
+            <line x1="200" y1="40" x2="200" y2="160" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+            <text x="206" y="50" font-size="10" fill="#64748b" font-family="Inter, sans-serif" font-weight="600">сейчас 14:00</text>
+            <circle cx="200" cy="108" r="5" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+            <g font-size="11" fill="#94a3b8" font-family="Inter, sans-serif" text-anchor="middle">
+              <text x="20"  y="180">10:00</text>
+              <text x="140" y="180">12:00</text>
+              <text x="260" y="180">16:00</text>
+              <text x="380" y="180">20:00</text>
+              <text x="440" y="180">22:00</text>
+            </g>
+          </svg>
+        </div>
+        <div style="display:flex; gap: 16px; padding: 4px 22px 16px; font-size: 11px; color: var(--slate-500);">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:14px;height:3px;background:var(--brand-500);border-radius:2px;display:inline-block;"></span> Факт</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:14px;height:3px;background:repeating-linear-gradient(90deg,var(--brand-500) 0 4px,transparent 4px 7px);border-radius:2px;display:inline-block;"></span> Прогноз</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:14px;height:8px;background:rgba(245,158,11,0.18);border-radius:3px;display:inline-block;"></span> Доверительный интервал</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions + Restaurants -->
+    <div class="grid12">
+      <div class="card span-5">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><i class="lc" data-lucide="check-square"></i> Что сделать сегодня</div>
+            <div class="card-sub">3 открытых · 2 выполнено</div>
+          </div>
+          <span class="all" style="font-size: 12px; color: var(--brand-700); font-weight: 700; cursor: pointer;">Open all →</span>
+        </div>
+        <div class="card-body" style="padding: 8px 12px 14px;">
+          <div class="todo">
+            <span class="check-empty"></span>
+            <div>
+              <div class="todo-title">Заказать досыл капучино на ТТ #03</div>
+              <div class="todo-meta"><span class="chip brand">Запасы</span> владельцу склада · до 12:00</div>
+            </div>
+            <span class="todo-eta">−2.5ч</span>
+          </div>
+          <div class="todo">
+            <span class="check-empty"></span>
+            <div>
+              <div class="todo-title">Провести инвентаризацию зерён ТТ #07</div>
+              <div class="todo-meta"><span class="chip" style="background:var(--danger-50);color:var(--danger-700);">Безопасность</span> руководителю смены</div>
+            </div>
+            <span class="todo-eta">сегодня</span>
+          </div>
+          <div class="todo">
+            <span class="check-empty"></span>
+            <div>
+              <div class="todo-title">Запустить SMS-реактивацию (28 гостей)</div>
+              <div class="todo-meta"><span class="chip info">Когорты</span> CRM-менеджеру</div>
+            </div>
+            <span class="todo-eta">до 18:00</span>
+          </div>
+          <div class="todo done">
+            <span class="check-done"><i class="lc" data-lucide="check"></i></span>
+            <div>
+              <div class="todo-title">Подтвердить меню на пятницу</div>
+              <div class="todo-meta"><span class="chip">Меню</span> 09:24</div>
+            </div>
+            <span class="todo-eta">✓</span>
+          </div>
+          <div class="todo done">
+            <span class="check-done"><i class="lc" data-lucide="check"></i></span>
+            <div>
+              <div class="todo-title">Закрыть кассовый разрыв 12.05</div>
+              <div class="todo-meta"><span class="chip">Финансы</span> 08:31</div>
+            </div>
+            <span class="todo-eta">✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card span-7">
+        <div class="card-head">
+          <div>
+            <div class="card-title"><i class="lc" data-lucide="store"></i> Рестораны сети · план / факт</div>
+            <div class="card-sub">12 точек · сравнение с дневным таргетом</div>
+          </div>
+          <div class="seg">
+            <button class="on">По выручке</button><button>По чекам</button>
+          </div>
+        </div>
+        <div class="rest-grid">
+          <div class="rest">
+            <div class="rest-name">ТТ #01 Абая <span class="health-dot" style="background:var(--success-500);"></span></div>
+            <div class="rest-rev">42 800 ₸</div>
+            <div class="rest-d up"><i class="lc" data-lucide="arrow-up-right"></i> +8% к плану</div>
+            <div class="progress"><span style="width:108%; max-width:100%;"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 39.6к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #02 Толе би <span class="health-dot" style="background:var(--success-500);"></span></div>
+            <div class="rest-rev">38 200 ₸</div>
+            <div class="rest-d up"><i class="lc" data-lucide="arrow-up-right"></i> +3%</div>
+            <div class="progress"><span style="width:102%; max-width:100%;"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 37.4к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #03 Достык <span class="health-dot" style="background:var(--brand-500);"></span></div>
+            <div class="rest-rev">28 100 ₸</div>
+            <div class="rest-d down"><i class="lc" data-lucide="arrow-down-right"></i> −12% риск дефицита</div>
+            <div class="progress"><span style="width:74%; background: var(--brand-500);"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 38к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #04 Аль-Фараби <span class="health-dot" style="background:var(--success-500);"></span></div>
+            <div class="rest-rev">35 600 ₸</div>
+            <div class="rest-d up"><i class="lc" data-lucide="arrow-up-right"></i> +1%</div>
+            <div class="progress"><span style="width:100%;"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 35.2к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #05 Самал <span class="health-dot" style="background:var(--success-500);"></span></div>
+            <div class="rest-rev">31 400 ₸</div>
+            <div class="rest-d up"><i class="lc" data-lucide="arrow-up-right"></i> +5%</div>
+            <div class="progress"><span style="width:105%; max-width:100%;"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 30к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #06 Мега <span class="health-dot" style="background:var(--brand-500);"></span></div>
+            <div class="rest-rev">22 900 ₸</div>
+            <div class="rest-d down"><i class="lc" data-lucide="arrow-down-right"></i> −8%</div>
+            <div class="progress"><span style="width:84%; background: var(--brand-500);"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 27к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #07 Абая <span class="health-dot" style="background:var(--danger-500);"></span></div>
+            <div class="rest-rev">18 200 ₸</div>
+            <div class="rest-d down"><i class="lc" data-lucide="arrow-down-right"></i> −34% Trust 42</div>
+            <div class="progress"><span style="width:60%; background: var(--danger-500);"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 30к</span></div>
+          </div>
+          <div class="rest">
+            <div class="rest-name">ТТ #08 Зенков <span class="health-dot" style="background:var(--success-500);"></span></div>
+            <div class="rest-rev">29 800 ₸</div>
+            <div class="rest-d up"><i class="lc" data-lucide="arrow-up-right"></i> +2%</div>
+            <div class="progress"><span style="width:101%; max-width:100%;"></span></div>
+            <div class="rest-target"><span>факт</span><span>план 29.5к</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

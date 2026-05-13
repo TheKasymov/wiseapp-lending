@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><script src="https://unpkg.com/lucide@latest"></script><style>
+body { padding: 18px; }
+.kpi-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.kpi { background: #fff; border: 1px solid #f3f4f6; border-radius: 16px; padding: 18px; box-shadow: 0 4px 30px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
+.kpi-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.kpi-label { font-size: 14px; font-weight: 500; color: #64748b; }
+.kpi-value { font-size: 26px; font-weight: 700; color: #0f172a; letter-spacing: -0.02em; margin-top: 4px; }
+.kpi-delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; margin-top: 6px; }
+.up { color: #059669; } .down { color: #e11d48; }
+.icon-tile { padding: 10px; border-radius: 12px; background: #f8fafc; color: #64748b; border: 1px solid #f1f5f9; }
+</style></head><body>
+<div class="kpi-strip">
+  <div class="kpi">
+    <div class="kpi-row">
+      <div>
+        <div class="kpi-label">Выручка</div>
+        <div class="kpi-value">2 451 880 ₸</div>
+        <div class="kpi-delta up"><i data-lucide="arrow-up-right" style="width:14px;height:14px;"></i> +12.4%</div>
+      </div>
+      <div class="icon-tile"><i data-lucide="dollar-sign" style="width:20px;height:20px;"></i></div>
+    </div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-row">
+      <div>
+        <div class="kpi-label">Средний чек</div>
+        <div class="kpi-value">1 245 ₸</div>
+        <div class="kpi-delta down"><i data-lucide="arrow-down-right" style="width:14px;height:14px;"></i> −3.1%</div>
+      </div>
+      <div class="icon-tile"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

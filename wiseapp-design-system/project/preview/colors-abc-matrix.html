@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+.matrix { display: grid; grid-template-columns: 28px repeat(3, 1fr); gap: 6px; }
+.cell { aspect-ratio: 2.4 / 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; opacity: 0.85; }
+.cell.empty { background: transparent; border: none; }
+.head { font-size: 11px; font-weight: 600; color: #64748b; display: flex; align-items: center; justify-content: center; }
+.row-label { font-size: 14px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: center; }
+</style></head><body>
+<div class="card">
+  <div class="row spread">
+    <div class="strong" style="font-weight: 700;">ABC × XYZ matrix tints</div>
+    <div class="faint mono" style="font-size:11px;">src/pages/ABCXYZ.tsx</div>
+  </div>
+  <div class="matrix">
+    <div class="cell empty"></div><div class="head">X · stable</div><div class="head">Y · variable</div><div class="head">Z · chaotic</div>
+
+    <div class="row-label">A</div>
+    <div class="cell" style="background:#22c55e">AX</div><div class="cell" style="background:#4ade80">AY</div><div class="cell" style="background:#86efac;color:#064e3b">AZ</div>
+
+    <div class="row-label">B</div>
+    <div class="cell" style="background:#3b82f6">BX</div><div class="cell" style="background:#60a5fa">BY</div><div class="cell" style="background:#93c5fd;color:#1e3a8a">BZ</div>
+
+    <div class="row-label">C</div>
+    <div class="cell" style="background:#f97316">CX</div><div class="cell" style="background:#fb923c">CY</div><div class="cell" style="background:#fdba74;color:#7c2d12">CZ</div>
+  </div>
+</div>
+</body></html>

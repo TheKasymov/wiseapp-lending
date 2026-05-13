@@ -1,0 +1,32 @@
+/* Preview card shared base — used by every card in /preview */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #f9fafb;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1e293b;
+  padding: 20px;
+  font-size: 15px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.row.tight { gap: 4px; }
+.row.spread { justify-content: space-between; }
+.col { display: flex; flex-direction: column; gap: 6px; }
+.mono { font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace; }
+.faint { color: #94a3b8; }
+.soft { color: #64748b; }
+.muted { color: #475569; }
+.strong { color: #0f172a; }
+.cap { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b; }

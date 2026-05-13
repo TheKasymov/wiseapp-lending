@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>wiseApp — операционная аналитика для ресторанного бизнеса</title>
+<link rel="stylesheet" href="landing.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" data-screen-label="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="wm-lockup">
+      <span class="wm-tile">w</span>
+      <span class="wm-text">wise<span class="a">A</span>pp</span>
+    </a>
+    <div class="nav-links">
+      <a href="#product">Продукт</a>
+      <a href="#how">Как работает</a>
+      <a href="#why">Почему мы</a>
+      <a href="#calc">ROI</a>
+      <a href="#team">Команда</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <div class="lang">
+        <button class="on">RU</button>
+        <button>KZ</button>
+        <button>EN</button>
+      </div>
+      <a href="catalog.html" class="btn btn-ghost">Войти</a>
+      <a href="#calc" class="btn btn-primary">Демо за 10 мин<i class="lc" data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="section hero" id="top" data-screen-label="01 Hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow-row">
+        <span class="eyebrow">Платформа управленческой аналитики</span>
+      </div>
+      <h1 class="h1">Решения вместо&nbsp;дашбордов.</h1>
+      <p class="lead lead-lg" style="margin-top:24px;">wiseApp превращает данные iiko и POS в&nbsp;конкретные действия: предотвращает потери, ловит аномалии и&nbsp;сразу предлагает, что делать сегодня.</p>
+      <div class="hero-cta">
+        <a href="#calc" class="btn btn-primary btn-lg">Посчитать выгоду<i class="lc" data-lucide="arrow-right"></i></a>
+        <a href="catalog.html" class="btn btn-ghost btn-lg"><i class="lc" data-lucide="play-circle"></i>Открыть демо</a>
+      </div>
+      <div class="hero-trust">
+        <div class="ti"><span class="v">214</span><span class="l">ресторанов и кофеен</span></div>
+        <div class="ti"><span class="v">3,8 млрд ₸</span><span class="l">обработано выручки</span></div>
+        <div class="ti"><span class="v">38&nbsp;мин</span><span class="l">подключение iiko</span></div>
+      </div>
+    </div>
+
+    <!-- Hero mock: dashboard fragment -->
+    <div class="mock" aria-hidden="true">
+      <div class="mock-bar">
+        <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+        <span class="url">app.wiseapp.kz / сегодня</span>
+      </div>
+      <div class="mk-grid" style="grid-template-columns: 1.4fr 1fr 1fr;">
+        <div class="mk-card" style="grid-row: span 2;">
+          <span class="lbl">Выручка · 30 дней</span>
+          <div class="val">42,3 <span style="font-size:14px;color:var(--slate-500);font-weight:500;">млн ₸</span></div>
+          <span class="delta up">▲ +12.4% к прош. периоду</span>
+          <svg viewBox="0 0 240 80" style="margin-top:14px;width:100%;height:70px;" preserveAspectRatio="none">
+            <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f59e0b" stop-opacity=".22"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,60 L20,55 L40,58 L60,48 L80,52 L100,40 L120,45 L140,32 L160,38 L180,28 L200,22 L220,14 L240,8 L240,80 L0,80 Z" fill="url(#hg)"/>
+            <path class="spark-line" stroke="#f59e0b" d="M0,60 L20,55 L40,58 L60,48 L80,52 L100,40 L120,45 L140,32 L160,38 L180,28 L200,22 L220,14 L240,8"/>
+          </svg>
+        </div>
+        <div class="mk-card">
+          <span class="lbl">Чистая прибыль</span>
+          <div class="val">8,4 <span style="font-size:13px;color:var(--slate-500);font-weight:500;">млн</span></div>
+          <span class="delta up">▲ +18%</span>
+        </div>
+        <div class="mk-card">
+          <span class="lbl">Маржа</span>
+          <div class="val">19,8%</div>
+          <span class="delta up">▲ +1.4&nbsp;п.п.</span>
+        </div>
+        <div class="mk-card">
+          <span class="lbl">Списания</span>
+          <div class="val">418&nbsp;200 ₸</div>
+          <span class="delta down" style="color:var(--success-700)">▼ −12%</span>
+        </div>
+        <div class="mk-card">
+          <span class="lbl">Trust средний</span>
+          <div class="val">82</div>
+          <span class="delta up">▲ +3</span>
+        </div>
+      </div>
+      <div class="mk-section">
+        <div class="mk-card-title">Action Center · 3 открытых</div>
+        <div style="background:#fff;border:1px solid #eef0f3;border-radius:12px;overflow:hidden;">
+          <div style="padding:12px 14px;border-bottom:1px solid #f4f5f7;display:flex;gap:10px;align-items:center;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:999px;background:var(--danger-500);"></span>
+            <span style="color:var(--slate-900);font-weight:500;flex:1;">Падение чека на «Достык» −18%</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);">14 окт</span>
+          </div>
+          <div style="padding:12px 14px;border-bottom:1px solid #f4f5f7;display:flex;gap:10px;align-items:center;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:999px;background:var(--info-500);"></span>
+            <span style="color:var(--slate-900);font-weight:500;flex:1;">Промо на Том Ям в будни 14–17</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);">сегодня</span>
+          </div>
+          <div style="padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:13px;">
+            <span style="width:6px;height:6px;border-radius:999px;background:var(--warning-500);"></span>
+            <span style="color:var(--slate-900);font-weight:500;flex:1;">Trust сотрудника Б.Ж. упал ниже&nbsp;70</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);">2 дня</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP (ON INK) ============ -->
+<section class="section-ink section-tight" data-screen-label="02 Stats">
+  <div class="wrap">
+    <div class="stats-strip">
+      <div class="stat"><div class="v">3<span class="u">×</span></div><div class="l">быстрее находим утечки выручки и&nbsp;ошибки в&nbsp;кассе</div></div>
+      <div class="stat"><div class="v">−12<span class="u">%</span></div><div class="l">средний объём списаний за&nbsp;первый квартал</div></div>
+      <div class="stat"><div class="v">+1.4<span class="u">п.п.</span></div><div class="l">маржа на&nbsp;EBITDA после внедрения рекомендаций</div></div>
+      <div class="stat"><div class="v">38<span class="u">мин</span></div><div class="l">от&nbsp;регистрации до&nbsp;первой синхронизации с&nbsp;iiko</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIG STAT ============ -->
+<section class="section" data-screen-label="03 Big stat">
+  <div class="wrap bigstat">
+    <div>
+      <span class="eyebrow">Что это даёт</span>
+      <div class="num" style="margin-top:24px;">+18<span class="pp">%</span></div>
+      <div class="kicker" style="margin-top:24px;">средний прирост чистой прибыли у&nbsp;сетей на&nbsp;wiseApp</div>
+    </div>
+    <div>
+      <p class="lead-lg">Эффект складывается из&nbsp;трёх простых вещей: меньше списаний, точнее график персонала и&nbsp;вовремя замеченные аномалии. Платформа не&nbsp;показывает «красивые графики» — она&nbsp;закрывает задачи в&nbsp;Action&nbsp;Center, пока вы&nbsp;на&nbsp;смене.</p>
+      <div style="margin-top:32px;display:flex;gap:32px;flex-wrap:wrap;">
+        <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">−42%</div><div class="kicker">потери от&nbsp;фрода</div></div>
+        <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">−1.2 п.п.</div><div class="kicker">food&nbsp;cost</div></div>
+        <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">+3 ч/нед</div><div class="kicker">времени менеджера</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNCTIONS ============ -->
+<div id="product"></div>
+
+<!-- 01 — Сегодня -->
+<section class="section" data-screen-label="04 Function 01">
+  <div class="wrap func">
+    <div class="func-text">
+      <span class="eyebrow">01 · Сегодня</span>
+      <div class="func-title"><span class="func-num">01.</span><h2 class="h2">Action&nbsp;Center, который реально решает.</h2></div>
+      <p class="lead">Аномалии, рекомендации и&nbsp;задачи в&nbsp;одной ленте. Каждое событие имеет владельца, срок и&nbsp;кнопку «закрыть» — а&nbsp;не&nbsp;просто красную точку на&nbsp;графике.</p>
+      <div class="func-points">
+        <div class="func-point"><span class="n">01</span><span class="t"><b>Z-score детектор аномалий.</b> Платформа считает базовую линию по&nbsp;каждой точке и&nbsp;поднимает выбросы на&nbsp;2σ&nbsp;и&nbsp;выше.</span></div>
+        <div class="func-point"><span class="n">02</span><span class="t"><b>Контекст рядом с&nbsp;алертом.</b> Не&nbsp;только «выручка упала», но&nbsp;«−18% против такого&nbsp;же понедельника, причина в&nbsp;Достык».</span></div>
+        <div class="func-point"><span class="n">03</span><span class="t"><b>Lifecycle задачи.</b> Принять, назначить, закрыть, отклонить с&nbsp;комментарием — всё в&nbsp;одном экране.</span></div>
+        <div class="func-point"><span class="n">04</span><span class="t"><b>Cockpit смены.</b> Открытые заказы, нагрузка зала и&nbsp;факт vs&nbsp;прогноз — обновляются раз в&nbsp;5 секунд.</span></div>
+      </div>
+      <div class="func-cta"><a href="catalog.html#action-center" class="btn btn-ghost">Посмотреть Action Center<i class="lc" data-lucide="arrow-up-right"></i></a></div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/action-center</span></div>
+      <div style="padding:18px;">
+        <div style="display:flex;gap:8px;margin-bottom:14px;font-size:11px;">
+          <span style="padding:4px 10px;background:var(--slate-900);color:#fff;border-radius:999px;font-weight:600;">Открытые · 12</span>
+          <span style="padding:4px 10px;background:#f4f5f7;color:var(--slate-500);border-radius:999px;font-weight:600;">Закрытые · 47</span>
+          <span style="padding:4px 10px;background:#f4f5f7;color:var(--slate-500);border-radius:999px;font-weight:600;">Отклонённые · 8</span>
+        </div>
+        <div style="border:1px solid #eef0f3;border-radius:12px;overflow:hidden;">
+          <div style="padding:14px;display:flex;gap:12px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--danger-600);margin-top:2px;flex-shrink:0;"></i>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Падение выручки на «Достык» −18%</span><span style="font-size:10px;font-weight:600;background:var(--danger-50);color:var(--danger-700);padding:2px 8px;border-radius:6px;">CRITICAL</span></div>
+              <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">Финансы · Z=2.4 · сравнение с прошлым понедельником</div>
+            </div>
+          </div>
+          <div style="padding:14px;display:flex;gap:12px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
+            <i class="lc" data-lucide="lightbulb" style="width:16px;height:16px;color:var(--info-600);margin-top:2px;flex-shrink:0;"></i>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Промо на Том Ям 14:00–17:00</span><span style="font-size:10px;font-weight:600;background:var(--info-50);color:var(--info-700);padding:2px 8px;border-radius:6px;">ИДЕЯ</span></div>
+              <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">+180 чеков/нед · падение спроса −22%</div>
+            </div>
+          </div>
+          <div style="padding:14px;display:flex;gap:12px;align-items:flex-start;">
+            <i class="lc" data-lucide="list-checks" style="width:16px;height:16px;color:var(--slate-500);margin-top:2px;flex-shrink:0;"></i>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Закрыть смену кассира №14</span><span style="font-size:10px;font-weight:600;background:var(--warning-50);color:var(--warning-700);padding:2px 8px;border-radius:6px;">ЗАДАЧА</span></div>
+              <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">Расхождение 4 200 ₸ · срок 22:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — Деньги -->
+<section class="section" id="how" data-screen-label="05 Function 02">
+  <div class="wrap func flip">
+    <div class="func-text">
+      <span class="eyebrow">02 · Деньги</span>
+      <div class="func-title"><span class="func-num">02.</span><h2 class="h2">P&amp;L и&nbsp;кассовые разрывы — не&nbsp;через бухгалтера.</h2></div>
+      <p class="lead">Финансовый отчёт собирается автоматически из&nbsp;iiko, банк-выписок и&nbsp;Excel. Прогноз кассового остатка показывает разрывы за&nbsp;2&nbsp;недели до&nbsp;того, как они случатся.</p>
+      <div class="func-points">
+        <div class="func-point"><span class="n">01</span><span class="t"><b>Полный P&amp;L.</b> Выручка по&nbsp;каналам, food&nbsp;cost, ФОТ, аренда, маркетинг — с&nbsp;разбивкой по&nbsp;точкам.</span></div>
+        <div class="func-point"><span class="n">02</span><span class="t"><b>Прогноз кассы на&nbsp;30&nbsp;дней.</b> Учитывает регулярные платежи, дебиторку и&nbsp;фактический темп выручки.</span></div>
+        <div class="func-point"><span class="n">03</span><span class="t"><b>Ранние сигналы.</b> «22&nbsp;ноября минимум&nbsp;2.1&nbsp;млн — перенесите оплату поставщику на&nbsp;3&nbsp;дня».</span></div>
+        <div class="func-point"><span class="n">04</span><span class="t"><b>Бенчмаркинг.</b> Сравнение food&nbsp;cost и&nbsp;маржи с&nbsp;рынком в&nbsp;вашем сегменте.</span></div>
+      </div>
+      <div class="func-cta"><a href="catalog.html#pl" class="btn btn-ghost">Открыть P&amp;L отчёт<i class="lc" data-lucide="arrow-up-right"></i></a></div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/cashflow</span></div>
+      <div style="padding:18px;">
+        <div style="font-size:11px;color:var(--slate-500);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Прогноз остатка · 30 дней</div>
+        <svg viewBox="0 0 360 180" style="width:100%;margin-top:12px;">
+          <defs><linearGradient id="cf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10b981" stop-opacity=".2"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#f4f5f7"><line x1="0" y1="40" x2="360" y2="40"/><line x1="0" y1="90" x2="360" y2="90"/><line x1="0" y1="140" x2="360" y2="140"/></g>
+          <line x1="0" y1="155" x2="360" y2="155" stroke="#ef4444" stroke-dasharray="3 3" stroke-width="1"/>
+          <text x="6" y="167" font-size="9" fill="#b91c1c" font-weight="600">критич. 2 млн</text>
+          <path d="M0,50 L24,55 L48,68 L72,82 L96,72 L120,90 L144,108 L168,120 L192,128 L216,150 L240,135 L264,108 L288,84 L312,68 L336,54 L360,42 L360,180 L0,180 Z" fill="url(#cf)"/>
+          <path d="M0,50 L24,55 L48,68 L72,82 L96,72 L120,90 L144,108 L168,120 L192,128 L216,150 L240,135 L264,108 L288,84 L312,68 L336,54 L360,42" stroke="#10b981" stroke-width="2" fill="none"/>
+          <circle cx="216" cy="150" r="4" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+          <text x="222" y="146" font-size="10" fill="#92400e" font-weight="700">22 ноя · 2.1 млн</text>
+        </svg>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;font-size:11px;">
+          <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Притоки</div><div style="font-size:14px;font-weight:700;color:var(--success-700);font-variant-numeric:tabular-nums;margin-top:2px;">+44,8 млн</div></div>
+          <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Оттоки</div><div style="font-size:14px;font-weight:700;color:var(--danger-700);font-variant-numeric:tabular-nums;margin-top:2px;">−39,2 млн</div></div>
+          <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Минимум</div><div style="font-size:14px;font-weight:700;color:var(--warning-700);font-variant-numeric:tabular-nums;margin-top:2px;">2,1 млн</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — Операции -->
+<section class="section" data-screen-label="06 Function 03">
+  <div class="wrap func">
+    <div class="func-text">
+      <span class="eyebrow">03 · Операции</span>
+      <div class="func-title"><span class="func-num">03.</span><h2 class="h2">Склад, который сам пишет, что заказать.</h2></div>
+      <p class="lead">218&nbsp;SKU по&nbsp;трём складам в&nbsp;одной таблице. Платформа знает остатки, сроки годности, скорость продаж — и&nbsp;каждое утро формирует список заказов и&nbsp;трансферов между точками.</p>
+      <div class="func-points">
+        <div class="func-point"><span class="n">01</span><span class="t"><b>FIFO и&nbsp;сроки годности.</b> Цветовое выделение позиций, истекающих в&nbsp;ближайшие&nbsp;7 дней.</span></div>
+        <div class="func-point"><span class="n">02</span><span class="t"><b>Умная инвентаризация.</b> Платформа считает теоретический остаток по&nbsp;ТТК и&nbsp;показывает только расхождения.</span></div>
+        <div class="func-point"><span class="n">03</span><span class="t"><b>ABC&nbsp;/&nbsp;XYZ матрица.</b> Понимаете, какие 18&nbsp;SKU дают 80% выручки и&nbsp;где можно сократить ассортимент.</span></div>
+        <div class="func-point"><span class="n">04</span><span class="t"><b>Трансферы.</b> «Перевести лосось со&nbsp;склада Манас на&nbsp;Абая — экономия&nbsp;38&nbsp;400&nbsp;₸».</span></div>
+      </div>
+      <div class="func-cta"><a href="catalog.html#inventory" class="btn btn-ghost">Открыть склад<i class="lc" data-lucide="arrow-up-right"></i></a></div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/inventory</span></div>
+      <div style="padding:18px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
+          <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Стоимость</div><div style="font-size:14px;font-weight:700;color:var(--slate-900);font-variant-numeric:tabular-nums;margin-top:2px;">12,8 млн</div></div>
+          <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Ниже мин.</div><div style="font-size:14px;font-weight:700;color:var(--danger-700);font-variant-numeric:tabular-nums;margin-top:2px;">14</div></div>
+          <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Истекает&lt;7д</div><div style="font-size:14px;font-weight:700;color:var(--warning-700);font-variant-numeric:tabular-nums;margin-top:2px;">22</div></div>
+          <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Списано</div><div style="font-size:14px;font-weight:700;color:var(--slate-900);font-variant-numeric:tabular-nums;margin-top:2px;">418&nbsp;200</div></div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead><tr style="font-size:9px;color:var(--slate-500);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;"><th style="text-align:left;padding:6px 0;">SKU</th><th style="text-align:right;">Остаток</th><th style="text-align:right;">Срок</th><th></th></tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Лосось филе</b><div style="font-size:10px;color:var(--slate-500);">Манас</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">3.2 кг</td><td style="text-align:right;color:var(--slate-500);">+4 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--danger-50);color:var(--danger-700);padding:2px 7px;border-radius:5px;">МИН</span></td></tr>
+            <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Авокадо хасс</b><div style="font-size:10px;color:var(--slate-500);">Достык</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">6 кг</td><td style="text-align:right;color:var(--slate-500);">+2 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--warning-50);color:var(--warning-700);padding:2px 7px;border-radius:5px;">FIFO</span></td></tr>
+            <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Креветка тигровая</b><div style="font-size:10px;color:var(--slate-500);">Абая</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">1.8 кг</td><td style="text-align:right;color:var(--slate-500);">+3 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--danger-50);color:var(--danger-700);padding:2px 7px;border-radius:5px;">МИН</span></td></tr>
+            <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Манго свежее</b><div style="font-size:10px;color:var(--slate-500);">Манас</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">4 кг</td><td style="text-align:right;color:var(--slate-500);">+1 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--warning-50);color:var(--warning-700);padding:2px 7px;border-radius:5px;">FIFO</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — Безопасность -->
+<section class="section" data-screen-label="07 Function 04">
+  <div class="wrap func flip">
+    <div class="func-text">
+      <span class="eyebrow">04 · Безопасность</span>
+      <div class="func-title"><span class="func-num">04.</span><h2 class="h2">Trust&nbsp;Score: видно, кто работает чисто.</h2></div>
+      <p class="lead">Поведенческий рейтинг честности на&nbsp;основе списаний, отмен и&nbsp;расхождений по&nbsp;кассе. Помогает не&nbsp;«ловить за&nbsp;руку», а&nbsp;принять управленческое решение по&nbsp;цифрам.</p>
+      <div class="func-points">
+        <div class="func-point"><span class="n">01</span><span class="t"><b>Скоринг от&nbsp;0&nbsp;до&nbsp;100.</b> Учитывает 6&nbsp;факторов: списания, отмены, расхождения, отзывы клиентов и&nbsp;частоту.</span></div>
+        <div class="func-point"><span class="n">02</span><span class="t"><b>Объяснимость.</b> По&nbsp;клику — что именно тянет рейтинг вниз, с&nbsp;конкретными чеками и&nbsp;операциями.</span></div>
+        <div class="func-point"><span class="n">03</span><span class="t"><b>Фрод-детектор.</b> Аномальные паттерны: ночные возвраты, дублирующие отмены, сторно через X&nbsp;минут.</span></div>
+        <div class="func-point"><span class="n">04</span><span class="t"><b>Privacy-first.</b> Сотрудник видит свой рейтинг и&nbsp;может&nbsp;оспорить событие — без чёрных списков.</span></div>
+      </div>
+      <div class="func-cta"><a href="catalog.html#trust-score" class="btn btn-ghost">Открыть Trust Score<i class="lc" data-lucide="arrow-up-right"></i></a></div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/trust-score</span></div>
+      <div style="padding:18px;">
+        <div style="font-size:11px;color:var(--slate-500);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Рейтинг команды · 15 человек</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tbody>
+            <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Айгерим К.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Достык</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:96%;height:100%;background:var(--success-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--success-700);min-width:24px;text-align:right;">96</span></div></td></tr>
+            <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Сауле Е.</b><div style="font-size:10px;color:var(--slate-500);">Зал · Манас</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:91%;height:100%;background:var(--success-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--success-700);min-width:24px;text-align:right;">91</span></div></td></tr>
+            <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Ержан Т.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Абая</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:var(--info-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--info-700);min-width:24px;text-align:right;">78</span></div></td></tr>
+            <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Бауржан Ж.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Манас</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--warning-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--warning-700);min-width:24px;text-align:right;">64</span></div></td></tr>
+            <tr><td style="padding:10px 0;"><b style="color:var(--slate-900);">Алмат Н.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Достык</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:42%;height:100%;background:var(--danger-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--danger-700);min-width:24px;text-align:right;">42</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFFERENTIATORS ============ -->
+<section class="section" id="why" data-screen-label="08 Differentiators">
+  <div class="wrap">
+    <div class="s-head spread">
+      <div>
+        <span class="eyebrow">Почему wiseApp</span>
+        <h2 class="h2" style="margin-top:14px;">Делаем как для&nbsp;себя — потому что строили под свою сеть.</h2>
+      </div>
+      <p class="lead" style="max-width:42ch;">wiseApp вырос из&nbsp;собственной сети ресторанов в&nbsp;Алматы. Мы&nbsp;знаем боль изнутри: i&shy;ikoOffice не&nbsp;даёт ответов, Excel&nbsp;ломается, бухгалтер опаздывает на&nbsp;месяц.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff">
+        <span class="num">01</span>
+        <div class="t">Глубокая интеграция с&nbsp;iiko</div>
+        <div class="d">Собственный адаптер iikoCloud + iikoTransport. Подключаем без&nbsp;настройки серверов и&nbsp;без&nbsp;ручного экспорта. 38&nbsp;минут от&nbsp;регистрации до&nbsp;первой синхронизации.</div>
+        <span class="meta"><i class="lc" data-lucide="link" style="width:14px;height:14px;"></i>iiko · 1С · мобильные кассы</span>
+      </div>
+      <div class="diff">
+        <span class="num">02</span>
+        <div class="t">Action&nbsp;Center, а&nbsp;не&nbsp;дашборд</div>
+        <div class="d">Все алерты, рекомендации и&nbsp;задачи в&nbsp;одной ленте с&nbsp;lifecycle: принять/назначить/закрыть. Платформа отвечает на&nbsp;вопрос «что делать», а&nbsp;не&nbsp;«как было».</div>
+        <span class="meta"><i class="lc" data-lucide="bell-ring" style="width:14px;height:14px;"></i>среднее время до&nbsp;закрытия — 2&nbsp;ч</span>
+      </div>
+      <div class="diff">
+        <span class="num">03</span>
+        <div class="t">Прозрачные методики</div>
+        <div class="d">Для каждой метрики — кнопка «как считается»: формула, окно, источник данных. Никаких чёрных ящиков. Готовы к&nbsp;спору с&nbsp;вашим финансистом.</div>
+        <span class="meta"><i class="lc" data-lucide="info" style="width:14px;height:14px;"></i>методология открыта в&nbsp;документации</span>
+      </div>
+      <div class="diff">
+        <span class="num">04</span>
+        <div class="t">Поддержка на&nbsp;вашем языке</div>
+        <div class="d">Отвечаем за&nbsp;15&nbsp;минут в&nbsp;рабочее время на&nbsp;русском, казахском и&nbsp;английском. Раз в&nbsp;квартал — sync&nbsp;звонок с&nbsp;вашим директором.</div>
+        <span class="meta"><i class="lc" data-lucide="message-circle" style="width:14px;height:14px;"></i>SLA 15&nbsp;мин · 9:00–22:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<section class="section" id="calc" data-screen-label="09 ROI">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">Калькулятор</span>
+      <h2 class="h2">Сколько wiseApp вернёт за&nbsp;квартал?</h2>
+      <p class="lead">Подвиньте ползунки под свою сеть — посчитаем, сколько прибыли возвращает платформа за&nbsp;первые&nbsp;90&nbsp;дней.</p>
+    </div>
+
+    <div class="calc">
+      <div class="calc-form">
+        <div class="field">
+          <label>Точек в&nbsp;сети</label>
+          <div class="ctl">
+            <input type="range" id="r-locations" min="1" max="40" value="3" step="1">
+            <span class="v-out" id="o-locations">3</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Средняя выручка точки в&nbsp;месяц, млн&nbsp;₸</label>
+          <div class="ctl">
+            <input type="range" id="r-revenue" min="3" max="60" value="14" step="1">
+            <span class="v-out" id="o-revenue">14 млн ₸</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Текущий food&nbsp;cost, %</label>
+          <div class="ctl">
+            <input type="range" id="r-fc" min="22" max="48" value="34" step="1">
+            <span class="v-out" id="o-fc">34%</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Списания и&nbsp;потери в&nbsp;месяц на&nbsp;точку, ₸</label>
+          <div class="ctl">
+            <input type="range" id="r-loss" min="100000" max="3000000" value="500000" step="50000">
+            <span class="v-out" id="o-loss">500 000 ₸</span>
+          </div>
+        </div>
+        <div class="kicker" style="font-size:12px;color:var(--slate-400);margin-top:8px;">* Расчёт основан на&nbsp;медиане 214 ресторанов на&nbsp;wiseApp за&nbsp;последние 12&nbsp;месяцев. Реальный эффект зависит от&nbsp;качества данных и&nbsp;дисциплины менеджмента.</div>
+      </div>
+      <div class="calc-result">
+        <div>
+          <span class="label-light">Возврат за&nbsp;первые 90&nbsp;дней</span>
+          <div class="big" id="o-return" style="margin-top:8px;">5,4 млн ₸</div>
+          <span class="label-light" style="display:block;margin-top:8px;">≈&nbsp;<span id="o-roi">3.2</span>×&nbsp;окупаемость подписки</span>
+        </div>
+        <div class="breakdown">
+          <div class="br-item"><div class="v" id="o-loss-save">—</div><div class="l">Снижение списаний</div></div>
+          <div class="br-item"><div class="v" id="o-fc-save">—</div><div class="l">Снижение food&nbsp;cost</div></div>
+          <div class="br-item"><div class="v" id="o-mar-save">—</div><div class="l">Прирост маржи</div></div>
+          <div class="br-item"><div class="v" id="o-time-save">—</div><div class="l">Время менеджера</div></div>
+        </div>
+        <a href="#contact" class="btn btn-onink" style="align-self:flex-start;">Запросить расчёт под сеть<i class="lc" data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section" id="team" data-screen-label="10 Team">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">Команда</span>
+      <h2 class="h2">Строим как ресторатор для ресторатора.</h2>
+      <p class="lead">Команда wiseApp — это операторы, аналитики и&nbsp;инженеры с&nbsp;опытом в&nbsp;ресторанных сетях Казахстана и&nbsp;СНГ.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">АТ</div>
+        <div><div class="team-name">Алмаз Тажибаев</div><div class="team-role">CEO · ex-сеть Pinta (12&nbsp;точек)</div></div>
+        <div class="team-bio">Запустил wiseApp как внутренний инструмент для собственной сети. Отвечает за&nbsp;продукт и&nbsp;интеграции с&nbsp;iiko.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">ДК</div>
+        <div><div class="team-name">Данияр Каиров</div><div class="team-role">CTO · ex-Kaspi · ex-Yandex</div></div>
+        <div class="team-bio">10&nbsp;лет в&nbsp;распределённых системах. Строит платформу: Go-бекенд, ClickHouse, потоковую обработку.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">СЕ</div>
+        <div><div class="team-name">Сауле Ескалиева</div><div class="team-role">Head of Analytics · ex-Magnum</div></div>
+        <div class="team-bio">Отвечает за&nbsp;методологию: как считаем food&nbsp;cost, retention, trust&nbsp;score. Защищает прозрачность формул.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" data-screen-label="11 FAQ">
+  <div class="wrap-narrow">
+    <div class="s-head center">
+      <span class="eyebrow">Частые вопросы</span>
+      <h2 class="h2">Ответы на&nbsp;то, что обычно спрашивают директора и&nbsp;финансисты.</h2>
+    </div>
+    <div class="faq" id="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">Сколько времени занимает подключение iiko?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">В&nbsp;среднем 38&nbsp;минут. Нужно создать сервисного пользователя в&nbsp;iikoOffice и&nbsp;вставить его в&nbsp;wiseApp. Дальше платформа сама подтягивает товары, чеки, склады и&nbsp;историю за&nbsp;последние 12&nbsp;месяцев. Ничего не&nbsp;ломаем в&nbsp;вашей iiko — только читаем.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что если у&nbsp;нас несколько касс и&nbsp;разные iikoBiz?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">Поддерживаем сети с&nbsp;разными iikoBiz и&nbsp;холдинговую структуру. Точки группируются по&nbsp;юрлицам, бренду или географии — и&nbsp;P&amp;L собирается по&nbsp;любой комбинации.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что с&nbsp;безопасностью данных?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">Хостинг в&nbsp;Казахстане, шифрование at-rest и&nbsp;in-transit. Данные не&nbsp;покидают периметр. Готовы подписать NDA и&nbsp;DPA. Полный аудит-лог: кто и&nbsp;когда смотрел/менял отчёт.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Можно&nbsp;ли использовать без iiko?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">Да. Принимаем CSV/Excel из&nbsp;любой кассовой системы (R-Keeper, Poster, 1С). Wizard импорта мапит колонки автоматически и&nbsp;валидирует периоды.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Сколько стоит и&nbsp;как считается тариф?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">Подписка за&nbsp;точку: от&nbsp;39&nbsp;000&nbsp;₸ в&nbsp;месяц для&nbsp;1&nbsp;точки, дальше скидка по&nbsp;объёму до&nbsp;22&nbsp;000&nbsp;₸ за&nbsp;точку при&nbsp;10+. Все модули включены — никаких add-on.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как Trust&nbsp;Score связан с&nbsp;трудовым правом?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">Это инструмент менеджера, а&nbsp;не&nbsp;система автоматического увольнения. Сотрудник видит свой рейтинг, может&nbsp;оспорить событие. Все решения принимает человек — мы&nbsp;даём только цифры и&nbsp;контекст.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что если у&nbsp;нас уже есть BI?<span class="ic"><i class="lc" data-lucide="plus"></i></span></button>
+        <div class="faq-a"><div class="a-inner faq-a-inner">wiseApp дополняет BI, а&nbsp;не&nbsp;заменяет. Мы&nbsp;даём не&nbsp;графики, а&nbsp;Action&nbsp;Center — задачи, которые надо закрыть сегодня. Готовы экспортировать данные в&nbsp;ваш Tableau/Metabase/PowerBI через REST&nbsp;API.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP (ON INK) ============ -->
+<section class="section-ink section-tight" id="contact" data-screen-label="12 CTA">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;">
+    <div>
+      <h2 class="h2" style="color:#fff;">Демо за&nbsp;10&nbsp;минут.<br>На&nbsp;ваших данных.</h2>
+      <p class="lead" style="color:rgba(255,255,255,0.65);margin-top:16px;">Подключаем тестовую интеграцию iiko прямо на&nbsp;звонке и&nbsp;показываем&nbsp;3 главные находки в&nbsp;вашей сети. Без презентаций.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="catalog.html" class="btn btn-onink btn-lg">Открыть демо<i class="lc" data-lucide="arrow-up-right"></i></a>
+      <a href="mailto:hello@wiseapp.kz" class="btn btn-onink-ghost btn-lg">Написать команде</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="wm-lockup" style="margin-bottom:18px;">
+          <span class="wm-tile">w</span>
+          <span class="wm-text" style="color:#fff;">wise<span class="a">A</span>pp</span>
+        </a>
+        <p style="font-size:13px;line-height:1.6;max-width:32ch;color:rgba(255,255,255,0.55);margin-top:18px;">Операционная аналитика для ресторанного бизнеса. Алматы&nbsp;· Астана&nbsp;· Ташкент.</p>
+      </div>
+      <div>
+        <h4>Продукт</h4>
+        <div class="footer-links">
+          <a href="catalog.html#dashboard">Dashboard</a>
+          <a href="catalog.html#action-center">Action Center</a>
+          <a href="catalog.html#pl">P&amp;L</a>
+          <a href="catalog.html#cashflow">Кассовые разрывы</a>
+          <a href="catalog.html#inventory">Складской учёт</a>
+          <a href="catalog.html#trust-score">Trust Score</a>
+        </div>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <div class="footer-links">
+          <a href="#team">Команда</a>
+          <a href="#why">Почему мы</a>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:press@wiseapp.kz">Пресса</a>
+          <a href="mailto:jobs@wiseapp.kz">Вакансии</a>
+        </div>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <div class="footer-links">
+          <a href="mailto:hello@wiseapp.kz">hello@wiseapp.kz</a>
+          <a href="tel:+77272222222">+7 727 222 22 22</a>
+          <a href="#">Telegram · @wiseapp_kz</a>
+          <a href="#">Документация</a>
+          <a href="#">Статус системы</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 wiseApp Operations LLP · BIN 240 140 015 488</span>
+      <div class="legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Условия использования</a>
+        <a href="#">Cookie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Lucide
+if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(b => {
+  b.addEventListener('click', () => {
+    const item = b.closest('.faq-item');
+    item.classList.toggle('open');
+  });
+});
+
+// Lang toggle (cosmetic)
+document.querySelectorAll('.lang button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.lang button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+// ROI calculator
+(function(){
+  const fmt = (n) => {
+    if (n >= 1_000_000) return (n/1_000_000).toFixed(1).replace('.', ',') + ' млн ₸';
+    if (n >= 1_000) return Math.round(n/1000) + ' тыс ₸';
+    return Math.round(n) + ' ₸';
+  };
+  const fmtTime = (h) => h.toFixed(0) + ' ч/мес';
+
+  const r = {
+    locations: document.getElementById('r-locations'),
+    revenue:   document.getElementById('r-revenue'),
+    fc:        document.getElementById('r-fc'),
+    loss:      document.getElementById('r-loss'),
+  };
+  const o = {
+    locations: document.getElementById('o-locations'),
+    revenue:   document.getElementById('o-revenue'),
+    fc:        document.getElementById('o-fc'),
+    loss:      document.getElementById('o-loss'),
+    ret:       document.getElementById('o-return'),
+    roi:       document.getElementById('o-roi'),
+    lossSave:  document.getElementById('o-loss-save'),
+    fcSave:    document.getElementById('o-fc-save'),
+    marSave:   document.getElementById('o-mar-save'),
+    timeSave:  document.getElementById('o-time-save'),
+  };
+
+  // baseline subscription per location per month, KZT
+  const SUB_PER_LOC = 28000;
+
+  function calc() {
+    const N = +r.locations.value;
+    const rev = +r.revenue.value * 1_000_000;
+    const fc = +r.fc.value;
+    const loss = +r.loss.value;
+
+    // labels
+    o.locations.textContent = N;
+    o.revenue.textContent = (+r.revenue.value) + ' млн ₸';
+    o.fc.textContent = fc + '%';
+    o.loss.textContent = loss.toLocaleString('ru-RU') + ' ₸';
+
+    // savings (per quarter)
+    const lossSave = loss * 0.30 * 3 * N;          // −30% списаний
+    const fcSave   = rev * (0.012) * 3 * N;        // −1.2 п.п. food cost
+    const marSave  = rev * (0.014) * 3 * N;        // +1.4 п.п. маржа (от прироста выручки/опт промо)
+    const total    = lossSave + fcSave + marSave;
+    const sub      = SUB_PER_LOC * N * 3;
+    const roi      = total / sub;
+    const timeHrs  = 3 * N * 4;                     // 3 ч/нед × 4 нед
+
+    o.ret.textContent      = fmt(total);
+    o.roi.textContent      = roi.toFixed(1).replace('.', ',');
+    o.lossSave.textContent = fmt(lossSave);
+    o.fcSave.textContent   = fmt(fcSave);
+    o.marSave.textContent  = fmt(marSave);
+    o.timeSave.textContent = fmtTime(timeHrs);
+  }
+  Object.values(r).forEach(el => el.addEventListener('input', calc));
+  calc();
+})();
+</script>
+
+</body>
+</html>

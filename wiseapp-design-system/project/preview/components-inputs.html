@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+body { padding: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.lbl { font-size: 14px; font-weight: 700; color: #334155; margin-left: 4px; }
+.input { width: 100%; padding: 12px 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; font-size: 15px; color: #1e293b; font-family: Inter, sans-serif; outline: none; }
+.input.focus { background: #fff; border-color: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15); }
+.input.error { background: #fff1f2; border-color: #fecdd3; color: #be123c; }
+.helper { font-size: 11px; color: #94a3b8; margin-left: 4px; }
+.helper.err { color: #e11d48; }
+</style></head><body>
+<div class="card">
+  <div class="strong" style="font-weight: 700; margin-bottom: 4px;">Components · Inputs</div>
+  <div class="field">
+    <label class="lbl">Email</label>
+    <input class="input" type="email" placeholder="user@example.com" value="elena@cofix.kz">
+  </div>
+  <div class="field">
+    <label class="lbl">Пароль</label>
+    <input class="input focus" type="password" value="••••••••" placeholder="••••••••">
+    <span class="helper">Focus · brand-500 ring · white bg</span>
+  </div>
+</div>
+</body></html>

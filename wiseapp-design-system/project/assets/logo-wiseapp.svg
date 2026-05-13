@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" width="200" height="56">
+  
+  <rect x="4" y="8" width="40" height="40" rx="12" fill="#f59e0b"></rect>
+  
+  <g transform="translate(14 18)" fill="none" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="0,18 8,10 14,16 22,4"></polyline>
+    <polyline points="14,4 22,4 22,12"></polyline>
+  </g>
+  
+  <text x="56" y="36" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#0f172a" letter-spacing="-0.02em">wiseApp</text>
+</svg>

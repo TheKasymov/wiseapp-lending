@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><script src="https://unpkg.com/lucide@latest"></script><style>
+body { padding: 14px; }
+.list { background: #fff; border: 1px solid #f3f4f6; border-radius: 16px; padding: 14px; box-shadow: 0 4px 30px rgba(0,0,0,0.02); }
+.row-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f9fafb; border-radius: 12px; margin-top: 8px; }
+.row-item:first-of-type { margin-top: 6px; }
+.left { display: flex; gap: 12px; align-items: center; }
+.rank { width: 32px; height: 32px; border-radius: 9999px; background: #fff; border: 1px solid #e5e7eb; font-size: 14px; font-weight: 600; color: #334155; display: flex; align-items: center; justify-content: center; }
+.name { font-size: 14px; font-weight: 600; color: #1e293b; }
+.sub { font-size: 11px; color: #64748b; }
+.amt { font-size: 14px; font-weight: 600; color: #d97706; }
+.title { font-size: 16px; font-weight: 600; color: #0f172a; }
+</style></head><body>
+<div class="card" style="padding:14px;">
+  <div class="strong" style="font-weight:700;">Components · Top product list row</div>
+  <div class="list">
+    <div class="title">Топ товары</div>
+    <div class="row-item">
+      <div class="left">
+        <div class="rank">1</div>
+        <div><div class="name">Капучино 350мл</div><div class="sub">412 заказов</div></div>
+      </div>
+      <div class="amt">512 800 ₸</div>
+    </div>
+    <div class="row-item">
+      <div class="left">
+        <div class="rank">2</div>
+        <div><div class="name">Раф ванильный</div><div class="sub">298 заказов</div></div>
+      </div>
+      <div class="amt">387 250 ₸</div>
+    </div>
+    <div class="row-item">
+      <div class="left">
+        <div class="rank">3</div>
+        <div><div class="name">Круассан с миндалём</div><div class="sub">214 заказов</div></div>
+      </div>
+      <div class="amt">194 180 ₸</div>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><script src="https://unpkg.com/lucide@latest"></script><style>
+body { padding: 16px; background: #f1f5f9; }
+.sidebar { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 16px; padding: 12px; max-width: 280px; }
+.logo { display: flex; align-items: center; gap: 12px; padding: 8px 8px 16px; border-bottom: 1px solid #e2e8f0; margin-bottom: 12px; }
+.tile { padding: 8px; background: #f59e0b; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); display: inline-flex; }
+.brand { font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; }
+.cap { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b; }
+.item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 12px; font-size: 14px; font-weight: 600; color: #475569; cursor: default; }
+.item.active { background: #fef3c7; color: #92400e; box-shadow: 0 1px 2px rgba(0,0,0,0.03); border: 1px solid #fde68a; }
+.item.active .lc { color: #d97706; }
+.item .lc { color: #64748b; }
+</style></head><body>
+<div class="sidebar">
+  <div class="logo">
+    <span class="tile"><i data-lucide="trending-up" style="width:18px;height:18px;color:#1e293b;"></i></span>
+    <span class="brand">wiseApp</span>
+  </div>
+  <div class="cap"><span>📊 ОБЗОР</span><i data-lucide="chevron-down" style="width:14px;height:14px;"></i></div>
+  <div class="item active"><i data-lucide="layout-dashboard" class="lc" style="width:18px;height:18px;"></i> Dashboard</div>
+  <div class="item"><i data-lucide="activity" class="lc" style="width:18px;height:18px;"></i> Cockpit</div>
+  <div class="item"><i data-lucide="bell" class="lc" style="width:18px;height:18px;"></i> Action Center</div>
+  <div class="cap" style="margin-top:8px;"><span>📈 АНАЛИТИКА</span><i data-lucide="chevron-down" style="width:14px;height:14px;"></i></div>
+  <div class="item"><i data-lucide="flame" class="lc" style="width:18px;height:18px;"></i> Heatmap спроса</div>
+  <div class="item"><i data-lucide="dollar-sign" class="lc" style="width:18px;height:18px;"></i> Финансы</div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

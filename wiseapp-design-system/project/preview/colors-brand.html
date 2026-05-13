@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+.swatch { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.chip { height: 56px; border-radius: 12px; border: 1px solid rgba(15,23,42,0.04); }
+.chip.lite { border: 1px solid #e2e8f0; }
+.label { font-size: 11px; font-weight: 600; color: #475569; }
+.hex { font-size: 10px; color: #94a3b8; font-family: 'JetBrains Mono', monospace; }
+.scale { display: flex; gap: 6px; }
+.tier { display: flex; flex-direction: column; gap: 6px; }
+.tier-name { font-size: 12px; font-weight: 700; color: #0f172a; }
+</style></head><body>
+<div class="card">
+  <div class="row spread">
+    <div class="strong" style="font-weight: 700;">Brand · Amber</div>
+    <div class="faint" style="font-size: 11px;">primary <span class="mono">brand-500</span> = <span class="mono">#f59e0b</span></div>
+  </div>
+  <div class="scale">
+    <div class="swatch"><div class="chip lite" style="background:#fffbeb"></div><span class="label">50</span><span class="hex">#fffbeb</span></div>
+    <div class="swatch"><div class="chip" style="background:#fef3c7"></div><span class="label">100</span><span class="hex">#fef3c7</span></div>
+    <div class="swatch"><div class="chip" style="background:#fde68a"></div><span class="label">200</span><span class="hex">#fde68a</span></div>
+    <div class="swatch"><div class="chip" style="background:#fcd34d"></div><span class="label">300</span><span class="hex">#fcd34d</span></div>
+    <div class="swatch"><div class="chip" style="background:#fbbf24"></div><span class="label">400</span><span class="hex">#fbbf24</span></div>
+    <div class="swatch"><div class="chip" style="background:#f59e0b;outline: 2px solid #f59e0b; outline-offset: -2px;"></div><span class="label" style="color:#b45309">500 ★</span><span class="hex">#f59e0b</span></div>
+    <div class="swatch"><div class="chip" style="background:#d97706"></div><span class="label">600</span><span class="hex">#d97706</span></div>
+    <div class="swatch"><div class="chip" style="background:#b45309"></div><span class="label">700</span><span class="hex">#b45309</span></div>
+    <div class="swatch"><div class="chip" style="background:#92400e"></div><span class="label">800</span><span class="hex">#92400e</span></div>
+    <div class="swatch"><div class="chip" style="background:#78350f"></div><span class="label">900</span><span class="hex">#78350f</span></div>
+  </div>
+</div>
+</body></html>
