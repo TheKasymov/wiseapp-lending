@@ -1,0 +1,262 @@
+/* =========================================================================
+   wiseApp / BizFocus — Foundations
+   Source: TheKasymov/bizfocus → frontend/tailwind.config.js + frontend/src/index.css
+   Light theme. Russian-first. Inter typography. Amber brand.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ---------- Brand (amber) ---------- */
+  --brand-50:  #fffbeb;
+  --brand-100: #fef3c7;
+  --brand-200: #fde68a;
+  --brand-300: #fcd34d;
+  --brand-400: #fbbf24;
+  --brand-500: #f59e0b;  /* primary */
+  --brand-600: #d97706;
+  --brand-700: #b45309;
+  --brand-800: #92400e;
+  --brand-900: #78350f;
+
+  /* ---------- Neutral (Tailwind slate, renamed `dark` in source) ---------- */
+  --slate-50:  #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+
+  /* ---------- Surfaces ---------- */
+  --bg-app: #f9fafb;       /* gray-50 — main app shell */
+  --bg-sidebar: #f1f5f9;   /* slate-100 */
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;    /* slate-50 — list rows, inputs */
+  --bg-hover: #f1f5f9;     /* slate-100 — hover on subtle */
+
+  /* ---------- Borders ---------- */
+  --border-card: #f3f4f6;  /* gray-100 — default card border */
+  --border-input: #e5e7eb; /* gray-200 */
+  --border-divider: #f1f5f9;
+
+  /* ---------- Text ---------- */
+  --fg-strong:   #0f172a;  /* slate-900 — headings */
+  --fg-default:  #1e293b;  /* slate-800 — body */
+  --fg-muted:    #475569;  /* slate-600 — secondary */
+  --fg-soft:     #64748b;  /* slate-500 — labels */
+  --fg-faint:    #94a3b8;  /* slate-400 — captions, placeholder */
+  --fg-disabled: #cbd5e1;  /* slate-300 */
+  --fg-on-brand: #1e293b;  /* slate-800 — text on brand-500 button */
+
+  /* ---------- Semantic (status) ---------- */
+  --success-50:  #ecfdf5;
+  --success-100: #d1fae5;
+  --success-500: #10b981;  /* emerald — KPI up, "good" */
+  --success-600: #059669;
+  --success-700: #047857;
+
+  --warning-50:  #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-500: #f59e0b;  /* same as brand */
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+
+  --danger-50:  #fff1f2;
+  --danger-100: #ffe4e6;
+  --danger-500: #f43f5e;   /* rose — destructive, churn */
+  --danger-600: #e11d48;
+  --danger-700: #be123c;
+
+  --info-50:  #eff6ff;
+  --info-100: #dbeafe;
+  --info-500: #3b82f6;     /* blue — informational */
+  --info-600: #2563eb;
+  --info-700: #1d4ed8;
+
+  /* ---------- Chart palette (recharts) ---------- */
+  --chart-1: #f59e0b;  /* brand amber — primary series */
+  --chart-2: #10b981;  /* emerald */
+  --chart-3: #0ea5e9;  /* sky */
+  --chart-4: #8b5cf6;  /* violet */
+  --chart-5: #ef4444;  /* red */
+  --chart-6: #ec4899;  /* pink */
+  --chart-7: #06b6d4;  /* cyan */
+  --chart-8: #84cc16;  /* lime */
+  --chart-9: #f97316;  /* orange */
+  --chart-grid: #f1f5f9;
+  --chart-axis: #94a3b8;
+
+  /* ---------- ABC analysis colors (from src/pages/ABCXYZ.tsx) ---------- */
+  --abc-a-strong: #22c55e;
+  --abc-a-soft:   #86efac;
+  --abc-b-strong: #3b82f6;
+  --abc-b-soft:   #93c5fd;
+  --abc-c-strong: #f97316;
+  --abc-c-soft:   #fdba74;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 0.5rem;     /* 8px  — chips, small pills */
+  --radius-md: 0.75rem;    /* 12px — inputs, inner elements ("rounded-inner") */
+  --radius-lg: 1rem;       /* 16px — default card ("rounded-card", rounded-2xl) */
+  --radius-xl: 1.25rem;    /* 20px — KPI icon tile */
+  --radius-2xl: 1.5rem;    /* 24px — modal, premium card */
+  --radius-3xl: 1.75rem;   /* 28px — hero KPI card (rounded-[28px]) */
+  --radius-4xl: 2rem;      /* 32px */
+  --radius-5xl: 2.5rem;    /* 40px — login card */
+  --radius-pill: 9999px;
+
+  /* ---------- Spacing scale (Tailwind defaults; commonly used) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* ---------- Shadows (lifted from index.css + components) ---------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.02);     /* default card lift */
+  --shadow-md:   0 8px 30px rgba(0, 0, 0, 0.04);     /* hover */
+  --shadow-lg:   0 10px 40px rgba(0, 0, 0, 0.08);    /* dropdowns */
+  --shadow-xl:   0 8px 40px rgba(0, 0, 0, 0.04);     /* login modal */
+  --shadow-tooltip: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-inset:   inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-brand:   0 8px 24px rgba(245, 158, 11, 0.20);  /* CTA glow */
+
+  /* ---------- Typography ---------- */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Type scale — observed in code */
+  --text-xs:   0.75rem;     /* 12px — captions, badge text */
+  --text-sm:   0.875rem;    /* 14px — body small, table cells */
+  --text-base: 0.9375rem;   /* 15px — primary body in this app */
+  --text-md:   1rem;        /* 16px */
+  --text-lg:   1.125rem;    /* 18px — card titles */
+  --text-xl:   1.25rem;     /* 20px — section heads */
+  --text-2xl:  1.5rem;      /* 24px — page subhead, KPI value */
+  --text-3xl:  1.875rem;    /* 30px — page H1 (extrabold) */
+  --text-4xl:  2.25rem;     /* 36px — login hero */
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.625;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.08em;  /* sidebar section caps */
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+}
+
+/* =========================================================================
+   Semantic typography roles
+   Use these classes; do NOT hand-roll inline typography in production.
+   ========================================================================= */
+
+html, body {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg-default);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.h1, h1.ds {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+  line-height: var(--leading-tight);
+}
+
+.h2, h2.ds {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+  line-height: var(--leading-snug);
+}
+
+.h3, h3.ds {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--fg-strong);
+}
+
+.kpi-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+}
+
+.kpi-value-xl {
+  font-size: 1.875rem;
+  font-weight: var(--weight-extrabold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-strong);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--fg-soft);
+}
+
+.label-strong {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--fg-muted);
+}
+
+.section-cap {            /* Sidebar section caps: "ОБЗОР", "АНАЛИТИКА" */
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg-soft);
+}
+
+p, .body {
+  font-size: var(--text-base);
+  color: var(--fg-default);
+}
+
+.body-sm {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+
+.caption {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+}
+
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-divider);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  color: var(--fg-default);
+}
