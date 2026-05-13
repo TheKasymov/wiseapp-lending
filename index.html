@@ -35,6 +35,10 @@
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-cta">
+      <button class="nav-toggle" aria-label="Меню" aria-expanded="false">
+        <i class="lc icon-menu" data-lucide="menu"></i>
+        <i class="lc icon-close" data-lucide="x"></i>
+      </button>
       <span id="demo-status" class="demo-status is-checking" aria-live="polite">
         <span class="dot"></span><span class="txt">Проверка…</span>
       </span>
@@ -75,7 +79,7 @@
         <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
         <span class="url">app.wiseapp.kz / сегодня</span>
       </div>
-      <div class="mk-grid" style="grid-template-columns: 1.4fr 1fr 1fr;">
+      <div class="mk-grid">
         <div class="mk-card" style="grid-row: span 2;">
           <span class="lbl">Выручка · 30 дней</span>
           <div class="val">42,3 <span style="font-size:14px;color:var(--slate-500);font-weight:500;">млн ₸</span></div>
@@ -153,7 +157,7 @@
     </div>
     <div>
       <p class="lead-lg">Эффект складывается из&nbsp;трёх простых вещей: меньше списаний, точнее график персонала и&nbsp;вовремя замеченные аномалии. Платформа не&nbsp;показывает «красивые графики» — она&nbsp;закрывает задачи в&nbsp;Action&nbsp;Center, пока вы&nbsp;на&nbsp;смене.</p>
-      <div style="margin-top:32px;display:flex;gap:32px;flex-wrap:wrap;">
+      <div class="bigstat-stats">
         <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">−42%</div><div class="kicker">потери от&nbsp;фрода</div></div>
         <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">−1.2 п.п.</div><div class="kicker">food&nbsp;cost</div></div>
         <div><div style="font-size:32px;font-weight:700;color:var(--slate-900);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;">+3 ч/нед</div><div class="kicker">времени менеджера</div></div>
@@ -183,7 +187,7 @@
     <div class="mock">
       <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/action-center</span></div>
       <div style="padding:18px;">
-        <div style="display:flex;gap:8px;margin-bottom:14px;font-size:11px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:11px;">
           <span style="padding:4px 10px;background:var(--slate-900);color:#fff;border-radius:999px;font-weight:600;">Открытые · 12</span>
           <span style="padding:4px 10px;background:#f4f5f7;color:var(--slate-500);border-radius:999px;font-weight:600;">Закрытые · 47</span>
           <span style="padding:4px 10px;background:#f4f5f7;color:var(--slate-500);border-radius:999px;font-weight:600;">Отклонённые · 8</span>
@@ -192,21 +196,21 @@
           <div style="padding:14px;display:flex;gap:12px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
             <i class="lc" data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--danger-600);margin-top:2px;flex-shrink:0;"></i>
             <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Падение выручки на «Достык» −18%</span><span style="font-size:10px;font-weight:600;background:var(--danger-50);color:var(--danger-700);padding:2px 8px;border-radius:6px;">CRITICAL</span></div>
+              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Падение выручки на «Достык» −18%</span><span style="font-size:10px;font-weight:600;background:var(--danger-50);color:var(--danger-700);padding:2px 8px;border-radius:6px;">CRITICAL</span></div>
               <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">Финансы · Z=2.4 · сравнение с прошлым понедельником</div>
             </div>
           </div>
           <div style="padding:14px;display:flex;gap:12px;border-bottom:1px solid #f4f5f7;align-items:flex-start;">
             <i class="lc" data-lucide="lightbulb" style="width:16px;height:16px;color:var(--info-600);margin-top:2px;flex-shrink:0;"></i>
             <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Промо на Том Ям 14:00–17:00</span><span style="font-size:10px;font-weight:600;background:var(--info-50);color:var(--info-700);padding:2px 8px;border-radius:6px;">ИДЕЯ</span></div>
+              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Промо на Том Ям 14:00–17:00</span><span style="font-size:10px;font-weight:600;background:var(--info-50);color:var(--info-700);padding:2px 8px;border-radius:6px;">ИДЕЯ</span></div>
               <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">+180 чеков/нед · падение спроса −22%</div>
             </div>
           </div>
           <div style="padding:14px;display:flex;gap:12px;align-items:flex-start;">
             <i class="lc" data-lucide="list-checks" style="width:16px;height:16px;color:var(--slate-500);margin-top:2px;flex-shrink:0;"></i>
             <div style="flex:1;">
-              <div style="display:flex;justify-content:space-between;gap:10px;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Закрыть смену кассира №14</span><span style="font-size:10px;font-weight:600;background:var(--warning-50);color:var(--warning-700);padding:2px 8px;border-radius:6px;">ЗАДАЧА</span></div>
+              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;"><span style="font-size:13px;font-weight:600;color:var(--slate-900);">Закрыть смену кассира №14</span><span style="font-size:10px;font-weight:600;background:var(--warning-50);color:var(--warning-700);padding:2px 8px;border-radius:6px;">ЗАДАЧА</span></div>
               <div style="font-size:11px;color:var(--slate-500);margin-top:3px;">Расхождение 4 200 ₸ · срок 22:00</div>
             </div>
           </div>
@@ -245,7 +249,7 @@
           <circle cx="216" cy="150" r="4" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
           <text x="222" y="146" font-size="10" fill="#92400e" font-weight="700">22 ноя · 2.1 млн</text>
         </svg>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;font-size:11px;">
+        <div class="mock-row-3" style="margin-top:14px;font-size:11px;">
           <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Притоки</div><div style="font-size:14px;font-weight:700;color:var(--success-700);font-variant-numeric:tabular-nums;margin-top:2px;">+44,8 млн</div></div>
           <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Оттоки</div><div style="font-size:14px;font-weight:700;color:var(--danger-700);font-variant-numeric:tabular-nums;margin-top:2px;">−39,2 млн</div></div>
           <div style="padding:10px;background:#fafbfc;border-radius:8px;"><div style="color:var(--slate-500);font-weight:500;">Минимум</div><div style="font-size:14px;font-weight:700;color:var(--warning-700);font-variant-numeric:tabular-nums;margin-top:2px;">2,1 млн</div></div>
@@ -273,13 +277,13 @@
     <div class="mock">
       <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/inventory</span></div>
       <div style="padding:18px;">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
+        <div class="mock-row-4" style="margin-bottom:14px;">
           <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Стоимость</div><div style="font-size:14px;font-weight:700;color:var(--slate-900);font-variant-numeric:tabular-nums;margin-top:2px;">12,8 млн</div></div>
           <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Ниже мин.</div><div style="font-size:14px;font-weight:700;color:var(--danger-700);font-variant-numeric:tabular-nums;margin-top:2px;">14</div></div>
           <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Истекает&lt;7д</div><div style="font-size:14px;font-weight:700;color:var(--warning-700);font-variant-numeric:tabular-nums;margin-top:2px;">22</div></div>
           <div style="padding:10px;border:1px solid #eef0f3;border-radius:8px;"><div style="font-size:10px;color:var(--slate-500);font-weight:500;">Списано</div><div style="font-size:14px;font-weight:700;color:var(--slate-900);font-variant-numeric:tabular-nums;margin-top:2px;">418&nbsp;200</div></div>
         </div>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <div class="mock-scroll"><table style="width:100%;border-collapse:collapse;font-size:12px;">
           <thead><tr style="font-size:9px;color:var(--slate-500);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;"><th style="text-align:left;padding:6px 0;">SKU</th><th style="text-align:right;">Остаток</th><th style="text-align:right;">Срок</th><th></th></tr></thead>
           <tbody>
             <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Лосось филе</b><div style="font-size:10px;color:var(--slate-500);">Манас</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">3.2 кг</td><td style="text-align:right;color:var(--slate-500);">+4 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--danger-50);color:var(--danger-700);padding:2px 7px;border-radius:5px;">МИН</span></td></tr>
@@ -287,7 +291,7 @@
             <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Креветка тигровая</b><div style="font-size:10px;color:var(--slate-500);">Абая</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">1.8 кг</td><td style="text-align:right;color:var(--slate-500);">+3 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--danger-50);color:var(--danger-700);padding:2px 7px;border-radius:5px;">МИН</span></td></tr>
             <tr style="border-top:1px solid #f4f5f7;"><td style="padding:8px 0;"><b style="color:var(--slate-900);">Манго свежее</b><div style="font-size:10px;color:var(--slate-500);">Манас</div></td><td style="text-align:right;font-variant-numeric:tabular-nums;">4 кг</td><td style="text-align:right;color:var(--slate-500);">+1 д</td><td style="text-align:right;"><span style="font-size:9px;font-weight:700;background:var(--warning-50);color:var(--warning-700);padding:2px 7px;border-radius:5px;">FIFO</span></td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </div>
@@ -312,7 +316,7 @@
       <div class="mock-bar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="url">/trust-score</span></div>
       <div style="padding:18px;">
         <div style="font-size:11px;color:var(--slate-500);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Рейтинг команды · 15 человек</div>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <div class="mock-scroll"><table style="width:100%;border-collapse:collapse;font-size:12px;">
           <tbody>
             <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Айгерим К.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Достык</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:96%;height:100%;background:var(--success-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--success-700);min-width:24px;text-align:right;">96</span></div></td></tr>
             <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Сауле Е.</b><div style="font-size:10px;color:var(--slate-500);">Зал · Манас</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:91%;height:100%;background:var(--success-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--success-700);min-width:24px;text-align:right;">91</span></div></td></tr>
@@ -320,7 +324,7 @@
             <tr style="border-bottom:1px solid #f4f5f7;"><td style="padding:10px 0;"><b style="color:var(--slate-900);">Бауржан Ж.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Манас</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--warning-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--warning-700);min-width:24px;text-align:right;">64</span></div></td></tr>
             <tr><td style="padding:10px 0;"><b style="color:var(--slate-900);">Алмат Н.</b><div style="font-size:10px;color:var(--slate-500);">Кассир · Достык</div></td><td><div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;"><div style="width:80px;height:5px;background:#eef0f3;border-radius:3px;overflow:hidden;"><div style="width:42%;height:100%;background:var(--danger-500);"></div></div><span style="font-variant-numeric:tabular-nums;font-weight:700;color:var(--danger-700);min-width:24px;text-align:right;">42</span></div></td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </div>
@@ -494,7 +498,7 @@
 
 <!-- ============ CTA STRIP (ON INK) ============ -->
 <section class="section-ink section-tight" id="contact" data-screen-label="12 CTA">
-  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;">
+  <div class="wrap cta-strip">
     <div>
       <h2 class="h2" style="color:#fff;">Демо за&nbsp;10&nbsp;минут.<br>На&nbsp;ваших данных.</h2>
       <p class="lead" style="color:rgba(255,255,255,0.65);margin-top:16px;">Подключаем тестовую интеграцию iiko прямо на&nbsp;звонке и&nbsp;показываем&nbsp;3 главные находки в&nbsp;вашей сети. Без презентаций.</p>
@@ -563,6 +567,21 @@
 <script>
 // Lucide
 if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+// ============ Mobile burger nav ============
+(function(){
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.nav-links');
+  if (!btn || !menu) return;
+  function close(){ menu.classList.remove('is-open'); btn.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); }
+  btn.addEventListener('click', () => {
+    const open = !menu.classList.contains('is-open');
+    menu.classList.toggle('is-open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+})();
 
 // ============ Demo health-check ============
 // Каждые N секунд бьём в DEMO_URL + HEALTH_PATH. Если 200 OK → online;
